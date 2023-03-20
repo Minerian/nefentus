@@ -71,6 +71,11 @@
     gap: 4rem;
   }
 
+  .horizontalCard > div {
+    text-align: left;
+    align-self: flex-start;
+  }
+
   .horizontalCard img {
     width: 100%;
   }

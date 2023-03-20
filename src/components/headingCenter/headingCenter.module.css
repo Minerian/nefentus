@@ -21,6 +21,11 @@
 @media (max-width: 900px) {
   .heading {
     margin-bottom: 3rem;
+    align-items: flex-start;
+  }
+
+  .heading h2 {
+    text-align: left;
   }
 
   .subtitle {

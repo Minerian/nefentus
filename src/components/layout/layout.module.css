@@ -53,10 +53,16 @@
   .layout > div {
     order: 1 !important;
     width: 100%;
-    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
+  }
+
+  .layout:nth-child(3) > div {
+    order: 2 !important;
+  }
+
+  .layout:nth-child(3) > img {
+    order: 1 !important;
   }
 
   .layout > img {

@@ -69,7 +69,7 @@
   .top {
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 5rem;
   }
 
   .top img {
@@ -77,10 +77,10 @@
   }
 
   .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     flex-direction: column;
     width: 100%;
-    align-items: center;
-    text-align: center;
   }
 
   .content .label {
