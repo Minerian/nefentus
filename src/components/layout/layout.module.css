@@ -57,6 +57,10 @@
     flex-direction: column;
   }
 
+  .layout:nth-child(3) {
+    margin-top: 10rem;
+  }
+
   .layout:nth-child(3) > div {
     order: 2 !important;
   }

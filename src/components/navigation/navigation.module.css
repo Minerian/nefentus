@@ -72,7 +72,18 @@
   position: relative;
   background-color: var(--white-color);
   border-radius: 0.5rem;
-  padding: 1rem 2.5rem;
+  padding: 3rem 2.5rem;
+}
+
+.headline {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.subheadline {
+  width: 20rem;
+  font-size: 1.3rem;
 }
 
 .listContent:after {
@@ -181,6 +192,7 @@
   cursor: pointer;
   pointer-events: initial;
   margin-left: -1rem;
+  margin-right: -1rem;
 }
 
 .mobileMenu ul {

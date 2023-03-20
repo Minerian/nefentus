@@ -10,7 +10,7 @@ const list = [
     image: Wallet,
     title: "Free onboarding support",
     description:
-      "Take advantage of our free onboarding support to help you get started.",
+      "Take advantage of our onboarding support to help you get started.",
   },
   {
     image: Case,

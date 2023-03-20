@@ -25,8 +25,18 @@ const Navigation = () => {
               </div>
               <div className={`${styles.dropdownMenu}`}>
                 <div className={`${styles.listContent}`}>
-                  <p>Payment</p>
-                  <p>Payroll</p>
+                  <div>
+                    <p className={styles.headline}>Payment</p>
+                    <p className={styles.subheadline}>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                  <div>
+                    <p className={styles.headline}>Payroll</p>
+                    <p className={styles.subheadline}>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
                 </div>
               </div>
             </li>
@@ -37,9 +47,9 @@ const Navigation = () => {
         <div className={styles.right}>
           <p className="">Log in</p>
           <div className={styles.button}>Get started</div>
-          <Languages />
-
           <img className={styles.qrcode} src={QR} alt="" />
+
+          <Languages />
         </div>
 
         <div className={styles.mobMenu}>

@@ -6,10 +6,14 @@ import Quote from "../../assets/icon/quote.svg";
 
 const Reviews = () => {
   return (
-    <div className="container">
+    <div className={`container ${styles.reviews}`}>
       <HeadingCenter
         subtitle="Reviews"
-        title="Hear Directly from Our Customers"
+        title={
+          <>
+            Hear Directly from <br /> Our Customers
+          </>
+        }
       />
 
       <div className={styles.row}>

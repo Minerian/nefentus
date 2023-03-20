@@ -70,8 +70,16 @@
   line-height: 2.8rem;
 }
 
+.reviews br {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .row {
     grid-template-columns: 1fr;
+  }
+
+  .reviews br {
+    display: initial;
   }
 }
