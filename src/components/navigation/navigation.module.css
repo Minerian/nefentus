@@ -75,6 +75,15 @@
   padding: 3rem 2.5rem;
 }
 
+.listContent > div {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.listContent img {
+  width: 2rem !important;
+}
+
 .headline {
   font-size: 1.6rem;
   font-weight: 500;
@@ -162,16 +171,20 @@
   background-color: var(--black-color);
   padding: 2rem;
   transition: 0.2s ease-in;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.mobileMenu > div:first-child {
+.mobileMenu > div > div:first-child {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4rem;
 }
 
-.mobileMenu > div:first-child > img {
+.mobileMenu > div > div:first-child > img {
   height: 3rem;
 }
 
@@ -217,11 +230,10 @@
   }
 
   .dropdownMenu p {
-    background-color: black;
     z-index: 5;
   }
 
-  .mobileMenu > div:nth-child(3) {
+  .mobileMenu > div:nth-child(2) > div:nth-child(1) {
     width: 100%;
     margin-top: 3rem;
     margin-bottom: 1rem;
@@ -233,12 +245,32 @@
     justify-content: center;
   }
 
-  .mobileMenu > div:nth-child(4) {
+  .mobileMenu > div:nth-child(2) > div:nth-child(2) {
     width: 100%;
     cursor: pointer;
     pointer-events: initial;
 
     display: flex;
     justify-content: center;
+  }
+
+  .mobItem {
+    height: 2rem;
+    overflow: hidden;
+  }
+
+  .mobListContent {
+    padding-top: 20px;
+  }
+
+  .mobItem .mobListContent > div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mobItem .mobListContent > div img {
+    height: 20px !important;
+    width: 30px;
   }
 }

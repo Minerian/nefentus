@@ -9,8 +9,16 @@ import { useState } from "react";
 
 import QR from "../../assets/icon/qrcode.svg";
 
+import Payment from "../../assets/icon/money.svg";
+import Cash from "../../assets/icon/cash.svg";
+
+import PaymentW from "../../assets/icon/moneyW.svg";
+import CashW from "../../assets/icon/cashW.svg";
+
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
+
+  const [openDrop, setOpenDrop] = useState(false);
 
   return (
     <nav className={`${styles.navigation}`}>
@@ -26,16 +34,24 @@ const Navigation = () => {
               <div className={`${styles.dropdownMenu}`}>
                 <div className={`${styles.listContent}`}>
                   <div>
-                    <p className={styles.headline}>Payment</p>
-                    <p className={styles.subheadline}>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    </p>
+                    <img src={Payment} alt="" />
+                    <div>
+                      <p className={styles.headline}>Payment</p>
+                      <p className={styles.subheadline}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.
+                      </p>
+                    </div>
                   </div>
                   <div>
-                    <p className={styles.headline}>Payroll</p>
-                    <p className={styles.subheadline}>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    </p>
+                    <img src={Cash} alt="" />
+                    <div>
+                      <p className={styles.headline}>Payroll</p>
+                      <p className={styles.subheadline}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -64,32 +80,61 @@ const Navigation = () => {
         style={{ transform: openMenu ? "translateX(0%)" : "translateX(100%)" }}
       >
         <div>
-          <img src={Logo} alt="" />
+          <div>
+            <img src={Logo} alt="" />
 
-          <div className={styles.close}>
-            <Languages />
+            <div className={styles.close}>
+              <Languages />
 
-            <p onClick={() => setOpenMenu(false)}>X</p>
+              <p onClick={() => setOpenMenu(false)}>X</p>
+            </div>
           </div>
+
+          <ul>
+            <li className="standard">Home</li>
+            <li
+              className={`standard ${styles.hover} ${styles.mobItem}`}
+              style={{ height: openDrop ? 160 : 20 }}
+            >
+              <div
+                className={styles.menu}
+                onClick={() => setOpenDrop((prev) => !prev)}
+              >
+                Solutions <img src={DropDown} alt="" />
+              </div>
+              <div className={`${styles.mobDown}`}>
+                <div className={`${styles.mobListContent}`}>
+                  <div>
+                    <img src={PaymentW} alt="" />
+                    <div>
+                      <p className={styles.headline}>Payment</p>
+                      <p className={styles.subheadline}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <img src={CashW} alt="" />
+                    <div>
+                      <p className={styles.headline}>Payroll</p>
+                      <p className={styles.subheadline}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li className="standard">Resources</li>
+            <li className="standard">Affiliate Program</li>
+          </ul>
         </div>
-
-        <ul>
-          <li className="standard">Home</li>
-          <li className={`standard ${styles.hover}`}>
-            <div className={styles.menu}>
-              Solutions <img src={DropDown} alt="" />
-            </div>
-            <div className={`${styles.dropdownMenu}`}>
-              <p>Payment</p>
-              <p>Payroll</p>
-            </div>
-          </li>
-          <li className="standard">Resources</li>
-          <li className="standard">Affiliate Program</li>
-        </ul>
-
-        <Button>Log in</Button>
-        <Button color="white">Sign up</Button>
+        <div>
+          <Button>Log in</Button>
+          <Button color="white">Sign up</Button>
+        </div>
       </div>
     </nav>
   );
