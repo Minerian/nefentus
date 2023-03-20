@@ -1,0 +1,154 @@
+/* Import fonts */
+@font-face {
+  font-family: Euclid;
+  src: url(../assets/fonts/Euclid-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Euclid;
+  src: url(../assets/fonts/Euclid-Medium.ttf);
+  font-weight: 500;
+}
+
+/* Variable */
+:root {
+  --black-color: #000;
+  --white-color: #fff;
+  --gray-color: #c4c4c4;
+  --blue-color: #0784b5;
+  --linear-color: linear-gradient(90deg, #1595c2 0%, #66bfde 100%);
+}
+
+/* General */
+html {
+  font-size: 0.694vw;
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 0.833vw;
+  }
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+* {
+  margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--black-color);
+  color: var(--white-color);
+  font-family: Euclid;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--gray-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--blue-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Container */
+.container {
+  margin-left: 16.5rem;
+  margin-right: 16.5rem;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    max-width: 70rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+.break {
+  margin-top: 20rem;
+  margin-bottom: 20rem;
+}
+
+@media (max-width: 550px) {
+  .container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .break {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+  }
+}
+
+/* Text */
+.standard {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+  line-height: 140%;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+  font-size: 5rem;
+  line-height: 115%;
+}
+
+@media (max-width: 900px) {
+  h1,
+  h2 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 550px) {
+  h2 {
+    font-size: 3rem;
+  }
+}
+
+.subtitle {
+  background: var(--linear-color);
+  -webkit-background-clip: text;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card */
+
+.card {
+  background-color: #101010;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2.5rem;
+}
