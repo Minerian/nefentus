@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 20rem;
+  margin-bottom: 20rem;
 }
 
 .hero {
@@ -46,6 +48,9 @@
   .layout {
     flex-direction: column;
     gap: 3rem;
+
+    margin-top: 10rem;
+    margin-bottom: 10rem;
   }
 
   .layout > div {

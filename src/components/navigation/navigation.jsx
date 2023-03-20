@@ -94,7 +94,7 @@ const Navigation = () => {
             <li className="standard">Home</li>
             <li
               className={`standard ${styles.hover} ${styles.mobItem}`}
-              style={{ height: openDrop ? 160 : 20 }}
+              style={{ height: openDrop ? 180 : 20 }}
             >
               <div
                 className={styles.menu}

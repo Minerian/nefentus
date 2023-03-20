@@ -261,6 +261,17 @@
 
   .mobListContent {
     padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .headline {
+    font-size: 1.4rem;
+  }
+
+  .subheadline {
+    font-size: 1.2rem;
   }
 
   .mobItem .mobListContent > div {
