@@ -48,6 +48,7 @@ body {
   color: var(--white-color);
   font-family: Euclid;
   overflow-x: hidden;
+  width: 100vw;
 }
 
 /* Scrollbar */
