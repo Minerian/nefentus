@@ -35,7 +35,11 @@ const Home = () => {
       />
 
       <Layout
-        title="Grow with our payroll system"
+        title={
+          <>
+            Grow with our <br /> payroll system
+          </>
+        }
         description="Use our streamlined, efficient solution for managing employee compensation, including salary payments and benefit allocations."
         button="Get Started for Free"
         subtitle="Process Payroll"

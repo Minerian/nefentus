@@ -7,6 +7,8 @@ import Button from "../button/button";
 import Languages from "./languages.jsx/languages";
 import { useState } from "react";
 
+import QR from "../../assets/icon/qrcode.svg";
+
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -22,8 +24,10 @@ const Navigation = () => {
                 Solutions <img src={DropDown} alt="" />
               </div>
               <div className={`${styles.dropdownMenu}`}>
-                <p>Payment</p>
-                <p>Payroll</p>
+                <div className={`${styles.listContent}`}>
+                  <p>Payment</p>
+                  <p>Payroll</p>
+                </div>
               </div>
             </li>
             <li className="standard">Resources</li>
@@ -31,11 +35,11 @@ const Navigation = () => {
           </ul>
         </div>
         <div className={styles.right}>
-          <p className="standard">Log in</p>
-
+          <p className="">Log in</p>
           <div className={styles.button}>Get started</div>
-
           <Languages />
+
+          <img className={styles.qrcode} src={QR} alt="" />
         </div>
 
         <div className={styles.mobMenu}>

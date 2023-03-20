@@ -10,10 +10,7 @@ const Contact = () => {
         That's why we offer free onboarding calls to assist with registration
         and setup. Whether you're a bar owner, consultant, coach, trainer,
         speaker, or agency owner, we're committed to finding the perfect
-        solution for your unique needs. Our team of dedicated support experts is
-        always available to provide guidance, answer questions, and ensure a
-        smooth, hassle-free experience. With Nefentus, you can trust that you're
-        in good hands.
+        solution for your unique needs.
       </p>
       <Button color="white">Book a call</Button>
     </div>

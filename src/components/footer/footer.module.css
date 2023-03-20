@@ -7,8 +7,8 @@
 .top {
   display: flex;
   justify-content: space-between;
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -47,7 +47,7 @@
 .copyright {
   display: flex;
   justify-content: space-between;
-  padding: 5rem 0;
+  padding: 2.5rem 0;
 }
 
 .copyright p {

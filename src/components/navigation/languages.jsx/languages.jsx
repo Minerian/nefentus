@@ -1,5 +1,9 @@
 import DropDown from "../../../assets/icon/dropdown.svg";
 import USA from "../../../assets/icon/flags/usa.svg";
+import DE from "../../../assets/icon/flags/de.svg";
+import ES from "../../../assets/icon/flags/es.svg";
+import AR from "../../../assets/icon/flags/ar.svg";
+import FR from "../../../assets/icon/flags/fr.svg";
 
 import styles from "./languages.module.css";
 
@@ -9,20 +13,20 @@ const list = [
     flag: USA,
   },
   {
-    label: "Italian",
-    flag: USA,
-  },
-  {
-    label: "Spain",
-    flag: USA,
-  },
-  {
-    label: "French",
-    flag: USA,
-  },
-  {
     label: "German",
-    flag: USA,
+    flag: DE,
+  },
+  {
+    label: "Spanisch",
+    flag: ES,
+  },
+  {
+    label: "France",
+    flag: FR,
+  },
+  {
+    label: "Arabic",
+    flag: AR,
   },
 ];
 
