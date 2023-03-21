@@ -53,6 +53,7 @@
 .hover:hover .dropdownMenu {
   transform: translate(-50%, 0);
   opacity: 1;
+  pointer-events: initial;
 }
 
 .dropdownMenu {
@@ -63,6 +64,8 @@
   margin-left: 50%;
   opacity: 0;
   color: var(--gray-color);
+
+  pointer-events: none;
 }
 
 .listContent {

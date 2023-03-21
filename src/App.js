@@ -5,14 +5,17 @@ import "./style/general.css";
 import Navigation from "./components/navigation/navigation";
 
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
   useLocation,
 } from "react-router-dom";
 import SignUp from "./pages/Signup";
 import Layout from "./pages/Layout";
+import Login from "./pages/Login";
+import Payment from "./pages/Payment";
+import Payroll from "./pages/Payroll";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: (
@@ -24,6 +27,26 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/payment",
+    element: (
+      <Layout>
+        <Payment />
+      </Layout>
+    ),
+  },
+  {
+    path: "/payroll",
+    element: (
+      <Layout>
+        <Payroll />
+      </Layout>
+    ),
   },
 ]);
 

@@ -24,6 +24,8 @@
   padding-top: 1rem;
   opacity: 0;
   transition: 0.2s ease-in;
+
+  pointer-events: none;
 }
 
 .body {
@@ -38,8 +40,14 @@
   display: flex;
 }
 
+.item p {
+  pointer-events: none;
+}
+
 .languages:hover .dropdown {
   opacity: 1;
+
+  pointer-events: initial;
 }
 
 .item:hover p {
