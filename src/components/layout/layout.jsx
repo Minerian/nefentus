@@ -6,15 +6,18 @@ import Apple from "../../assets/icon/apple.svg";
 
 import Dummy from "../../assets/image/dummy.png";
 
+import Checkmark from "../../assets/icon/singleCheckmark.svg";
+
 const Layout = ({
   heading,
   title,
   description,
   button,
-  image,
+  image = Dummy,
   store,
   subtitle,
   reverse,
+  list,
 }) => {
   return (
     <div className={`${styles.layout} ${heading ? styles.hero : ""} container`}>
@@ -27,6 +30,27 @@ const Layout = ({
 
         {description && (
           <p className={`standard ${styles.description}`}>{description}</p>
+        )}
+
+        {list && (
+          <div className={styles.list}>
+            <div>
+              <img src={Checkmark} alt="" />
+              <p>No investment required to join</p>
+            </div>
+            <div>
+              <img src={Checkmark} alt="" />
+              <p>Earn from products you believe</p>
+            </div>
+            <div>
+              <img src={Checkmark} alt="" />
+              <p>Safe & Secure</p>
+            </div>
+            <div>
+              <img src={Checkmark} alt="" />
+              <p>Potential for unlimited earnings</p>
+            </div>
+          </div>
         )}
 
         {button && <Button>{button}</Button>}
@@ -42,11 +66,7 @@ const Layout = ({
           </div>
         )}
       </div>
-      <img
-        src={image ? image : Dummy}
-        alt=""
-        style={{ order: reverse ? 1 : 2 }}
-      />
+      <img src={image} alt="" style={{ order: reverse ? 1 : 2 }} />
     </div>
   );
 };

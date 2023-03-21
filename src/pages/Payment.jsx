@@ -18,6 +18,24 @@ import Logo7 from "../assets/icon/methods/logo7.svg";
 
 const list = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7];
 
+const content = [
+  {
+    title: "Made in Europe",
+    description:
+      "Our in-house team of expert IT specialists continuously develops and improves Nefentus to the highest standards,",
+  },
+  {
+    title: "GDPR compliant",
+    description:
+      "We prioritize data protection, adhering to the highest security and privacy standards to ensure the protection of your company and customers' data.",
+  },
+  {
+    title: "Secure",
+    description:
+      "With our powerful and secure servers that offer 100% availability, you can trust that your website will always be accessible, and your data will always be safe.",
+  },
+];
+
 const Payment = () => {
   return (
     <div>
@@ -46,7 +64,7 @@ const Payment = () => {
         list={list}
       />
 
-      <Why />
+      <Why title="Why Nefentus?" content={content} />
       <DataCards />
 
       <PaymentCards />

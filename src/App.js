@@ -14,6 +14,10 @@ import Layout from "./pages/Layout";
 import Login from "./pages/Login";
 import Payment from "./pages/Payment";
 import Payroll from "./pages/Payroll";
+import Affiliate from "./pages/Affiliate";
+import Support from "./pages/Support";
+import Privacy from "./pages/Privacy";
+import Imprint from "./pages/Imprint";
 
 const router = createHashRouter([
   {
@@ -46,6 +50,44 @@ const router = createHashRouter([
       <Layout>
         <Payroll />
       </Layout>
+    ),
+  },
+  {
+    path: "/affiliate",
+    element: (
+      <Layout>
+        <Affiliate />
+      </Layout>
+    ),
+  },
+  {
+    path: "/support",
+    element: (
+      <>
+        <Navigation />
+        <Support />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/privacy",
+    element: (
+      <>
+        <Navigation />
+        <Privacy />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/imprint",
+    element: (
+      <>
+        <Navigation />
+        <Imprint />
+        <Footer />
+      </>
     ),
   },
 ]);

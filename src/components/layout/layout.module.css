@@ -44,6 +44,26 @@
   width: 52rem;
 }
 
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 2rem;
+  column-gap: 5rem;
+  margin-bottom: 4rem;
+}
+
+.list img {
+  width: 1rem;
+}
+
+.list > div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.4rem;
+  color: var(--gray-color);
+}
+
 @media (max-width: 900px) {
   .layout {
     flex-direction: column;
@@ -75,5 +95,11 @@
   .layout h1,
   .layout h2 {
     margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .list {
+    grid-template-columns: 1fr;
   }
 }

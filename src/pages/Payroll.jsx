@@ -18,29 +18,29 @@ const Payroll = () => {
     <div>
       <PayrollHero />
       <Layout
-        title="Manage crypto payments and invoicing"
-        description="Our secure platform is an all-encompassing, secure platform which streamlines, automates, and facilitate various types of transactions, including traditional and digital currencies, for businesses and customers alike."
+        title={<>Effortlessly manage payroll with crypto</>}
+        description="Empower your employees with Nefentus' advanced crypto payroll solutions, enabling you to pay full or partial salaries and bonuses in cryptocurrency, as well as allocate shares of your token to build loyalty and incentivize productivity."
         button="Get Started for Free"
-        subtitle="Simplify"
+        subtitle="Manage"
+      />
+
+      <Layout
+        subtitle="Organize payment"
+        title={<>Effortlessly process employee benefits</>}
+        description="Efficiently manage your payroll with Nefentus' advanced features, including multi-currency and multi-chain support, lower transaction fees for global teams, onboarding through CSV file uploads, and scheduling of recurring salaries."
+        button="Get Started for Free"
+        reverse={true}
       />
 
       <Layout
         title={
           <>
-            Grow with our <br /> payroll system
+            Track all payments <br /> in one place
           </>
         }
-        description="Use our streamlined, efficient solution for managing employee compensation, including salary payments and benefit allocations."
+        description="Effortlessly review the status of all payment requests using Nefentus' visual dashboard, with the ability to easily send payment reminders to outstanding requests."
         button="Get Started for Free"
-        subtitle="Process Payroll"
-        reverse={true}
-      />
-
-      <Layout
-        title="Manage crypto payments and invoicing"
-        description="Our secure platform is an all-encompassing, secure platform which streamlines, automates, and facilitate various types of transactions, including traditional and digital currencies, for businesses and customers alike."
-        button="Get Started for Free"
-        subtitle="Simplify"
+        subtitle="Track"
       />
 
       <IconRow
