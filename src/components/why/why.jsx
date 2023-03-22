@@ -5,9 +5,9 @@ import Image from "../../assets/image/why.png";
 const Why = ({ title, content }) => {
   return (
     <div className={`container break ${styles.section}`}>
-      <img src={Image} alt="" />
+      <img className="scroll" src={Image} alt="" />
 
-      <div className={styles.content}>
+      <div className={`scroll ${styles.content}`}>
         <h2>{title}</h2>
 
         {content.map((item) => (

@@ -5,7 +5,7 @@ import Image from "../../assets/image/dummy.png";
 
 const PayrollHero = () => {
   return (
-    <div className={`${styles.section} container`}>
+    <div className={`${styles.section} payroll container`}>
       <div>
         <HeadingCenter
           title={
@@ -15,7 +15,7 @@ const PayrollHero = () => {
           }
           subtitle="Payroll Solutions"
         />
-        <p className={styles.description}>
+        <p className={`${styles.description}`}>
           Simplify your payroll process with Nefentus' flexible and efficient
           crypto and FIAT payroll solutions. Add employees, set salaries, and
           pay with ease, all while taking advantage of the benefits of

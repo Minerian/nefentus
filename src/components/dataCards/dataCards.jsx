@@ -76,7 +76,7 @@ export default DataCards;
 
 const Card = ({ image, title, description, list }) => {
   return (
-    <div className={`${styles.card} card`}>
+    <div className={`${styles.card} scroll card`}>
       <div className={styles.top}>
         <img src={image} alt="" />
         <h4>{title}</h4>

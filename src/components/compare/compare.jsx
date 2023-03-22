@@ -57,7 +57,7 @@ export default Compare;
 
 const Card = ({ type, title, description }) => {
   return (
-    <div className={`${styles.card} card`}>
+    <div className={`${styles.card} scroll card`}>
       <div className={styles.top}>
         <img src={type === "cons" ? Cons : Pros} alt="" />
         <h4>{title}</h4>

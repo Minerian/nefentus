@@ -1,8 +1,8 @@
 import styles from "./headingCenter.module.css";
 
-const HeadingCenter = ({ subtitle, title }) => {
+const HeadingCenter = ({ subtitle, title, noScroll }) => {
   return (
-    <div className={`scroll ${styles.heading}`}>
+    <div className={`${noScroll ? "" : "scroll"} ${styles.heading}`}>
       <div className={styles.subtitle}>{subtitle}</div>
       <h2>{title}</h2>
     </div>

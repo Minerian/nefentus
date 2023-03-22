@@ -6,7 +6,10 @@ import Navigation from "./components/navigation/navigation";
 
 import {
   createHashRouter,
+  Route,
+  HashRouter,
   RouterProvider,
+  Routes,
   ScrollRestoration,
   useLocation,
 } from "react-router-dom";
@@ -20,79 +23,6 @@ import Support from "./pages/Support";
 import Privacy from "./pages/Privacy";
 import Imprint from "./pages/Imprint";
 import { useEffect } from "react";
-
-const router = createHashRouter([
-  {
-    path: "/",
-    element: (
-      <Layout>
-        <Home />
-      </Layout>
-    ),
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/payment",
-    element: (
-      <Layout>
-        <Payment />
-      </Layout>
-    ),
-  },
-  {
-    path: "/payroll",
-    element: (
-      <Layout>
-        <Payroll />
-      </Layout>
-    ),
-  },
-  {
-    path: "/affiliate",
-    element: (
-      <Layout>
-        <Affiliate />
-      </Layout>
-    ),
-  },
-  {
-    path: "/support",
-    element: (
-      <>
-        <Navigation />
-        <Support />
-        <Footer />
-      </>
-    ),
-  },
-  {
-    path: "/privacy",
-    element: (
-      <>
-        <Navigation />
-        <Privacy />
-        <Footer />
-      </>
-    ),
-  },
-  {
-    path: "/imprint",
-    element: (
-      <>
-        <Navigation />
-        <Imprint />
-        <Footer />
-      </>
-    ),
-  },
-]);
 
 function App() {
   useEffect(() => {
@@ -113,11 +43,87 @@ function App() {
 
   return (
     <div className="App">
-      <RouterProvider router={router}>
-        {/* <ScrollRestoration /> */}
-      </RouterProvider>
+      <HashRouter>
+        <ScrollToTop>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Layout>
+                  <Home />
+                </Layout>
+              }
+            />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/payment"
+              element={
+                <Layout>
+                  <Payment />
+                </Layout>
+              }
+            />
+            <Route
+              path="/payroll"
+              element={
+                <Layout>
+                  <Payroll />
+                </Layout>
+              }
+            />
+            <Route
+              path="/affiliate"
+              element={
+                <Layout>
+                  <Affiliate />
+                </Layout>
+              }
+            />
+            <Route
+              path="/support"
+              element={
+                <>
+                  <Navigation />
+                  <Support />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/privacy"
+              element={
+                <>
+                  <Navigation />
+                  <Privacy />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/imprint"
+              element={
+                <>
+                  <Navigation />
+                  <Imprint />
+                  <Footer />
+                </>
+              }
+            />
+          </Routes>
+        </ScrollToTop>
+      </HashRouter>
     </div>
   );
 }
 
 export default App;
+
+const ScrollToTop = (props) => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return <>{props.children}</>;
+};

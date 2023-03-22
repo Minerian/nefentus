@@ -57,7 +57,7 @@ const Payment = () => {
         subtitle="Dont Be Left Behind"
         title={
           <>
-            Adopt the Payment Methods <br /> that Power the Future
+            Adopt the Payment <br /> that Power the Future
           </>
         }
         description="We offer a diverse range of payment options, including popular cryptocurrencies like Bitcoin, Ethereum, Ripple, and USDT, to help you effortlessly sell your products and services to a global audience. Our platform's flexibility and scalability enable you to customize your payment capabilities and stay ahead of the curve in today's rapidly evolving payment landscape. Join us today and take your business to the next level."

@@ -4,10 +4,10 @@ import styles from "./iconRow.module.css";
 
 const IconRow = ({ subtitle, title, description, list }) => {
   return (
-    <div className={`container break ${styles.section}`}>
-      <HeadingCenter subtitle={subtitle} title={title} />
-      <p className={styles.description}>{description}</p>
-      <div className={styles.logos}>
+    <div className={`container scroll break ${styles.section}`}>
+      <HeadingCenter noScroll subtitle={subtitle} title={title} />
+      <p className={`${styles.description}`}>{description}</p>
+      <div className={`${styles.logos}`}>
         {list.map((image) => (
           <div>
             <img src={image} alt="" />

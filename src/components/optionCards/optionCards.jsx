@@ -27,7 +27,7 @@ const content = [
 
 const OptionCards = () => {
   return (
-    <div className={`container ${styles.section}`}>
+    <div className={`container scroll ${styles.section}`}>
       {content.map((item) => (
         <div className="card">
           <div className={styles.image}>

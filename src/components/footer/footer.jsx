@@ -5,23 +5,41 @@ import Logo from "../../assets/logo/logo.png";
 import Instagram from "../../assets/icon/instagram.svg";
 import Linkedin from "../../assets/icon/linkedin.svg";
 import Telegram from "../../assets/icon/telegram.svg";
+import { Link } from "react-router-dom";
 
 const content = [
   {
     label: "Overview",
-    links: ["Home", "Payroll", "Payment", "Resources", "Affiliate"],
+    links: [
+      { text: "Home", link: "/" },
+      { text: "Payroll", link: "/payroll" },
+      { text: "Payment", link: "/payment" },
+      { text: "Resources", link: "/support" },
+      { text: "Affiliate", link: "/affiliate" },
+    ],
   },
   {
     label: "Join",
-    links: ["Log in", "Sign in", "Play store", "App store"],
+    links: [
+      { text: "Log in", link: "/login" },
+      { text: "Sign up", link: "/signup" },
+      { text: "Play store", link: "/" },
+      { text: "App store", link: "/" },
+    ],
   },
   {
     label: "Information",
-    links: ["Privacy Policy", "Imprint", "Terms of Service", "Cookies"],
+    links: [
+      { text: "Privacy Policy", link: "/privacy" },
+      { text: "Imprint", link: "/imprint" },
+    ],
   },
   {
     label: "Company",
-    links: ["office@nefentus.com", "Larnaca, Cyprus"],
+    links: [
+      { text: "office@nefentus.com", link: "/imprint" },
+      { text: "Larnaca, Cyprus", link: false },
+    ],
   },
 ];
 
@@ -38,7 +56,9 @@ const Footer = () => {
 
               <ul>
                 {item.links.map((item, index) => (
-                  <li key={index}>{item}</li>
+                  <li key={index}>
+                    <Link to={item.link}>{item.text}</Link>
+                  </li>
                 ))}
               </ul>
             </div>

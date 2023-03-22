@@ -31,8 +31,12 @@ const content = [
 
 const Grow = () => {
   return (
-    <div className="container break">
-      <HeadingCenter subtitle={"Grow"} title="Supercharge Your Sales" />
+    <div className="container scroll break">
+      <HeadingCenter
+        noScroll
+        subtitle={"Grow"}
+        title="Supercharge Your Sales"
+      />
 
       <div className={styles.body}>
         <div className={styles.left}>

@@ -35,7 +35,7 @@ const Payroll = () => {
       <Layout
         title={
           <>
-            Track all payments <br /> in one place
+            Track all payments <br className="" /> in one place
           </>
         }
         description="Effortlessly review the status of all payment requests using Nefentus' visual dashboard, with the ability to easily send payment reminders to outstanding requests."
@@ -47,7 +47,8 @@ const Payroll = () => {
         subtitle="Financial Stack"
         title={
           <>
-            Streamline Your Payment <br /> with Seamless Integrations
+            Streamline Your Payment <br className="md-mob" />
+            with Seamless Integrations
           </>
         }
         description="Simplify your payment processing with Nefentus' seamless platform, offering access to over 200 wallets for effortless acceptance and processing of cryptocurrency payments with advanced security features."

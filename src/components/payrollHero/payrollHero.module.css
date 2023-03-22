@@ -30,9 +30,16 @@
     margin-top: 10rem;
     display: flex;
     flex-direction: column;
+    gap: 2rem;
   }
 
   .section > div:first-child {
     order: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .section br {
+    display: none;
   }
 }

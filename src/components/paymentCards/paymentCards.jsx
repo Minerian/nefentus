@@ -24,11 +24,12 @@ const card2List = [
 
 const PaymentCards = () => {
   return (
-    <div className="container">
+    <div className="container scroll">
       <HeadingCenter
+        noScroll
         title={
           <>
-            0€ Upfront Fee, 0€ Monthly <br /> Fee Pay Only for Results
+            0€ Upfront Fee, 0€ Monthly Fee <br /> Pay Only for Results
           </>
         }
         subtitle="Cost"

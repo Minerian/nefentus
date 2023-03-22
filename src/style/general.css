@@ -138,6 +138,10 @@ h2 {
 }
 
 @media (max-width: 550px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
   h2 {
     font-size: 3rem;
   }
@@ -214,18 +218,21 @@ a {
 }
 
 nav {
+  opacity: 0;
   animation-name: move2;
-  animation-duration: 1s;
-  animation-timing-function: ease;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
 
 @keyframes move2 {
   from {
-    top: -100px;
+    opacity: 0;
+    top: -50px;
   }
 
   to {
+    opacity: 1;
     top: 0px;
   }
 }
@@ -236,7 +243,19 @@ nav {
 
 .scrollAnimation {
   animation-name: move;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
+}
+
+.payroll .scroll {
+  animation-name: initial !important;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .md-mob {
+    display: none;
+  }
 }
