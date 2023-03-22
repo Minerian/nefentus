@@ -7,7 +7,7 @@ import Graphic3 from "../../assets/image/graphic3.svg";
 const About = () => {
   return (
     <div className="container break">
-      <div className={`${styles.card} ${styles.horizontalCard} card`}>
+      <div className={`${styles.card} ${styles.horizontalCard} card scroll`}>
         <div>
           <p className={`subtitle ${styles.subtitle}`}>Rapid Adoption</p>
           <h2>Users trust is reflected in their increased activity</h2>
@@ -20,8 +20,8 @@ const About = () => {
         </div>
         <img src={Graphic1} alt="" />
       </div>
-      <div className={styles.cardRow}>
-        <div className={`${styles.card} ${styles.verticalCard} card`}>
+      <div className={`${styles.cardRow}`}>
+        <div className={`${styles.card} ${styles.verticalCard} scroll card`}>
           <img src={Graphic2} alt="" />
           <div className={styles.content}>
             <p className={`subtitle ${styles.subtitle}`}>Manage</p>
@@ -38,7 +38,7 @@ const About = () => {
             </p>
           </div>
         </div>
-        <div className={`${styles.card} ${styles.verticalCard} card`}>
+        <div className={`${styles.card} ${styles.verticalCard} scroll card`}>
           <img src={Graphic3} alt="" />
 
           <div className={styles.content}>

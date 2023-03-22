@@ -28,7 +28,7 @@ const list = [
 
 const Cards = () => {
   return (
-    <div className="container break">
+    <div className="container break ">
       <HeadingCenter
         subtitle="Your partner for scaling"
         title="Companies around the world use Nefentus to manage and scale their payment processing."
@@ -36,7 +36,7 @@ const Cards = () => {
 
       <div className={styles.cards}>
         {list.map((item) => (
-          <div className={`${styles.card} card`}>
+          <div className={`${styles.card} scroll card`}>
             <img src={item.image} alt="" />
             <p>{item.title}</p>
             <p className="standard">{item.description}</p>

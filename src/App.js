@@ -7,6 +7,7 @@ import Navigation from "./components/navigation/navigation";
 import {
   createHashRouter,
   RouterProvider,
+  ScrollRestoration,
   useLocation,
 } from "react-router-dom";
 import SignUp from "./pages/Signup";
@@ -18,6 +19,7 @@ import Affiliate from "./pages/Affiliate";
 import Support from "./pages/Support";
 import Privacy from "./pages/Privacy";
 import Imprint from "./pages/Imprint";
+import { useEffect } from "react";
 
 const router = createHashRouter([
   {
@@ -93,9 +95,27 @@ const router = createHashRouter([
 ]);
 
 function App() {
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      const scrollElement = document.querySelectorAll(".scroll");
+
+      for (let i = 0; i < scrollElement.length; i++) {
+        const sectionTop = scrollElement[i].offsetTop;
+
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition + window.innerHeight * 0.6 >= sectionTop) {
+          scrollElement[i].classList.add("scrollAnimation");
+        }
+      }
+    });
+  }, []);
+
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <RouterProvider router={router}>
+        {/* <ScrollRestoration /> */}
+      </RouterProvider>
     </div>
   );
 }

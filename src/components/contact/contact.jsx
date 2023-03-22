@@ -12,7 +12,9 @@ const Contact = () => {
         speaker, or agency owner, we're committed to finding the perfect
         solution for your unique needs.
       </p>
-      <Button color="white">Book a call</Button>
+      <Button color="white" link="https://calendly.com/nefentus/consulting">
+        Book a call
+      </Button>
     </div>
   );
 };

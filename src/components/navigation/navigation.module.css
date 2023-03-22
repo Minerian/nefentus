@@ -1,5 +1,5 @@
 .navigation {
-  top: 0;
+  top: -100px;
   /* transform: translateY(-100%); */
   transition: 0.2 ease-in;
   padding-top: 3.5rem;
@@ -78,7 +78,7 @@
   padding: 3rem 2.5rem;
 }
 
-.listContent > div {
+.listContent > .item {
   display: flex;
   gap: 2.5rem;
 }
@@ -183,8 +183,8 @@
 .mobileMenu > div > div:first-child {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 4rem;
+  align-items: center;
 }
 
 .mobileMenu > div > div:first-child > img {
@@ -277,13 +277,13 @@
     font-size: 1.2rem;
   }
 
-  .mobItem .mobListContent > div {
+  .mobItem .mobListContent > .item {
     display: flex;
     align-items: center;
     gap: 1rem;
   }
 
-  .mobItem .mobListContent > div img {
+  .mobItem .mobListContent > .item img {
     height: 20px !important;
     width: 30px;
   }

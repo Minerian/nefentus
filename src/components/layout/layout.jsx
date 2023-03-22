@@ -7,6 +7,7 @@ import Apple from "../../assets/icon/apple.svg";
 import Dummy from "../../assets/image/dummy.png";
 
 import Checkmark from "../../assets/icon/singleCheckmark.svg";
+import { Link } from "react-router-dom";
 
 const Layout = ({
   heading,
@@ -20,8 +21,15 @@ const Layout = ({
   list,
 }) => {
   return (
-    <div className={`${styles.layout} ${heading ? styles.hero : ""} container`}>
-      <div style={{ order: reverse ? 2 : 1 }}>
+    <div
+      className={`${styles.layout} ${heading ? styles.hero : ""} ${
+        heading ? "load hero" : ""
+      } container`}
+    >
+      <div
+        className={heading ? "" : "scroll"}
+        style={{ order: reverse ? 2 : 1 }}
+      >
         {subtitle && (
           <p className={`${styles.subtitle} subtitle`}>{subtitle}</p>
         )}
@@ -60,13 +68,22 @@ const Layout = ({
             <p className="standard">Available on:</p>
 
             <div>
-              <img src={Android} alt="" />
-              <img src={Apple} alt="" />
+              <Link to="/">
+                <img src={Android} alt="" />
+              </Link>
+              <Link to="/">
+                <img src={Apple} alt="" />
+              </Link>
             </div>
           </div>
         )}
       </div>
-      <img src={image} alt="" style={{ order: reverse ? 1 : 2 }} />
+      <img
+        className={heading ? "" : "scroll"}
+        src={image}
+        alt=""
+        style={{ order: reverse ? 1 : 2 }}
+      />
     </div>
   );
 };

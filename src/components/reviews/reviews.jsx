@@ -6,7 +6,7 @@ import Quote from "../../assets/icon/quote.svg";
 
 const Reviews = () => {
   return (
-    <div className={`container ${styles.reviews}`}>
+    <div className={`container  ${styles.reviews}`}>
       <HeadingCenter
         subtitle="Reviews"
         title={
@@ -17,7 +17,7 @@ const Reviews = () => {
       />
 
       <div className={styles.row}>
-        <div className="card">
+        <div className="card scroll">
           <div className={styles.image}>
             <div className={styles.blur}>
               <div className={styles.overlay}></div>
@@ -31,16 +31,12 @@ const Reviews = () => {
           </div>
 
           <div className={styles.body}>
-            <div className={styles.quote}>
-              <img src={Quote} alt="" />
-              <p>SHO’S STORY</p>
-            </div>
             <p className={styles.text}>
               Nefentus increased my revenue and saved me time!
             </p>
           </div>
         </div>
-        <div className="card">
+        <div className="card scroll">
           <div className={styles.image}>
             <div className={styles.blur}>
               <div className={styles.overlay}></div>
@@ -54,16 +50,12 @@ const Reviews = () => {
           </div>
 
           <div className={styles.body}>
-            <div className={styles.quote}>
-              <img src={Quote} alt="" />
-              <p>AJ'S STORY</p>
-            </div>
             <p className={styles.text}>
               Thanks to Nefentus, I can focus on growing my business!
             </p>
           </div>
         </div>
-        <div className="card">
+        <div className="card scroll">
           <div className={styles.image}>
             <div className={styles.blur}>
               <div className={styles.overlay}></div>
@@ -77,10 +69,6 @@ const Reviews = () => {
           </div>
 
           <div className={styles.body}>
-            <div className={styles.quote}>
-              <img src={Quote} alt="" />
-              <p>ZAIRE'S STORY</p>
-            </div>
             <p className={styles.text}>
               Switching to Nefentus was the best decision I made for my
               payments!

@@ -13,7 +13,7 @@ const list = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6];
 
 const Logos = () => {
   return (
-    <div className={styles.logos}>
+    <div className={` ${styles.logos}`}>
       <div className={styles.line}>
         <img src={Line} alt="" />
       </div>

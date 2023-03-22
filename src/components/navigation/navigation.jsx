@@ -14,6 +14,7 @@ import Cash from "../../assets/icon/cash.svg";
 
 import PaymentW from "../../assets/icon/moneyW.svg";
 import CashW from "../../assets/icon/cashW.svg";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -21,19 +22,23 @@ const Navigation = () => {
   const [openDrop, setOpenDrop] = useState(false);
 
   return (
-    <nav className={`${styles.navigation}`}>
+    <nav className={`${styles.navigation} load`}>
       <div className={`container ${styles.content}`}>
         <div>
-          <img className={styles.logo} src={Logo} alt="" />
+          <Link to="/">
+            <img className={styles.logo} src={Logo} alt="" />
+          </Link>
           <ul>
-            <li className="standard">Home</li>
+            <li className="standard">
+              <Link to="/">Home</Link>
+            </li>
             <li className={`standard ${styles.hover}`}>
               <div className={styles.menu}>
                 Solutions <img src={DropDown} alt="" />
               </div>
               <div className={`${styles.dropdownMenu}`}>
                 <div className={`${styles.listContent}`}>
-                  <div>
+                  <Link to="/payment" className={styles.item}>
                     <img src={Payment} alt="" />
                     <div>
                       <p className={styles.headline}>Payment</p>
@@ -42,8 +47,8 @@ const Navigation = () => {
                         elit.
                       </p>
                     </div>
-                  </div>
-                  <div>
+                  </Link>
+                  <Link to="/payroll" className={styles.item}>
                     <img src={Cash} alt="" />
                     <div>
                       <p className={styles.headline}>Payroll</p>
@@ -52,17 +57,25 @@ const Navigation = () => {
                         elit.
                       </p>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </li>
-            <li className="standard">Resources</li>
-            <li className="standard">Affiliate Program</li>
+            <li className="standard">
+              <Link to="/support">Resources</Link>
+            </li>
+            <li className="standard">
+              <Link to="/affiliate">Affiliate Program</Link>
+            </li>
           </ul>
         </div>
         <div className={styles.right}>
-          <p className="">Log in</p>
-          <div className={styles.button}>Get started</div>
+          <p className="">
+            <Link to="/login">Log in</Link>
+          </p>
+          <div className={styles.button}>
+            <Link to="/signup">Get started</Link>
+          </div>
           <img className={styles.qrcode} src={QR} alt="" />
 
           <Languages />
@@ -91,7 +104,9 @@ const Navigation = () => {
           </div>
 
           <ul>
-            <li className="standard">Home</li>
+            <li className="standard">
+              <Link to="/">Home</Link>
+            </li>
             <li
               className={`standard ${styles.hover} ${styles.mobItem}`}
               style={{ height: openDrop ? 180 : 20 }}
@@ -104,7 +119,7 @@ const Navigation = () => {
               </div>
               <div className={`${styles.mobDown}`}>
                 <div className={`${styles.mobListContent}`}>
-                  <div>
+                  <Link to="/payment" className={styles.item}>
                     <img src={PaymentW} alt="" />
                     <div>
                       <p className={styles.headline}>Payment</p>
@@ -113,8 +128,8 @@ const Navigation = () => {
                         elit.
                       </p>
                     </div>
-                  </div>
-                  <div>
+                  </Link>
+                  <Link to="/payroll" className={styles.item}>
                     <img src={CashW} alt="" />
                     <div>
                       <p className={styles.headline}>Payroll</p>
@@ -123,16 +138,20 @@ const Navigation = () => {
                         elit.
                       </p>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </li>
-            <li className="standard">Resources</li>
-            <li className="standard">Affiliate Program</li>
+            <li className="standard">
+              <Link to="/support">Resources</Link>
+            </li>
+            <li className="standard">
+              <Link to="/affiliate">Affiliate Program</Link>
+            </li>
           </ul>
         </div>
         <div>
-          <Button>Log in</Button>
+          <Button link="/login">Log in</Button>
           <Button color="white">Sign up</Button>
         </div>
       </div>

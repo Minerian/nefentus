@@ -1,5 +1,4 @@
 .button {
-  padding: 1.4rem 2.3rem;
   color: var(--black-color);
   font-size: 1.6rem;
   border-radius: 1rem;
@@ -7,8 +6,14 @@
   cursor: pointer;
 }
 
-.button > div {
+.button > a > div {
   display: flex;
   gap: 1rem;
   align-items: center;
+}
+
+.button div {
+  padding: 1.4rem 2.3rem;
+  width: 100%;
+  text-align: center;
 }
