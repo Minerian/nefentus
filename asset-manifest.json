@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/nefentus/static/css/main.b3fb0746.css",
-    "main.js": "/nefentus/static/js/main.0de31545.js",
+    "main.css": "/nefentus/static/css/main.658e9ee2.css",
+    "main.js": "/nefentus/static/js/main.7b7ed585.js",
     "static/media/gradient.png": "/nefentus/static/media/gradient.7a3809bf1380d22bf1bb.png",
     "static/media/grow3.svg": "/nefentus/static/media/grow3.dcbf3a1ea35c7d68879fa83d03556547.svg",
     "static/media/graphic2.png": "/nefentus/static/media/graphic2.614dabb9bbaef1a0448c.png",
@@ -59,11 +59,11 @@
     "static/media/whiteCheckmark.svg": "/nefentus/static/media/whiteCheckmark.c470fc13b6a43973af10748916e8d093.svg",
     "static/media/circle.svg": "/nefentus/static/media/circle.50122e71c27d62dbc89506214927765d.svg",
     "static/media/line.svg": "/nefentus/static/media/line.a645ec91e6e91d5d1648b21f66ccac3c.svg",
-    "main.b3fb0746.css.map": "/nefentus/static/css/main.b3fb0746.css.map",
-    "main.0de31545.js.map": "/nefentus/static/js/main.0de31545.js.map"
+    "main.658e9ee2.css.map": "/nefentus/static/css/main.658e9ee2.css.map",
+    "main.7b7ed585.js.map": "/nefentus/static/js/main.7b7ed585.js.map"
   },
   "entrypoints": [
-    "static/css/main.b3fb0746.css",
-    "static/js/main.0de31545.js"
+    "static/css/main.658e9ee2.css",
+    "static/js/main.7b7ed585.js"
   ]
 }
