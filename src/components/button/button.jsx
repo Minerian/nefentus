@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import styles from "./button.module.css";
 
-const Button = ({ children, color, link = "/signup" }) => {
+const Button = ({ children, color, link = "/signup", onClick }) => {
   return (
     <div
       className={styles.button}
+      onClick={onClick}
       style={{
         background:
           color === "white"

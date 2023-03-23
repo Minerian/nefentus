@@ -3,7 +3,12 @@ import styles from "./input.module.css";
 import dropDown from "../../assets/icon/dropdown.svg";
 import { useState } from "react";
 
-const Input = ({ label, placeholder, secure }) => {
+const Input = ({ label, placeholder, value, setState, secure }) => {
+
+  const handleChange = e =>{
+      setState(e.target.value);
+  }
+
   return (
     <div className={styles.inputWrapper}>
       <p className={styles.label}>{label}</p>
@@ -12,6 +17,8 @@ const Input = ({ label, placeholder, secure }) => {
         className={styles.input}
         type={secure ? "password" : "text"}
         placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
       />
     </div>
   );
@@ -19,10 +26,8 @@ const Input = ({ label, placeholder, secure }) => {
 
 export default Input;
 
-export const Options = () => {
+export const Options = ({value, setValue}) => {
   const [open, setOpen] = useState(false);
-
-  const [value, setValue] = useState("Choose options");
 
   return (
     <div className={`${styles.inputWrapper} ${styles.option}`}>

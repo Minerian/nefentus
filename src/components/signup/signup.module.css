@@ -4,6 +4,15 @@
   height: 100vh;
 }
 
+.errormessagecontainer {
+  background-color: #ffcccc;
+  color: red;
+  border: 1px solid red;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
 .left {
   padding-left: 16.5rem;
   display: flex;
