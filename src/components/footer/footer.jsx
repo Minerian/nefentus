@@ -67,7 +67,13 @@ const Footer = () => {
       </div>
 
       <div className={`${styles.copyright} container`}>
-        <p>© 2023 Nefentus. All rights reserved. | Minerian Agency.</p>
+        <p>
+          © 2023 Nefentus. All rights reserved. |{" "}
+          <Link to="https://www.minerian.com" target="_blank">
+            Minerian Agency
+          </Link>
+          .
+        </p>
 
         <div className={styles.icons}>
           <Link to="https://www.linkedin.com/company/nefentuspay/">

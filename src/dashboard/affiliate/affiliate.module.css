@@ -1,0 +1,216 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4rem;
+  margin-bottom: 10rem;
+}
+
+.navigation p {
+  font-size: 1.6rem;
+}
+
+.navigation > img {
+  height: 2.4rem;
+}
+
+.logout {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logout img {
+  width: 1.84rem;
+}
+
+.header .top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 10%);
+  margin-bottom: 2rem;
+}
+
+.header .left h3 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.header .left p {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+}
+
+.header .left span {
+  color: #23c215;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.link .label {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+}
+
+.link .url {
+  font-size: 1.6rem;
+  color: var(--white-color) !important;
+  font-weight: 500;
+
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.link img {
+  width: 2rem;
+  cursor: pointer;
+}
+
+.link .url:hover {
+  opacity: 0.8;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.card {
+  border-radius: 1rem;
+  padding: 2rem 3rem 3rem 3rem;
+}
+
+.card h4 {
+  font-size: 1.8rem;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+.amount {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--gray-color);
+  font-size: 1.2rem;
+}
+
+.info span {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.graphCard {
+  margin-top: 2rem;
+
+  padding: 3rem 3rem 5rem 3rem;
+
+  margin-bottom: 10rem;
+}
+
+.graphCard .label {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+  margin-bottom: 2.5rem;
+}
+
+.graphCard .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 5rem;
+}
+
+.graphAmount {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--white-color);
+}
+
+.datePicker {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 8%);
+
+  cursor: pointer;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.verticalItem {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.verticalLabel {
+  font-size: 1.4rem;
+  color: var(--gray-color);
+  text-align: right;
+}
+
+.verticalLine {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 4%);
+  width: 100%;
+}
+
+.verticalItem:first-child .verticalLine {
+  background-color: rgba(255, 255, 255, 8%);
+}
+
+.verticalItem:last-child .verticalLine {
+  background-color: rgba(255, 255, 255, 8%);
+}
+
+.horizontal {
+  padding-left: 5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.horizontalDot {
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: #1595c2;
+  border-radius: 50%;
+}
+
+.horizontalItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  margin-top: -1.25rem;
+}
+
+.horizontalLabel {
+  font-size: 1.4rem;
+  color: var(--gray-color);
+}
