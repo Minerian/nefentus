@@ -4,11 +4,13 @@ import styles from "./loginBox.module.css";
 import Logo from "../../assets/logo/logo.svg";
 import Button from "./../button/button";
 import { useState, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const LoginBox = () => {
 
   const [Username, setUsername] = useState('');
   const [Password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -30,32 +32,32 @@ const LoginBox = () => {
   
     console.log(loginRequest);
 
-    try {
-      const response = await fetch(url, {
+      fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(loginRequest),
+      }).then((response) => {
+        if (!response.ok) {
+          throw new Error("Login failed");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const jwtCookie = data.jwtToken;
+        const token = jwtCookie.split(";")[0].split("=")[1];
+        localStorage.setItem("token", token);
+        navigate("/affiliate");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
-  
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Login erfolgreich:', data);
-        // Verarbeiten Sie die Antwort, z. B. Token speichern, Nutzerdaten aktualisieren, etc.
-      } else {
-        console.error('Login fehlgeschlagen:', response.statusText);
-        // Fehlerbehandlung, z. B. Fehlermeldung anzeigen
-      }
-    } catch (error) {
-      console.error('Fehler beim Login:', error);
-      // Fehlerbehandlung, z. B. Fehlermeldung anzeigen
-    }
   }  
 
   const activateUser = async (token) => {
     try {
-      const response = await fetch('http://127.0.0.1:8080/api/auth/activate', {
+      const response = await fetch('https://127.0.0.1:8080/api/auth/activate', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

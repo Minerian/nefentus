@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import "./style/general.css";
 import Navigation from "./components/navigation/navigation";
 
-import { Route, HashRouter, Routes, useLocation } from "react-router-dom";
+import { Route, HashRouter, Routes, useLocation, BrowserRouter } from "react-router-dom";
 import SignUp from "./pages/Signup";
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";
@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      <HashRouter>
+      <BrowserRouter>
         <ScrollToTop>
           <Routes>
             <Route
@@ -117,7 +117,7 @@ function App() {
             </Route>
           </Routes>
         </ScrollToTop>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 }
