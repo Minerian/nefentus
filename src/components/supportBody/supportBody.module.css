@@ -1,5 +1,21 @@
 .section {
   margin-top: 15rem;
+  padding-bottom: 22.5rem;
+
+  position: relative;
+}
+
+.blueBG {
+  background-image: url("../../assets/image/gradient.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50rem;
+  z-index: -1;
 }
 
 .section h2 {
@@ -122,6 +138,14 @@
   .body {
     grid-template-columns: 1fr;
     /* display: none; */
+  }
+
+  .left .contact {
+    display: none;
+  }
+
+  .contact {
+    margin-top: 3rem !important;
   }
 
   .mobBody {

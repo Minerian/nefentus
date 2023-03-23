@@ -75,9 +75,12 @@ function App() {
             <Route
               path="/support"
               element={
-                <Layout>
+                <>
+                  <Navigation />
+
                   <Support />
-                </Layout>
+                  <Footer />
+                </>
               }
             />
             <Route

@@ -23,7 +23,7 @@
 }
 
 .logo {
-  height: 2.8rem;
+  height: 2.4rem;
   margin-right: 8rem;
   cursor: pointer;
   pointer-events: initial;
@@ -325,12 +325,18 @@
 
   .mobItem .mobListContent > .item {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    /* align-items: center; */
+    gap: 0.5rem;
   }
 
-  .mobItem .mobListContent > .item img {
-    height: 20px !important;
+  .mobItem .mobListContent > .item > img {
+    height: 16px !important;
     width: 30px;
+    transform: translateY(5px);
+  }
+
+  .headline img {
+    opacity: 1;
+    transform: translateX(0px);
   }
 }

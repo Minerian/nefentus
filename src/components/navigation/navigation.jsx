@@ -117,7 +117,7 @@ const Navigation = () => {
             </li>
             <li
               className={`standard ${styles.hover} ${styles.mobItem}`}
-              style={{ height: openDrop ? 130 : 30 }}
+              style={{ height: openDrop ? 220 : 30 }}
             >
               <div
                 className={styles.menu}
@@ -139,8 +139,15 @@ const Navigation = () => {
                     className={styles.item}
                     onClick={() => setOpenMenu(false)}
                   >
+                    <img src={Payment} alt="" />
                     <div>
-                      <p className={styles.headline}>Payment</p>
+                      <p className={styles.headline}>
+                        Payment <img src={Arrow} alt="" />
+                      </p>
+                      <p className={styles.subheadline}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.
+                      </p>
                     </div>
                   </Link>
                   <Link
@@ -148,8 +155,15 @@ const Navigation = () => {
                     className={styles.item}
                     onClick={() => setOpenMenu(false)}
                   >
+                    <img src={Cash} alt="" />
                     <div>
-                      <p className={styles.headline}>Payroll</p>
+                      <p className={styles.headline}>
+                        Payroll <img src={Arrow} alt="" />
+                      </p>
+                      <p className={styles.subheadline}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.
+                      </p>
                     </div>
                   </Link>
                 </div>

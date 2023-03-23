@@ -30,38 +30,42 @@ const SupportBody = () => {
   };
 
   return (
-    <div className={`container ${styles.section}`}>
-      <h2>Support Center Questions:</h2>
-      <div className={`${styles.body}`}>
-        <div className={styles.left} id="content">
-          {active === 0 && <Introduction />}
-          <Contact />
-        </div>
-        <div className={styles.right}>
-          <div className={styles.list}>
-            {list.map((item, index) => (
-              <div
-                onClick={() => handleChange(index)}
-                className={`card ${styles.card} ${
-                  active === index ? styles.active : ""
-                }`}
-              >
-                {item}
-              </div>
-            ))}
+    <div className={` ${styles.section}`}>
+      <div className="container">
+        <h2>Support Center Questions:</h2>
+        <div className={`${styles.body}`}>
+          <div className={styles.left} id="content">
+            {active === 0 && <Introduction />}
+            <Contact />
           </div>
+          <div className={styles.right}>
+            <div className={styles.list}>
+              {list.map((item, index) => (
+                <div
+                  onClick={() => handleChange(index)}
+                  className={`card ${styles.card} ${
+                    active === index ? styles.active : ""
+                  }`}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.mobBody}>
+          {/* <div>
+            {list.map((item, index) => (
+              <MobCard item={item} index={index} />
+            ))}
+          </div> */}
+
+          <Contact />
         </div>
       </div>
 
-      {/* <div className={styles.mobBody}>
-        <div>
-          {list.map((item, index) => (
-            <MobCard item={item} index={index} />
-          ))}
-        </div>
-
-        <Contact />
-      </div> */}
+      <div className={styles.blueBG}></div>
     </div>
   );
 };
