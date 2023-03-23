@@ -70,9 +70,15 @@ const Footer = () => {
         <p>© 2023 Nefentus. All rights reserved. | Minerian Agency.</p>
 
         <div className={styles.icons}>
-          <img src={Linkedin} alt="" />
-          <img src={Instagram} alt="" />
-          <img src={Youtube} alt="" />
+          <Link to="https://www.linkedin.com/company/nefentuspay/">
+            <img src={Linkedin} alt="" />
+          </Link>
+          <Link to="https://www.instagram.com/nefentus/">
+            <img src={Instagram} alt="" />
+          </Link>
+          <Link to="https://www.youtube.com/channel/UCV1QWqkZXtZvXl6bq3AgkTA">
+            <img src={Youtube} alt="" />
+          </Link>
         </div>
       </div>
     </footer>

@@ -117,13 +117,20 @@ const Navigation = () => {
             </li>
             <li
               className={`standard ${styles.hover} ${styles.mobItem}`}
-              style={{ height: openDrop ? 180 : 20 }}
+              style={{ height: openDrop ? 130 : 30 }}
             >
               <div
                 className={styles.menu}
                 onClick={() => setOpenDrop((prev) => !prev)}
               >
-                Solutions <img src={DropDown} alt="" />
+                Solutions{" "}
+                <img
+                  style={{
+                    transform: openDrop ? "rotate(180deg)" : "rotate(0deg)",
+                  }}
+                  src={DropDown}
+                  alt=""
+                />
               </div>
               <div className={`${styles.mobDown}`}>
                 <div className={`${styles.mobListContent}`}>
@@ -132,13 +139,8 @@ const Navigation = () => {
                     className={styles.item}
                     onClick={() => setOpenMenu(false)}
                   >
-                    <img src={PaymentW} alt="" />
                     <div>
                       <p className={styles.headline}>Payment</p>
-                      <p className={styles.subheadline}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit.
-                      </p>
                     </div>
                   </Link>
                   <Link
@@ -146,13 +148,8 @@ const Navigation = () => {
                     className={styles.item}
                     onClick={() => setOpenMenu(false)}
                   >
-                    <img src={CashW} alt="" />
                     <div>
                       <p className={styles.headline}>Payroll</p>
-                      <p className={styles.subheadline}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit.
-                      </p>
                     </div>
                   </Link>
                 </div>

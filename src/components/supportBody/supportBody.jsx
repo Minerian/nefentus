@@ -17,11 +17,23 @@ const list = [
 const SupportBody = () => {
   const [active, setActive] = useState(0);
 
+  const handleChange = (index) => {
+    setActive(index);
+
+    const element = document.getElementById("content");
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 100,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className={`container ${styles.section}`}>
       <h2>Support Center Questions:</h2>
       <div className={`${styles.body}`}>
-        <div className={styles.left}>
+        <div className={styles.left} id="content">
           {active === 0 && <Introduction />}
           <Contact />
         </div>
@@ -29,7 +41,7 @@ const SupportBody = () => {
           <div className={styles.list}>
             {list.map((item, index) => (
               <div
-                onClick={() => setActive(index)}
+                onClick={() => handleChange(index)}
                 className={`card ${styles.card} ${
                   active === index ? styles.active : ""
                 }`}
@@ -41,7 +53,7 @@ const SupportBody = () => {
         </div>
       </div>
 
-      <div className={styles.mobBody}>
+      {/* <div className={styles.mobBody}>
         <div>
           {list.map((item, index) => (
             <MobCard item={item} index={index} />
@@ -49,7 +61,7 @@ const SupportBody = () => {
         </div>
 
         <Contact />
-      </div>
+      </div> */}
     </div>
   );
 };
