@@ -1,6 +1,6 @@
 import styles from "./navigation.module.css";
 
-import Logo from "../../assets/logo/logo.png";
+import Logo from "../../assets/logo/logo.svg";
 
 import DropDown from "../../assets/icon/dropdown.svg";
 import Button from "../button/button";
@@ -15,6 +15,8 @@ import Cash from "../../assets/icon/cash.svg";
 import PaymentW from "../../assets/icon/moneyW.svg";
 import CashW from "../../assets/icon/cashW.svg";
 import { Link } from "react-router-dom";
+
+import Arrow from "../../assets/icon/blueArrow.svg";
 
 const Navigation = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -41,7 +43,9 @@ const Navigation = () => {
                   <Link to="/payment" className={styles.item}>
                     <img src={Payment} alt="" />
                     <div>
-                      <p className={styles.headline}>Payment</p>
+                      <p className={styles.headline}>
+                        Payment <img src={Arrow} alt="" />
+                      </p>
                       <p className={styles.subheadline}>
                         Lorem ipsum, dolor sit amet consectetur adipisicing
                         elit.
@@ -51,7 +55,9 @@ const Navigation = () => {
                   <Link to="/payroll" className={styles.item}>
                     <img src={Cash} alt="" />
                     <div>
-                      <p className={styles.headline}>Payroll</p>
+                      <p className={styles.headline}>
+                        Payroll <img src={Arrow} alt="" />
+                      </p>
                       <p className={styles.subheadline}>
                         Lorem ipsum, dolor sit amet consectetur adipisicing
                         elit.
@@ -105,7 +111,9 @@ const Navigation = () => {
 
           <ul>
             <li className="standard">
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={() => setOpenMenu(false)}>
+                Home
+              </Link>
             </li>
             <li
               className={`standard ${styles.hover} ${styles.mobItem}`}
@@ -119,7 +127,11 @@ const Navigation = () => {
               </div>
               <div className={`${styles.mobDown}`}>
                 <div className={`${styles.mobListContent}`}>
-                  <Link to="/payment" className={styles.item}>
+                  <Link
+                    to="/payment"
+                    className={styles.item}
+                    onClick={() => setOpenMenu(false)}
+                  >
                     <img src={PaymentW} alt="" />
                     <div>
                       <p className={styles.headline}>Payment</p>
@@ -129,7 +141,11 @@ const Navigation = () => {
                       </p>
                     </div>
                   </Link>
-                  <Link to="/payroll" className={styles.item}>
+                  <Link
+                    to="/payroll"
+                    className={styles.item}
+                    onClick={() => setOpenMenu(false)}
+                  >
                     <img src={CashW} alt="" />
                     <div>
                       <p className={styles.headline}>Payroll</p>
@@ -143,16 +159,24 @@ const Navigation = () => {
               </div>
             </li>
             <li className="standard">
-              <Link to="/support">Resources</Link>
+              <Link to="/support" onClick={() => setOpenMenu(false)}>
+                Resources
+              </Link>
             </li>
             <li className="standard">
-              <Link to="/affiliate">Affiliate Program</Link>
+              <Link to="/affiliate" onClick={() => setOpenMenu(false)}>
+                Affiliate Program
+              </Link>
             </li>
           </ul>
         </div>
         <div>
-          <Button link="/login">Log in</Button>
-          <Button color="white">Sign up</Button>
+          <Button link="/login" onClick={() => setOpenMenu(false)}>
+            Log in
+          </Button>
+          <Button color="white" onClick={() => setOpenMenu(false)}>
+            Sign up
+          </Button>
         </div>
       </div>
     </nav>

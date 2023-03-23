@@ -4,15 +4,7 @@ import Home from "./pages/Home";
 import "./style/general.css";
 import Navigation from "./components/navigation/navigation";
 
-import {
-  createHashRouter,
-  Route,
-  HashRouter,
-  RouterProvider,
-  Routes,
-  ScrollRestoration,
-  useLocation,
-} from "react-router-dom";
+import { Route, HashRouter, Routes, useLocation } from "react-router-dom";
 import SignUp from "./pages/Signup";
 import Layout from "./pages/Layout";
 import Login from "./pages/Login";

@@ -58,7 +58,7 @@
 
 .dropdownMenu {
   position: absolute;
-  transition: 0.2s ease-in;
+  transition: 0.5s ease;
   width: max-content;
   transform: translate(-50%, 1rem);
   margin-left: 50%;
@@ -75,22 +75,48 @@
   position: relative;
   background-color: var(--white-color);
   border-radius: 0.5rem;
-  padding: 3rem 2.5rem;
+  padding: 1.5rem 1.25rem;
 }
 
 .listContent > .item {
   display: flex;
   gap: 2.5rem;
+  padding: 1.5rem 1.25rem;
+  position: relative;
+  z-index: 3;
+  border-radius: 0.5rem;
 }
 
-.listContent img {
-  width: 2rem !important;
+.listContent > .item:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.listContent > a > img {
+  width: 3rem !important;
 }
 
 .headline {
   font-size: 1.6rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
+
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.headline img {
+  width: 1.5rem !important;
+
+  opacity: 0;
+  transition: 0.3s ease;
+  transform: translateX(-20px);
+}
+
+.item:hover .headline img {
+  opacity: 1 !important;
+  transform: translateX(0);
 }
 
 .subheadline {

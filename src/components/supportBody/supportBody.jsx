@@ -2,6 +2,7 @@ import styles from "./supportBody.module.css";
 
 import Image1 from "../../assets/image/support/image1.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const list = [
   "Introduction",
@@ -99,9 +100,18 @@ const Contact = () => {
 
       <div className={styles.cards}>
         <div className="card">
-          <div className={styles.label}>Book a call</div>
+          <div className={styles.label}>
+            <Link to="https://www.instagram.com/helpdesk.nefentus/">
+              Write on Instagram
+            </Link>
+          </div>
           <div className={styles.info}>
-            Available: Mon-Fri 10:00 a.m. – 3:00 p.m
+            You can write on instagram on{" "}
+            <u>
+              <Link to="https://www.instagram.com/helpdesk.nefentus/">
+                helpdesk.nefentus
+              </Link>
+            </u>
           </div>
         </div>
         <div className="card">

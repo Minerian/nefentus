@@ -1,4 +1,4 @@
-import Logo from "../../assets/logo/logo.png";
+import Logo from "../../assets/logo/logo.svg";
 import Button from "../button/button";
 import Input, { Options } from "../input/input";
 

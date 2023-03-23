@@ -1,10 +1,10 @@
 import styles from "./footer.module.css";
 
-import Logo from "../../assets/logo/logo.png";
+import Logo from "../../assets/logo/logo.svg";
 
 import Instagram from "../../assets/icon/instagram.svg";
 import Linkedin from "../../assets/icon/linkedin.svg";
-import Telegram from "../../assets/icon/telegram.svg";
+import Youtube from "../../assets/icon/youtube.svg";
 import { Link } from "react-router-dom";
 
 const content = [
@@ -72,7 +72,7 @@ const Footer = () => {
         <div className={styles.icons}>
           <img src={Linkedin} alt="" />
           <img src={Instagram} alt="" />
-          <img src={Telegram} alt="" />
+          <img src={Youtube} alt="" />
         </div>
       </div>
     </footer>

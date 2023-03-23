@@ -1,7 +1,7 @@
 import Input from "../input/input";
 import styles from "./loginBox.module.css";
 
-import Logo from "../../assets/logo/logo.png";
+import Logo from "../../assets/logo/logo.svg";
 import Button from "./../button/button";
 
 const LoginBox = () => {

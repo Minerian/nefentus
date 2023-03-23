@@ -6,8 +6,9 @@ import AR from "../../../assets/icon/flags/ar.svg";
 import FR from "../../../assets/icon/flags/fr.svg";
 
 import styles from "./languages.module.css";
+import { useLocation } from "react-router-dom";
 
-const list = [
+let list = [
   {
     label: "English",
     flag: USA,
@@ -31,6 +32,16 @@ const list = [
 ];
 
 const Languages = () => {
+  const query = useLocation();
+
+  console.log(query);
+
+  if (query.pathname === "/support") {
+    list = list.slice(0, 2);
+  } else if (query.pathname === "/privacy" || query.pathname === "/imprint") {
+    list = list.slice(0, 1);
+  }
+
   return (
     <div className={styles.languages}>
       <div className={styles.menu}>
