@@ -12,6 +12,19 @@ import Logout from "../../assets/icon/logout.svg";
 
 import UrlLink from "../../assets/icon/link.svg";
 
+import { Line } from "react-chartjs-2";
+
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
 const cardsContent = [
   {
     title: "Incomes",
@@ -47,6 +60,8 @@ const AffiliateBody = () => {
       </div>
 
       <Graph />
+
+      <Footer />
     </div>
   );
 };
@@ -58,10 +73,10 @@ const AffiliateNavigation = () => {
     <div className={styles.navigation}>
       <img src={Logo} alt="" />
 
-      <div className={styles.logout}>
+      <Link to="/" className={styles.logout}>
         <p>Log out</p>
         <img src={Logout} alt="" />
-      </div>
+      </Link>
     </div>
   );
 };
@@ -83,33 +98,34 @@ const AffiliateHeader = () => {
       <div className={styles.link}>
         <p className={styles.label}>Affiliate link: </p>
 
-        <p className={styles.url}>
-          https://www.loremipsumdolor.com/7929b2da3e6b0867c8183d1fa1c03555
-        </p>
-
-        <img src={UrlLink} alt="" />
+        <div className={styles.linkBox}>
+          <p className={styles.url}>
+            https://www.loremipsumdolor.com/7929b2da3e6b0867c8183d1fa1c03555
+          </p>
+          <img src={UrlLink} alt="" />
+        </div>
       </div>
     </div>
   );
 };
 
+function transformNumber(num) {
+  let str = num.toString();
+  let result = "";
+
+  for (let i = str.length - 1, j = 0; i >= 0; i--, j++) {
+    if (j === 2) {
+      result = "." + result;
+      j = -1;
+    }
+    result = str[i] + result;
+  }
+
+  return result.replace(/^(\d)(\d{3}\.)/, "$1,$2");
+}
+
 const Card = ({ title, amount, percentage }) => {
   const positive = amount > 0 ? true : false;
-
-  function transformNumber(num) {
-    let str = num.toString();
-    let result = "";
-
-    for (let i = str.length - 1, j = 0; i >= 0; i--, j++) {
-      if (j === 2) {
-        result = "." + result;
-        j = -1;
-      }
-      result = str[i] + result;
-    }
-
-    return result.replace(/^(\d)(\d{3}\.)/, "$1,$2");
-  }
 
   return (
     <div className={`card ${styles.card}`}>
@@ -134,28 +150,87 @@ const Card = ({ title, amount, percentage }) => {
   );
 };
 
-const verticalList = [
-  "160,00K €",
-  "140,00K €",
-  "120,00K €",
-  "100,00K €",
-  "80,00K €",
-  "60,00K €",
-  "40,00K €",
-  "20,00K €",
-  "0K €",
-];
-
-const horizontalList = [
+const labels = [
   "Jan, 2022",
-  "Mar, 2022",
   "May, 2022",
   "July, 2022",
-  "Sept, 2022",
   "Nov, 2022",
   "Jan, 2023",
   "Mar, 2023",
 ];
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+
+  plugins: {
+    legend: {
+      display: false,
+    },
+    title: {
+      display: false,
+    },
+  },
+
+  tension: 0.4,
+
+  scales: {
+    y: {
+      grid: {
+        color: "rgba(255,255,255,8%)",
+      },
+      ticks: {
+        // Include a eur sign in the ticks
+        callback: function (value, index, ticks) {
+          return value + ".00K €";
+        },
+        padding: 10,
+        color: "#c4c4c4",
+        font: {
+          size: window.innerWidth < 550 ? 8 : 14,
+          family: "Euclid",
+          weight: 400,
+        },
+      },
+    },
+    x: {
+      grid: {
+        display: false,
+      },
+
+      ticks: {
+        color: "#c4c4c4",
+
+        font: {
+          family: "Euclid",
+          weight: 400,
+          size: window.innerWidth < 550 ? 8 : 14,
+        },
+      },
+    },
+  },
+};
+
+const data = {
+  labels,
+  datasets: [
+    {
+      label: "Dataset 1",
+      data: labels.map(() => Math.floor(Math.random() * 160) + 20),
+      borderColor: "#1595C2",
+      backgroundColor: "#1595C2",
+    },
+  ],
+};
 
 const Graph = () => {
   return (
@@ -173,24 +248,7 @@ const Graph = () => {
         </div>
       </div>
 
-      <div className={styles.graph}>
-        <div className={styles.vertical}>
-          {verticalList.map((item, index) => (
-            <div key={index} className={styles.verticalItem}>
-              <p className={styles.verticalLabel}>{item}</p>
-              <div className={styles.verticalLine}></div>
-            </div>
-          ))}
-        </div>
-        <div className={styles.horizontal}>
-          {horizontalList.map((item, index) => (
-            <div key={index} className={styles.horizontalItem}>
-              <div className={styles.horizontalDot}></div>
-              <p className={styles.horizontalLabel}>{item}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Line options={options} data={data} />
     </div>
   );
 };
@@ -216,14 +274,16 @@ const list = [
 
 const Footer = () => {
   return (
-    <div>
+    <div className={styles.footer}>
       <ul>
         {list.map((item) => (
           <li>
-            <Link to={item.link}>{item}</Link>
+            <Link to={item.link}>{item.text}</Link>
           </li>
         ))}
       </ul>
+
+      <p>© 2023 Nefentus. All rights reserved. | Minerian Agency.</p>
     </div>
   );
 };

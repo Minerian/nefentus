@@ -56,6 +56,13 @@
   margin-bottom: 3rem;
 }
 
+.linkBox {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 50px;
+}
+
 .link .label {
   font-size: 1.6rem;
   color: var(--gray-color);
@@ -213,4 +220,103 @@
 .horizontalLabel {
   font-size: 1.4rem;
   color: var(--gray-color);
+}
+
+.footer {
+  margin-bottom: 5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer ul {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.footer ul li {
+  list-style-type: none;
+
+  font-size: 1.4rem;
+  color: var(--white-color);
+}
+
+.footer p {
+  font-size: 1.4rem;
+  color: var(--gray-color);
+}
+
+@media (max-width: 900px) {
+  .header .top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .link {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .linkBox {
+    display: grid;
+    grid-template-columns: 50vw max-content;
+  }
+
+  .link .url {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+
+  .graphCard {
+    padding: 2rem 2rem 3.5rem 2rem;
+  }
+
+  .graphCard .label {
+    margin-bottom: 1rem;
+  }
+
+  .graphCard .info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .datePicker {
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .graphAmount {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .footer {
+    align-items: flex-start;
+  }
+
+  .footer ul {
+    flex-direction: column;
+  }
+
+  .footer li,
+  .footer p {
+    font-size: 1.2rem !important;
+  }
 }
