@@ -34,12 +34,14 @@ let list = [
 const Languages = () => {
   const query = useLocation();
 
-  console.log(query);
+  let listForRender = list;
 
   if (query.pathname === "/support") {
-    list = list.slice(0, 2);
+    listForRender = list.slice(0, 2);
   } else if (query.pathname === "/privacy" || query.pathname === "/imprint") {
-    list = list.slice(0, 1);
+    listForRender = list.slice(0, 1);
+  } else {
+    listForRender = list;
   }
 
   return (
@@ -51,7 +53,7 @@ const Languages = () => {
       </div>
       <div className={`${styles.dropdown}`}>
         <div className={`${styles.body} card`}>
-          {list.map((item, index) => (
+          {listForRender.map((item, index) => (
             <div key={index} className={styles.item}>
               <img src={item.flag} alt="" />
               <p className="standard">{item.label}</p>
