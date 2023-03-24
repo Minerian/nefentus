@@ -4,6 +4,8 @@ import Image1 from "../../assets/image/support/image1.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import IntroductionVideo from "../../assets/video/introduction.mp4";
+
 const list = [
   "Introduction",
   "Everything about payments",
@@ -84,7 +86,9 @@ const Introduction = () => {
           getting started guide that leads you through using the product
           step-by-step.
         </p>
-        <img src={Image1} alt="" />
+        <video controls>
+          <source src={IntroductionVideo} type="video/mp4" />
+        </video>
         <p className={styles.baner}>
           We've structured the documentation page into four groups:
         </p>

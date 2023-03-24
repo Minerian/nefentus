@@ -83,3 +83,9 @@
     display: initial;
   }
 }
+
+@media (max-width: 550px) {
+  .image p {
+    font-size: 1.2rem;
+  }
+}

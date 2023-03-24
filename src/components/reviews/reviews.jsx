@@ -2,7 +2,31 @@ import HeadingCenter from "../headingCenter/headingCenter";
 
 import styles from "./reviews.module.css";
 
-import Quote from "../../assets/icon/quote.svg";
+import Image1 from "../../assets/image/reviews/image1.png";
+import Image2 from "../../assets/image/reviews/image2.png";
+import Image3 from "../../assets/image/reviews/image3.png";
+
+const list = [
+  {
+    name: "Stephan Walouch",
+    position: "Founder & CEO",
+    image: Image1,
+    message: "Nefentus increased my revenue and saved me time!",
+  },
+  {
+    name: "Leon Enzminger",
+    position: "Founder & CEO",
+    image: Image2,
+    message: "Thanks to Nefentus, I can focus on growing my business!",
+  },
+  {
+    name: "Natalia Sakharova",
+    position: "Head of Compliance",
+    image: Image3,
+    message:
+      "Switching to Nefentus was the best decision I made for my payments!",
+  },
+];
 
 const Reviews = () => {
   return (
@@ -17,64 +41,22 @@ const Reviews = () => {
       />
 
       <div className={styles.row}>
-        <div className="card scroll">
-          <div className={styles.image}>
-            <div className={styles.blur}>
-              <div className={styles.overlay}></div>
-              <img
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                alt=""
-              />
+        {list.map((item) => (
+          <div className="card scroll">
+            <div className={styles.image}>
+              <div className={styles.blur}>
+                <div className={styles.overlay}></div>
+                <img src={item.image} alt="" />
+              </div>
+              <p>{item.name}</p>
+              <p>{item.position}</p>
             </div>
-            <p>Sho Sugihara</p>
-            <p>Founder & CEO</p>
-          </div>
 
-          <div className={styles.body}>
-            <p className={styles.text}>
-              Nefentus increased my revenue and saved me time!
-            </p>
-          </div>
-        </div>
-        <div className="card scroll">
-          <div className={styles.image}>
-            <div className={styles.blur}>
-              <div className={styles.overlay}></div>
-              <img
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                alt=""
-              />
+            <div className={styles.body}>
+              <p className={styles.text}>{item.message}</p>
             </div>
-            <p>Aj Agrawal</p>
-            <p>Founder & CEO</p>
           </div>
-
-          <div className={styles.body}>
-            <p className={styles.text}>
-              Thanks to Nefentus, I can focus on growing my business!
-            </p>
-          </div>
-        </div>
-        <div className="card scroll">
-          <div className={styles.image}>
-            <div className={styles.blur}>
-              <div className={styles.overlay}></div>
-              <img
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                alt=""
-              />
-            </div>
-            <p>Zaire Allen</p>
-            <p>Founder</p>
-          </div>
-
-          <div className={styles.body}>
-            <p className={styles.text}>
-              Switching to Nefentus was the best decision I made for my
-              payments!
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

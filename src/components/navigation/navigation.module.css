@@ -174,7 +174,7 @@
   background-color: var(--white-color);
   color: var(--black-color);
   font-size: 1.3rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   pointer-events: initial;
   cursor: pointer;
   padding: 0.4rem 2.3rem;
