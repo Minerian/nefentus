@@ -1,14 +1,17 @@
 {
   "files": {
-    "main.css": "/nefentus/static/css/main.fc1e2822.css",
-    "main.js": "/nefentus/static/js/main.ca8857b0.js",
+    "main.css": "/nefentus/static/css/main.55eb4d9b.css",
+    "main.js": "/nefentus/static/js/main.9ad752e5.js",
+    "static/media/introduction.mp4": "/nefentus/static/media/introduction.9f95a60485070b478523.mp4",
     "static/media/gradient.png": "/nefentus/static/media/gradient.7a3809bf1380d22bf1bb.png",
+    "static/media/image2.png": "/nefentus/static/media/image2.620d389d1cfcb28e1ffc.png",
+    "static/media/image3.png": "/nefentus/static/media/image3.82fedc0a7a57290abab8.png",
     "static/media/grow3.svg": "/nefentus/static/media/grow3.dcbf3a1ea35c7d68879fa83d03556547.svg",
     "static/media/graphic2.png": "/nefentus/static/media/graphic2.614dabb9bbaef1a0448c.png",
     "static/media/dummy.png": "/nefentus/static/media/dummy.733ca248575b3d54cf82.png",
+    "static/media/image1.png": "/nefentus/static/media/image1.09788296bca5478dfd8a.png",
     "static/media/target.mp4": "/nefentus/static/media/target.34187ae58040a85927a9.mp4",
     "static/media/why.png": "/nefentus/static/media/why.1a62cc9c24e1e6cac676.png",
-    "static/media/image1.png": "/nefentus/static/media/image1.09788296bca5478dfd8a.png",
     "static/media/chart.mp4": "/nefentus/static/media/chart.cde6a149199519104cd8.mp4",
     "static/media/Euclid-Medium.ttf": "/nefentus/static/media/Euclid-Medium.a5befbfcb71cd093cc56.ttf",
     "static/media/Euclid-Regular.ttf": "/nefentus/static/media/Euclid-Regular.d54600880dc63db716f2.ttf",
@@ -50,7 +53,6 @@
     "static/media/logout.svg": "/nefentus/static/media/logout.fda02b951ea22e8c87e0c1c63ef3212c.svg",
     "static/media/money.svg": "/nefentus/static/media/money.311a4391a8e954af0361a30d6e679117.svg",
     "static/media/pros.svg": "/nefentus/static/media/pros.7ee247b966e42028db4d1410ee58f55c.svg",
-    "static/media/quote.svg": "/nefentus/static/media/quote.43009f4ef8040f46b1349e6a6dbd9447.svg",
     "static/media/blueArrow.svg": "/nefentus/static/media/blueArrow.acc8f94b5a9736ecfc666a90ab879fb2.svg",
     "static/media/linkedin.svg": "/nefentus/static/media/linkedin.7e426f2ba890bd31b5298e1d7a72da7e.svg",
     "static/media/singleCheckmark.svg": "/nefentus/static/media/singleCheckmark.ad7ebf773400abf76038954e04c8ba36.svg",
@@ -67,11 +69,11 @@
     "static/media/whiteCheckmark.svg": "/nefentus/static/media/whiteCheckmark.c470fc13b6a43973af10748916e8d093.svg",
     "static/media/circle.svg": "/nefentus/static/media/circle.50122e71c27d62dbc89506214927765d.svg",
     "static/media/line.svg": "/nefentus/static/media/line.a645ec91e6e91d5d1648b21f66ccac3c.svg",
-    "main.fc1e2822.css.map": "/nefentus/static/css/main.fc1e2822.css.map",
-    "main.ca8857b0.js.map": "/nefentus/static/js/main.ca8857b0.js.map"
+    "main.55eb4d9b.css.map": "/nefentus/static/css/main.55eb4d9b.css.map",
+    "main.9ad752e5.js.map": "/nefentus/static/js/main.9ad752e5.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc1e2822.css",
-    "static/js/main.ca8857b0.js"
+    "static/css/main.55eb4d9b.css",
+    "static/js/main.9ad752e5.js"
   ]
 }
