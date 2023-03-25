@@ -8,12 +8,16 @@ import Cards from "../components/cards/cards";
 import About from "../components/about/about";
 import Reviews from "../components/reviews/reviews";
 
+import { useTranslation } from "react-i18next";
+
 const Home = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <Circle />
       <Layout
-        heading="Level-up Business with Nefentus"
+        heading={t("homeHeroTitle")}
         description="Our revolutionary state-of-the-art automation and secure crypto checkouts let you focus on your core business while maximizing earnings. Leave manual payments behind and embrace the future of commerce today."
         button={
           <>

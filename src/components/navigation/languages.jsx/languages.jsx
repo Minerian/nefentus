@@ -7,32 +7,44 @@ import FR from "../../../assets/icon/flags/fr.svg";
 
 import styles from "./languages.module.css";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 let list = [
   {
     label: "English",
     flag: USA,
+    code: "en",
   },
   {
     label: "German",
     flag: DE,
+    code: "de",
   },
   {
     label: "Spanisch",
     flag: ES,
+    code: "es",
   },
   {
     label: "France",
     flag: FR,
+    code: "fr",
   },
   {
     label: "Arabic",
     flag: AR,
+    code: "ar",
   },
 ];
 
 const Languages = () => {
   const query = useLocation();
+
+  const { t, i18n } = useTranslation();
+
+  const handleTrans = (code) => {
+    i18n.changeLanguage(code);
+  };
 
   let listForRender = list;
 
@@ -54,7 +66,11 @@ const Languages = () => {
       <div className={`${styles.dropdown}`}>
         <div className={`${styles.body} card`}>
           {listForRender.map((item, index) => (
-            <div key={index} className={styles.item}>
+            <div
+              key={index}
+              className={styles.item}
+              onClick={() => handleTrans(item.code)}
+            >
               <img src={item.flag} alt="" />
               <p className="standard">{item.label}</p>
             </div>
