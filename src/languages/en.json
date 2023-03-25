@@ -1,0 +1,116 @@
+{
+  "navigation": {
+    "home": "Home",
+    "solutions": "Solutions",
+    "payment": "Payment",
+    "paymentDescription": "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    "payroll": "Payroll",
+    "payrollDescription": "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    "resources": "Resources",
+    "affiliate": "Affiliate Program",
+    "login": "Log in",
+    "signUp": "Get started",
+    "menu": "Menu"
+  },
+  "home": {
+    "heroTitle": "Level-up Business with Nefentus",
+    "heroDescription": "Our revolutionary state-of-the-art automation and secure crypto checkouts let you focus on your core business while maximizing earnings. Leave manual payments behind and embrace the future of commerce today.",
+    "heroButton": "Start now, it’s free",
+    "heroAvailable": "Available on:",
+    "cardSubtitle": "Your partner for scaling",
+    "cardTitle": "Companies around the world use Nefentus to manage and scale their payment processing.",
+    "cardList": [
+      {
+        "title": "Free onboarding support",
+        "description": "Take advantage of our onboarding support to help you get started."
+      },
+      {
+        "title": "Bespoke Solutions",
+        "description": "We offer customized solutions that can be tailored to your unique needs."
+      },
+      {
+        "title": "Benefit from our expertise",
+        "description": "Leverage our deep industry knowledge to drive success within your business."
+      }
+    ],
+    "layoutButton": "Get Started for Free",
+    "simplifySubtitle": "Simplify",
+    "simplifyTitle": "Manage crypto payments and invoicing",
+    "simplifyDescription": "Our secure platform is an all-encompassing, secure platform which streamlines, automates, and facilitate various types of transactions, including traditional and digital currencies, for businesses and customers alike.",
+
+    "payrollDescription": "Use our streamlined, efficient solution for managing employee compensation, including salary payments and benefit allocations.",
+    "payrollSubtitle": "Process Payroll",
+    "payrollTitleP1": "Grow with our",
+    "payrollTitleP2": "payroll system",
+
+    "aboutCard1Subtitle": "Rapid Adoption",
+    "aboutCard1Title": "Users trust is reflected in their increased activity",
+    "aboutCard1Description": "The growing user activity on Nefentus showcases our users' trust and the outstanding value they derive from our service. We are committed to continually delivering excellence and preserving their confidence.",
+    "aboutCard2Subtitle": "Manage",
+    "aboutCard2TitleP1": "Leverage the power",
+    "aboutCard2TitleP2": "of our Dashboards",
+    "aboutCard2Description": "Our advanced dashboards enable you to gain deeper insights and make data-driven decisions with ease, improving your productivity and profitability. With powerful data visualization and analysis tools at your fingertips, you can uncover hidden trends, identify key performance indicators, and optimize your operations for peak efficiency.",
+    "aboutCard3Subtitle": "Integrate",
+    "aboutCard3TitleP1": "Effortlessly connect ",
+    "aboutCard3TitleP2": "with your other tools",
+    "aboutCard3Description": "Easily integrating your existing financial stack with our platform not only enables you to access over 200 wallets for crypto payments but also allows you to leverage your current infrastructure, reduce the need for additional resources, streamline your financial operations, and gain better control over your business's financial data.",
+
+    "reviewList": [
+      {
+        "name": "Stephan Walouch",
+        "position": "Founder & CEO",
+        "message": "Nefentus increased my revenue and saved me time!"
+      },
+      {
+        "name": "Leon Enzminger",
+        "position": "Founder & CEO",
+        "message": "Thanks to Nefentus, I can focus on growing my business!"
+      },
+      {
+        "name": "Natalia Sakharova",
+        "position": "Head of Compliance",
+        "message": "Switching to Nefentus was the best decision I made for my payments!"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Free Onboarding Call",
+    "description": "At Nefentus, we believe in supporting our clients every step of the way. That's why we offer free onboarding calls to assist with registration and setup. Whether you're a bar owner, consultant, coach, trainer, speaker, or agency owner, we're committed to finding the perfect solution for your unique needs.",
+    "button": "Book a call"
+  },
+  "footer": {
+    "copyright": "© 2023 Nefentus. All rights reserved.",
+    "content": [
+      {
+        "label": "Overview",
+        "links": [
+          { "text": "Home" },
+          { "text": "Payroll" },
+          { "text": "Payment" },
+          { "text": "Resources" },
+          { "text": "Affiliate" }
+        ]
+      },
+      {
+        "label": "Join",
+        "links": [
+          { "text": "Log in" },
+          { "text": "Sign up" },
+          { "text": "Play store" },
+          { "text": "App store" }
+        ]
+      },
+      {
+        "label": "Information",
+        "links": [{ "text": "Privacy Policy" }, { "text": "Imprint" }]
+      },
+      {
+        "label": "Company",
+        "links": [
+          { "text": "office@nefentus.com" },
+          { "text": "Larnaca, Cyprus" }
+        ]
+      }
+    ]
+  }
+}

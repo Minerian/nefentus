@@ -8,6 +8,7 @@ import FR from "../../../assets/icon/flags/fr.svg";
 import styles from "./languages.module.css";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 let list = [
   {
@@ -40,10 +41,14 @@ let list = [
 const Languages = () => {
   const query = useLocation();
 
+  const [language, setLanguage] = useState("EN");
+
   const { t, i18n } = useTranslation();
 
   const handleTrans = (code) => {
     i18n.changeLanguage(code);
+
+    setLanguage(code.toUpperCase());
   };
 
   let listForRender = list;
@@ -59,8 +64,13 @@ const Languages = () => {
   return (
     <div className={styles.languages}>
       <div className={styles.menu}>
-        <img src={USA} alt="" />
-        <p className="standard">EN</p>
+        <img
+          src={
+            list.filter((item) => item.code === language.toLowerCase())[0].flag
+          }
+          alt=""
+        />
+        <p className="standard">{language}</p>
         <img src={DropDown} alt="" />
       </div>
       <div className={`${styles.dropdown}`}>

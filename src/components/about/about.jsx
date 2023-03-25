@@ -1,21 +1,23 @@
 import styles from "./about.module.css";
 
 import Graphic1 from "../../assets/image/graphic1.svg";
-import Graphic2 from "../../assets/image/graphic2.png";
+import Graphic2 from "../../assets/image/graphic2.svg";
 import Graphic3 from "../../assets/image/graphic3.svg";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="container break">
       <div className={`${styles.card} ${styles.horizontalCard} card scroll`}>
         <div>
-          <p className={`subtitle ${styles.subtitle}`}>Rapid Adoption</p>
-          <h2>Users trust is reflected in their increased activity</h2>
+          <p className={`subtitle ${styles.subtitle}`}>
+            {t("home.aboutCard1Subtitle")}
+          </p>
+          <h2> {t("home.aboutCard1Title")}</h2>
           <p className={styles.description}>
-            The growing user activity on Nefentus showcases our users' trust and
-            the outstanding value they derive from our service. We are committed
-            to continually delivering excellence and preserving their
-            confidence.
+            {t("home.aboutCard1Description")}
           </p>
         </div>
         <img src={Graphic1} alt="" />
@@ -24,36 +26,30 @@ const About = () => {
         <div className={`${styles.card} ${styles.verticalCard} scroll card`}>
           <img src={Graphic2} alt="" />
           <div className={styles.content}>
-            <p className={`subtitle ${styles.subtitle}`}>Manage</p>
-            <h3>
-              Leverage the power <br /> of our Dashboards
-            </h3>
-            <p className="standard">
-              Our advanced dashboards enable you to gain deeper insights and
-              make data-driven decisions with ease, improving your productivity
-              and profitability. With powerful data visualization and analysis
-              tools at your fingertips, you can uncover hidden trends, identify
-              key performance indicators, and optimize your operations for peak
-              efficiency.
+            <p className={`subtitle ${styles.subtitle}`}>
+              {t("home.aboutCard2Subtitle")}
             </p>
+            <h3>
+              {t("home.aboutCard2TitleP1")}
+              <br />
+              {t("home.aboutCard2TitleP2")}
+            </h3>
+            <p className="standard"> {t("home.aboutCard2Description")}</p>
           </div>
         </div>
         <div className={`${styles.card} ${styles.verticalCard} scroll card`}>
           <img src={Graphic3} alt="" />
 
           <div className={styles.content}>
-            <p className={`subtitle ${styles.subtitle}`}>Manage</p>
-            <h3>
-              Effortlessly connect <br /> with your other tools
-            </h3>
-            <p className="standard">
-              Easily integrating your existing financial stack with our platform
-              not only enables you to access over 200 wallets for crypto
-              payments but also allows you to leverage your current
-              infrastructure, reduce the need for additional resources,
-              streamline your financial operations, and gain better control over
-              your business's financial data.
+            <p className={`subtitle ${styles.subtitle}`}>
+              {t("home.aboutCard3Subtitle")}
             </p>
+            <h3>
+              {t("home.aboutCard3TitleP1")}
+              <br />
+              {t("home.aboutCard3TitleP2")}
+            </h3>
+            <p className="standard">{t("home.aboutCard3Description")}</p>
           </div>
         </div>
       </div>

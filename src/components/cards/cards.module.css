@@ -1,5 +1,6 @@
 .cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 4rem;
 }
 
@@ -26,6 +27,7 @@
 
 @media (max-width: 900px) {
   .cards {
+    display: flex;
     flex-direction: column;
     gap: 2rem;
   }

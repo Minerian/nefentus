@@ -6,58 +6,57 @@ import Instagram from "../../assets/icon/instagram.svg";
 import Linkedin from "../../assets/icon/linkedin.svg";
 import Youtube from "../../assets/icon/youtube.svg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const content = [
   {
-    label: "Overview",
     links: [
-      { text: "Home", link: "/" },
-      { text: "Payroll", link: "/payroll" },
-      { text: "Payment", link: "/payment" },
-      { text: "Resources", link: "/support" },
-      { text: "Affiliate", link: "/affiliate" },
+      { link: "/" },
+      { link: "/payroll" },
+      { link: "/payment" },
+      { link: "/support" },
+      { link: "/affiliate" },
     ],
   },
   {
-    label: "Join",
     links: [
-      { text: "Log in", link: "/login" },
-      { text: "Sign up", link: "/signup" },
-      { text: "Play store", link: "/" },
-      { text: "App store", link: "/" },
+      { link: "/login" },
+      { link: "/signup" },
+      { link: "/" },
+      { link: "/" },
     ],
   },
   {
-    label: "Information",
-    links: [
-      { text: "Privacy Policy", link: "/privacy" },
-      { text: "Imprint", link: "/imprint" },
-    ],
+    links: [{ link: "/privacy" }, { link: "/imprint" }],
   },
   {
-    label: "Company",
-    links: [
-      { text: "office@nefentus.com", link: "/imprint" },
-      { text: "Larnaca, Cyprus", link: false },
-    ],
+    links: [{ link: "mailto:office@nefentus.com" }, { link: false }],
   },
 ];
 
 const Footer = () => {
+  const { t } = useTranslation();
+
+  const footerContent = t("footer.content", { returnObjects: true });
+
   return (
     <footer className={styles.footer}>
       <div className={`${styles.top} container`}>
         <img src={Logo} alt="" />
 
         <div className={styles.content}>
-          {content.map((item, index) => (
-            <div className={styles.column} key={index}>
-              <p className={styles.label}>{item.label}</p>
+          {content.map((item, indexContent) => (
+            <div className={styles.column} key={indexContent}>
+              <p className={styles.label}>
+                {footerContent[indexContent].label}
+              </p>
 
               <ul>
-                {item.links.map((item, index) => (
-                  <li key={index}>
-                    <Link to={item.link}>{item.text}</Link>
+                {item.links.map((item, indexLinks) => (
+                  <li key={indexLinks}>
+                    <Link to={item.link}>
+                      {footerContent[indexContent].links[indexLinks].text}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -68,7 +67,7 @@ const Footer = () => {
 
       <div className={`${styles.copyright} container`}>
         <p>
-          © 2023 Nefentus. All rights reserved. |{" "}
+          {t("footer.copyright")} |{" "}
           <Link to="https://www.minerian.com" target="_blank">
             Minerian Agency
           </Link>

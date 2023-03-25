@@ -17,11 +17,11 @@ const Home = () => {
     <>
       <Circle />
       <Layout
-        heading={t("homeHeroTitle")}
-        description="Our revolutionary state-of-the-art automation and secure crypto checkouts let you focus on your core business while maximizing earnings. Leave manual payments behind and embrace the future of commerce today."
+        heading={t("home.heroTitle")}
+        description={t("home.heroDescription")}
         button={
           <>
-            <p>Start now, it’s free</p>
+            <p>{t("home.heroButton")}</p>
             <img src={Arrow} alt="" />
           </>
         }
@@ -32,21 +32,21 @@ const Home = () => {
       <Cards />
 
       <Layout
-        title="Manage crypto payments and invoicing"
-        description="Our secure platform is an all-encompassing, secure platform which streamlines, automates, and facilitate various types of transactions, including traditional and digital currencies, for businesses and customers alike."
-        button="Get Started for Free"
-        subtitle="Simplify"
+        subtitle={t("home.simplifySubtitle")}
+        title={t("home.simplifyTitle")}
+        description={t("home.simplifyDescription")}
+        button={t("home.layoutButton")}
       />
 
       <Layout
         title={
           <>
-            Grow with our <br /> payroll system
+            {t("home.payrollTitleP1")} <br /> {t("home.payrollTitleP2")}
           </>
         }
-        description="Use our streamlined, efficient solution for managing employee compensation, including salary payments and benefit allocations."
-        button="Get Started for Free"
-        subtitle="Process Payroll"
+        description={t("home.payrollDescription")}
+        button={t("home.layoutButton")}
+        subtitle={t("home.payrollSubtitle")}
         reverse={true}
       />
 

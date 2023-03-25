@@ -1,19 +1,16 @@
 import Button from "../button/button";
 import styles from "./contact.module.css";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.contact}>
-      <h2>Free Onboarding Call</h2>
-      <p className={styles.description}>
-        At Nefentus, we believe in supporting our clients every step of the way.
-        That's why we offer free onboarding calls to assist with registration
-        and setup. Whether you're a bar owner, consultant, coach, trainer,
-        speaker, or agency owner, we're committed to finding the perfect
-        solution for your unique needs.
-      </p>
+      <h2>{t("contact.title")}</h2>
+      <p className={styles.description}>{t("contact.description")}</p>
       <Button color="white" link="https://calendly.com/nefentus/consulting">
-        Book a call
+        {t("contact.button")}
       </Button>
     </div>
   );

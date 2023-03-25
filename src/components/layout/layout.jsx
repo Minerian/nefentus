@@ -8,6 +8,7 @@ import Dummy from "../../assets/image/dummy.png";
 
 import Checkmark from "../../assets/icon/singleCheckmark.svg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Layout = ({
   heading,
@@ -20,6 +21,8 @@ const Layout = ({
   reverse,
   list,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div
       className={`${styles.layout} ${heading ? styles.hero : ""} ${
@@ -65,7 +68,7 @@ const Layout = ({
 
         {store && (
           <div className={styles.store}>
-            <p className="standard">Available on:</p>
+            <p className="standard">{t("home.heroAvailable")}</p>
 
             <div>
               <Link to="/">

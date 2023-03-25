@@ -8,44 +8,40 @@ import Bag from "../../assets/image/bag.png";
 import Video1 from "../../assets/video/phone.mp4";
 import Video2 from "../../assets/video/chart.mp4";
 import Video3 from "../../assets/video/target.mp4";
+import { useTranslation } from "react-i18next";
 
 const list = [
   {
     video: Video1,
-    title: "Free onboarding support",
-    description:
-      "Take advantage of our onboarding support to help you get started.",
   },
   {
     video: Video2,
-    title: "Bespoke Solutions",
-    description:
-      "We offer customized solutions that can be tailored to your unique needs.",
   },
   {
     video: Video3,
-    title: "Benefit from our expertise",
-    description:
-      "Leverage our deep industry knowledge to drive success within your business.",
   },
 ];
 
 const Cards = () => {
+  const { t } = useTranslation();
+
+  const list2 = t("home.cardList", { returnObjects: true });
+
   return (
     <div className="container break ">
       <HeadingCenter
-        subtitle="Your partner for scaling"
-        title="Companies around the world use Nefentus to manage and scale their payment processing."
+        subtitle={t("home.cardSubtitle")}
+        title={t("home.cardTitle")}
       />
 
       <div className={styles.cards}>
-        {list.map((item) => (
+        {list.map((item, index) => (
           <div className={`${styles.card} scroll card`}>
             <video muted loop autoPlay playsInline>
               <source src={item.video} type="video/mp4" />
             </video>
-            <p>{item.title}</p>
-            <p className="standard">{item.description}</p>
+            <p>{list2[index].title}</p>
+            <p className="standard">{list2[index].description}</p>
           </div>
         ))}
       </div>

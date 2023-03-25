@@ -18,7 +18,11 @@ import { Link } from "react-router-dom";
 
 import Arrow from "../../assets/icon/blueArrow.svg";
 
+import { useTranslation } from "react-i18next";
+
 const Navigation = () => {
+  const { t, i18n } = useTranslation();
+
   const [openMenu, setOpenMenu] = useState(false);
 
   const [openDrop, setOpenDrop] = useState(false);
@@ -32,11 +36,11 @@ const Navigation = () => {
           </Link>
           <ul>
             <li className="standard">
-              <Link to="/">Home</Link>
+              <Link to="/">{t("navigation.home")}</Link>
             </li>
             <li className={`standard ${styles.hover}`}>
               <div className={styles.menu}>
-                Solutions <img src={DropDown} alt="" />
+                {t("navigation.solutions")} <img src={DropDown} alt="" />
               </div>
               <div className={`${styles.dropdownMenu}`}>
                 <div className={`${styles.listContent}`}>
@@ -44,11 +48,10 @@ const Navigation = () => {
                     <img src={Payment} alt="" />
                     <div>
                       <p className={styles.headline}>
-                        Payment <img src={Arrow} alt="" />
+                        {t("navigation.payment")} <img src={Arrow} alt="" />
                       </p>
                       <p className={styles.subheadline}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit.
+                        {t("navigation.paymentDescription")}
                       </p>
                     </div>
                   </Link>
@@ -56,11 +59,10 @@ const Navigation = () => {
                     <img src={Cash} alt="" />
                     <div>
                       <p className={styles.headline}>
-                        Payroll <img src={Arrow} alt="" />
+                        {t("navigation.payroll")} <img src={Arrow} alt="" />
                       </p>
                       <p className={styles.subheadline}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit.
+                        {t("navigation.payrollDescription")}
                       </p>
                     </div>
                   </Link>
@@ -68,19 +70,19 @@ const Navigation = () => {
               </div>
             </li>
             <li className="standard">
-              <Link to="/support">Resources</Link>
+              <Link to="/support">{t("navigation.resources")}</Link>
             </li>
             <li className="standard">
-              <Link to="/affiliate">Affiliate Program</Link>
+              <Link to="/affiliate">{t("navigation.affiliate")}</Link>
             </li>
           </ul>
         </div>
         <div className={styles.right}>
           <p className="">
-            <Link to="/login">Log in</Link>
+            <Link to="/login">{t("navigation.login")}</Link>
           </p>
           <div className={styles.button}>
-            <Link to="/signup">Get started</Link>
+            <Link to="/signup">{t("navigation.signUp")}</Link>
           </div>
           <img className={styles.qrcode} src={QR} alt="" />
 
@@ -89,7 +91,7 @@ const Navigation = () => {
 
         <div className={styles.mobMenu}>
           <p className="standard" onClick={() => setOpenMenu(true)}>
-            Menu
+            {t("navigation.menu")}
           </p>
         </div>
       </div>
@@ -112,7 +114,7 @@ const Navigation = () => {
           <ul>
             <li className="standard">
               <Link to="/" onClick={() => setOpenMenu(false)}>
-                Home
+                {t("navigation.home")}
               </Link>
             </li>
             <li
@@ -123,7 +125,7 @@ const Navigation = () => {
                 className={styles.menu}
                 onClick={() => setOpenDrop((prev) => !prev)}
               >
-                Solutions{" "}
+                {t("navigation.solutions")}{" "}
                 <img
                   style={{
                     transform: openDrop ? "rotate(180deg)" : "rotate(0deg)",
@@ -142,11 +144,10 @@ const Navigation = () => {
                     <img src={Payment} alt="" />
                     <div>
                       <p className={styles.headline}>
-                        Payment <img src={Arrow} alt="" />
+                        {t("navigation.payment")} <img src={Arrow} alt="" />
                       </p>
                       <p className={styles.subheadline}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit.
+                        {t("navigation.paymentDescription")}
                       </p>
                     </div>
                   </Link>
@@ -158,11 +159,10 @@ const Navigation = () => {
                     <img src={Cash} alt="" />
                     <div>
                       <p className={styles.headline}>
-                        Payroll <img src={Arrow} alt="" />
+                        {t("navigation.payroll")} <img src={Arrow} alt="" />
                       </p>
                       <p className={styles.subheadline}>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit.
+                        {t("navigation.payrollDescription")}
                       </p>
                     </div>
                   </Link>
@@ -171,22 +171,22 @@ const Navigation = () => {
             </li>
             <li className="standard">
               <Link to="/support" onClick={() => setOpenMenu(false)}>
-                Resources
+                {t("navigation.resources")}
               </Link>
             </li>
             <li className="standard">
               <Link to="/affiliate" onClick={() => setOpenMenu(false)}>
-                Affiliate Program
+                {t("navigation.affiliate")}
               </Link>
             </li>
           </ul>
         </div>
         <div>
           <Button link="/login" onClick={() => setOpenMenu(false)}>
-            Log in
+            {t("navigation.login")}
           </Button>
           <Button color="white" onClick={() => setOpenMenu(false)}>
-            Sign up
+            {t("navigation.signUp")}
           </Button>
         </div>
       </div>

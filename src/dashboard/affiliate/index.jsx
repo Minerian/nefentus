@@ -27,18 +27,8 @@ import {
 import { useEffect, useState } from "react";
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
-
-
-
-
-
-
 const AffiliateBody = () => {
-
   const navigate = useNavigate();
-
-
-  
 
   const checkPermissions = async () => {
     const token = localStorage.getItem("token");
@@ -49,39 +39,37 @@ const AffiliateBody = () => {
       return;
     }
 
-    fetch('http://localhost:8080/api/dashboards/affiliate', {
-      method: 'GET',
+    fetch("http://localhost:8080/api/dashboards/affiliate", {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     })
-      .then(response => {
+      .then((response) => {
         console.log(response);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
-
   };
 
   const setDashboard = async () => {
-
-    fetch('http://localhost:8080/api/dashboard/data/affiliate/totalStats', {
-      method: 'POST',
+    fetch("http://localhost:8080/api/dashboard/data/affiliate/totalStats", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: localStorage.getItem("affiliateLink")
-
+      body: localStorage.getItem("affiliateLink"),
     })
-      .then(response => {
-        return response.json()
-      }).then(data => {
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
         fillCards(data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   };
@@ -92,8 +80,6 @@ const AffiliateBody = () => {
   const [allClicksPercentage, setAllClicksPercentage] = useState(0);
   const [income, setIncome] = useState(0);
   const [incomePercentage, setIncomePercentage] = useState(0);
-
-
 
   const cardsContent = [
     {
@@ -120,7 +106,7 @@ const AffiliateBody = () => {
     setIncomePercentage(data.incomePercentage);
     setSignUps(data.signUps);
     setSignUpsPercentage(data.signUpsPercentage);
-  }
+  };
 
   useEffect(() => {
     checkPermissions();
@@ -152,24 +138,22 @@ const AffiliateBody = () => {
 export default AffiliateBody;
 
 const AffiliateNavigation = () => {
-
   const logOut = async () => {
     const token = localStorage.getItem("token");
-    fetch('http://localhost:8080/api/auth/signout', {
-      method: 'POST',
+    fetch("http://localhost:8080/api/auth/signout", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     })
-      .then(response => {
+      .then((response) => {
         console.log(response);
         localStorage.clear();
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
-
   };
 
   return (
@@ -203,7 +187,8 @@ const AffiliateHeader = () => {
 
         <div className={styles.linkBox}>
           <p className={styles.url}>
-            https://nefentus.com/signup?affiliate={localStorage.getItem("affiliateLink")}
+            https://nefentus.com/signup?affiliate=
+            {localStorage.getItem("affiliateLink")}
           </p>
           <img src={UrlLink} alt="" />
         </div>
