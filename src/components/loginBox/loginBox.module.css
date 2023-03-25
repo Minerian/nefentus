@@ -5,6 +5,24 @@
   align-items: center;
 }
 
+.errormessagecontainer {
+  background-color: #ffcccc;
+  color: red;
+  border: 1px solid red;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.messagecontainer {
+  background-color: #ccffcc;
+  color: green;
+  border: 1px solid green;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
 .card {
   background: radial-gradient(
     64.62% 74.22% at 26.36% 14.29%,

@@ -1,5 +1,5 @@
 import Button from "./../../components/button/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Negative from "../../assets/icon/negative.svg";
 import Positive from "../../assets/icon/positive.svg";
@@ -24,26 +24,109 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { useEffect, useState } from "react";
+import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
-const cardsContent = [
-  {
-    title: "Incomes",
-    amount: 467867,
-    percentage: 2.11,
-  },
-  {
-    title: "Total Clicks",
-    amount: -325800,
-    percentage: 11.52,
-  },
-  {
-    title: "Total Sign ups",
-    amount: 1185600,
-    percentage: 105.55,
-  },
-];
+
+
+
+
+
 
 const AffiliateBody = () => {
+
+  const navigate = useNavigate();
+
+
+  
+
+  const checkPermissions = async () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login");
+      // Der Benutzer ist nicht angemeldet
+      return;
+    }
+
+    fetch('http://localhost:8080/api/dashboards/affiliate', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+  };
+
+  const setDashboard = async () => {
+
+    fetch('http://localhost:8080/api/dashboard/data/affiliate/totalStats', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
+      body: localStorage.getItem("affiliateLink")
+
+    })
+      .then(response => {
+        return response.json()
+      }).then(data => {
+        fillCards(data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  const [signUps, setSignUps] = useState(0);
+  const [signUpsPercentage, setSignUpsPercentage] = useState(0.0);
+  const [allClicks, setAllClicks] = useState(0);
+  const [allClicksPercentage, setAllClicksPercentage] = useState(0);
+  const [income, setIncome] = useState(0);
+  const [incomePercentage, setIncomePercentage] = useState(0);
+
+
+
+  const cardsContent = [
+    {
+      title: "Incomes",
+      amount: income,
+      percentage: incomePercentage,
+    },
+    {
+      title: "Total Clicks",
+      amount: allClicks,
+      percentage: allClicksPercentage,
+    },
+    {
+      title: "Total Sign ups",
+      amount: signUps,
+      percentage: signUpsPercentage,
+    },
+  ];
+
+  const fillCards = (data) => {
+    setAllClicks(data.allClicks);
+    setAllClicksPercentage(data.allClicksPercentage);
+    setIncome(data.income);
+    setIncomePercentage(data.incomePercentage);
+    setSignUps(data.signUps);
+    setSignUpsPercentage(data.signUpsPercentage);
+  }
+
+  useEffect(() => {
+    checkPermissions();
+    setDashboard();
+  });
+
   return (
     <div className="container">
       <AffiliateNavigation />
@@ -69,11 +152,31 @@ const AffiliateBody = () => {
 export default AffiliateBody;
 
 const AffiliateNavigation = () => {
+
+  const logOut = async () => {
+    const token = localStorage.getItem("token");
+    fetch('http://localhost:8080/api/auth/signout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        console.log(response);
+        localStorage.clear();
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+  };
+
   return (
     <div className={styles.navigation}>
       <img src={Logo} alt="" />
 
-      <Link to="/" className={styles.logout}>
+      <Link onClick={logOut} to="/" className={styles.logout}>
         <p>Log out</p>
         <img src={Logout} alt="" />
       </Link>
@@ -88,7 +191,7 @@ const AffiliateHeader = () => {
         <div className={styles.left}>
           <h3>Overview</h3>
           <p>
-            You’ve earned <span>+5,878</span> this month
+            You’ve earned <span>0$</span> this month
           </p>
         </div>
 
@@ -100,7 +203,7 @@ const AffiliateHeader = () => {
 
         <div className={styles.linkBox}>
           <p className={styles.url}>
-            https://www.loremipsumdolor.com/7929b2da3e6b0867c8183d1fa1c03555
+            https://nefentus.com/signup?affiliate={localStorage.getItem("affiliateLink")}
           </p>
           <img src={UrlLink} alt="" />
         </div>
@@ -238,7 +341,7 @@ const Graph = () => {
       <div className={styles.info}>
         <div className={styles.left}>
           <div className={styles.label}>Incomes</div>
-          <div className={styles.graphAmount}>$58,345,190</div>
+          <div className={styles.graphAmount}>$0</div>
         </div>
 
         <div className={styles.datePicker}>
@@ -248,7 +351,7 @@ const Graph = () => {
         </div>
       </div>
 
-      <Line options={options} data={data} />
+      {/*<Line options={options} data={null} />*/}
     </div>
   );
 };

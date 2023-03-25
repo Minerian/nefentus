@@ -3,6 +3,7 @@ import Layout from "./../components/layout/layout";
 import Image from "../assets/image/affiliate.svg";
 import Why from "./../components/why/why";
 import Compare from "../components/compare/compare";
+import { useEffect } from "react";
 
 const content = [
   {
@@ -28,6 +29,41 @@ const content = [
 ];
 
 const Affiliate = () => {
+
+  useEffect(() => {
+
+    checkPermissions();
+  });
+
+  const checkPermissions = async () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      // Der Benutzer ist nicht angemeldet
+      return;
+    }
+
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+
+    fetch('http://localhost:8080/api/test/user', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+    
+  };
+
+
+
   return (
     <div>
       <Layout
