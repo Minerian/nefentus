@@ -1,10 +1,9 @@
 {
   "files": {
-    "main.css": "/nefentus/static/css/main.6dfef882.css",
-    "main.js": "/nefentus/static/js/main.6aaeed29.js",
+    "main.css": "/nefentus/static/css/main.d95179f4.css",
+    "main.js": "/nefentus/static/js/main.724dfd78.js",
     "static/media/introduction.mp4": "/nefentus/static/media/introduction.9f95a60485070b478523.mp4",
     "static/media/gradient.png": "/nefentus/static/media/gradient.7a3809bf1380d22bf1bb.png",
-    "static/media/image2.png": "/nefentus/static/media/image2.620d389d1cfcb28e1ffc.png",
     "static/media/image3.png": "/nefentus/static/media/image3.82fedc0a7a57290abab8.png",
     "static/media/grow3.svg": "/nefentus/static/media/grow3.dcbf3a1ea35c7d68879fa83d03556547.svg",
     "static/media/dummy.png": "/nefentus/static/media/dummy.733ca248575b3d54cf82.png",
@@ -17,6 +16,7 @@
     "static/media/phone.mp4": "/nefentus/static/media/phone.6716a1a81e02dca6f71b.mp4",
     "static/media/graphic2.svg": "/nefentus/static/media/graphic2.cafc72fe83f1835cf0b124f0c6f395aa.svg",
     "static/media/bag.png": "/nefentus/static/media/bag.bac3d39d3097230ffe14.png",
+    "static/media/image2.png": "/nefentus/static/media/image2.1935c7bf856e2209d15f.png",
     "static/media/fr.svg": "/nefentus/static/media/fr.e137c52b97bd58a1c820e2d514cc4a89.svg",
     "static/media/wallet.png": "/nefentus/static/media/wallet.328931874d1a01bbfa22.png",
     "static/media/case.png": "/nefentus/static/media/case.a9a513e07980434fd9c9.png",
@@ -69,11 +69,11 @@
     "static/media/whiteCheckmark.svg": "/nefentus/static/media/whiteCheckmark.c470fc13b6a43973af10748916e8d093.svg",
     "static/media/circle.svg": "/nefentus/static/media/circle.50122e71c27d62dbc89506214927765d.svg",
     "static/media/line.svg": "/nefentus/static/media/line.a645ec91e6e91d5d1648b21f66ccac3c.svg",
-    "main.6dfef882.css.map": "/nefentus/static/css/main.6dfef882.css.map",
-    "main.6aaeed29.js.map": "/nefentus/static/js/main.6aaeed29.js.map"
+    "main.d95179f4.css.map": "/nefentus/static/css/main.d95179f4.css.map",
+    "main.724dfd78.js.map": "/nefentus/static/js/main.724dfd78.js.map"
   },
   "entrypoints": [
-    "static/css/main.6dfef882.css",
-    "static/js/main.6aaeed29.js"
+    "static/css/main.d95179f4.css",
+    "static/js/main.724dfd78.js"
   ]
 }
