@@ -14,6 +14,8 @@ import UrlLink from "../../assets/icon/link.svg";
 
 import { Line } from "react-chartjs-2";
 
+import backend_API from "../../api/backendAPI"
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -28,50 +30,29 @@ import { useEffect, useState } from "react";
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 const AffiliateBody = () => {
+
+  const backendAPI = new backend_API();
+
   const navigate = useNavigate();
 
   const checkPermissions = async () => {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      navigate("/login");
-      // Der Benutzer ist nicht angemeldet
-      return;
+    try {
+      const response = await backendAPI.checkPermissions();
+      if (!response) {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error(error);
     }
-
-    fetch("http://localhost:8080/api/dashboards/data/affiliate", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   };
 
   const setDashboard = async () => {
-    fetch("http://localhost:8080/api/dashboards/data/affiliate/totalStats", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: localStorage.getItem("affiliateLink"),
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        fillCards(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    try {
+      const data = await backendAPI.getAffiliateDashboardTotalStats();
+      fillCards(data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const [signUps, setSignUps] = useState(0);
@@ -111,7 +92,7 @@ const AffiliateBody = () => {
   useEffect(() => {
     checkPermissions();
     setDashboard();
-  });
+  }, []);
 
   return (
     <div className="container">
@@ -138,22 +119,15 @@ const AffiliateBody = () => {
 export default AffiliateBody;
 
 const AffiliateNavigation = () => {
+
+  const backendAPI = new backend_API();
+
   const logOut = async () => {
-    const token = localStorage.getItem("token");
-    fetch("http://localhost:8080/api/auth/signout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => {
-        console.log(response);
-        localStorage.clear();
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    try {
+      const data = await backendAPI.signout();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

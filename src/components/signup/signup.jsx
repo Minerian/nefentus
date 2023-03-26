@@ -6,40 +6,13 @@ import styles from "./signup.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import backendAPI from "../../api/backendAPI"
 
 const Signup = () => {
   const { t } = useTranslation();
-
-  const count = (affiliate) => {
-    fetch('http://localhost:8080/api/dashboards/data/affiliate/count', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: affiliate,
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-
-    if (urlParams.has("affiliate")) {
-      const paramValue = urlParams.get("affiliate");
-      setAffiliate(paramValue);
-      count(paramValue);
-      console.log("Param gefunden: ", paramValue);
-    }
-  }, []);
   const [errorMessage, setErrorMessage] = useState(null);
   const [message, setMessage] = useState(null);
   const [affiliate, setAffiliate] = useState("");
-
   const navigate = useNavigate();
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
@@ -47,119 +20,119 @@ const Signup = () => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [UseOption, setUseOption] = useState("Choose Options");
+  const api = new backendAPI();
 
-async function submitForm() {
-  const requestData = {
-    firstName: FirstName,
-    lastName: LastName,
-    telNr: Telefon,
-    email: Email,
-    password: Password,
-    roles: [UseOption],
-    affiliate: affiliate,
-  };
-
-  try {
-    const response = await fetch("http://127.0.0.1:8080/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestData),
-    });
-
-      if (!response.ok) {
-        setErrorMessage(`HTTP error: ${response.status}`);
-        throw new Error(`HTTP error: ${response.status}`);
-      }
-      const responseBody = await response.json();
-      console.log("Response from server:", responseBody);
-      setMessage("Please confirm your email address to proceed.");
-    } catch (error) {
-      setErrorMessage("Error submitting form:", error);
-      console.error("Error submitting form:", error);
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("affiliate")) {
+      const paramValue = urlParams.get("affiliate");
+      setAffiliate(paramValue);
+      api.countAffiliate(paramValue);
     }
-  }
+  }, []);
 
-  function handleClick() {
-    submitForm();
-  }
+  async function submitForm() {
+    const requestData = {
+      firstName: FirstName,
+      lastName: LastName,
+      telNr: Telefon,
+      email: Email,
+      password: Password,
+      roles: [UseOption],
+      affiliate: affiliate,
+    };
 
-  return (
-    <div className={styles.signup}>
-      <div className={styles.left}>
-        <img src={Logo} alt="" />
+    const response = await api.register(requestData);
+    console.log(response);
+    if (!response.ok) {
+      setErrorMessage(`HTTP error: ${response.status}`);
+      throw new Error(`HTTP error: ${response.status}`);
+    }else{
+      console.log("Response from server:", response);
+      setMessage("Please confirm your email address to proceed.");  
+    }
+  
+}
 
-        <div>
-          <h2>
-            {t("signUp.titleP1")}
-            <br />
-            {t("signUp.titleP2")}
-          </h2>
-          <p>{t("signUp.description")}</p>
+function handleClick() {
+  submitForm();
+}
 
-          <p>
-            {t("signUp.info")}
-            <u>
-              <Link to="/login">{t("signUp.infoButton")}</Link>
-            </u>
-          </p>
-        </div>
-      </div>
+return (
+  <div className={styles.signup}>
+    <div className={styles.left}>
+      <img src={Logo} alt="" />
 
-      <div className={styles.right}>
-        {errorMessage && (
-          <div className={styles.errormessagecontainer}>
-            <p>{errorMessage}</p>
-          </div>
-        )}
-        {message && (
-          <div className={styles.messagecontainer}>
-            <p>{message}</p>
-          </div>
-        )}
-        <div className={styles.row}>
-          <Input
-            label={t("signUp.firstNameLabel")}
-            placeholder={t("signUp.firstNamePlaceholder")}
-            value={FirstName}
-            setState={setFirstName}
-          />
-          <Input
-            label={t("signUp.lastNameLabel")}
-            placeholder={t("signUp.lastNamePlaceholder")}
-            value={LastName}
-            setState={setLastName}
-          />
-        </div>
-        <Input
-          label={t("signUp.telefonLabel")}
-          placeholder="(979) 268-4143"
-          value={Telefon}
-          setState={setTelefon}
-        />
-        <Input
-          label={t("signUp.emailLabel")}
-          placeholder={t("signUp.emailPlaceholder")}
-          value={Email}
-          setState={setEmail}
-        />
-        <Input
-          label={t("signUp.passwordLabel")}
-          placeholder={t("signUp.passwordPlaceholder")}
-          value={Password}
-          setState={setPassword}
-          secure
-        />
-        <Options value={UseOption} setValue={setUseOption} />
-        <Button className={styles.button} onClick={handleClick}>
-          {t("signUp.formButton")}
-        </Button>
+      <div>
+        <h2>
+          {t("signUp.titleP1")}
+          <br />
+          {t("signUp.titleP2")}
+        </h2>
+        <p>{t("signUp.description")}</p>
 
-        <p>{t("signUp.formInfo")}</p>
+        <p>
+          {t("signUp.info")}
+          <u>
+            <Link to="/login">{t("signUp.infoButton")}</Link>
+          </u>
+        </p>
       </div>
     </div>
-  );
+
+    <div className={styles.right}>
+      {errorMessage && (
+        <div className={styles.errormessagecontainer}>
+          <p>{errorMessage}</p>
+        </div>
+      )}
+      {message && (
+        <div className={styles.messagecontainer}>
+          <p>{message}</p>
+        </div>
+      )}
+      <div className={styles.row}>
+        <Input
+          label={t("signUp.firstNameLabel")}
+          placeholder={t("signUp.firstNamePlaceholder")}
+          value={FirstName}
+          setState={setFirstName}
+        />
+        <Input
+          label={t("signUp.lastNameLabel")}
+          placeholder={t("signUp.lastNamePlaceholder")}
+          value={LastName}
+          setState={setLastName}
+        />
+      </div>
+      <Input
+        label={t("signUp.telefonLabel")}
+        placeholder="(979) 268-4143"
+        value={Telefon}
+        setState={setTelefon}
+      />
+      <Input
+        label={t("signUp.emailLabel")}
+        placeholder={t("signUp.emailPlaceholder")}
+        value={Email}
+        setState={setEmail}
+      />
+      <Input
+        label={t("signUp.passwordLabel")}
+        placeholder={t("signUp.passwordPlaceholder")}
+        value={Password}
+        setState={setPassword}
+        secure
+      />
+      <Options value={UseOption} setValue={setUseOption} />
+      <Button className={styles.button} onClick={handleClick}>
+        {t("signUp.formButton")}
+      </Button>
+
+      <p>{t("signUp.formInfo")}</p>
+    </div>
+  </div>
+);
 };
 
 export default Signup;
