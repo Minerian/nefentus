@@ -39,7 +39,7 @@ const AffiliateBody = () => {
       return;
     }
 
-    fetch("http://localhost:8080/api/dashboards/affiliate", {
+    fetch("http://localhost:8080/api/dashboards/data/affiliate", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const AffiliateBody = () => {
   };
 
   const setDashboard = async () => {
-    fetch("http://localhost:8080/api/dashboard/data/affiliate/totalStats", {
+    fetch("http://localhost:8080/api/dashboards/data/affiliate/totalStats", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
