@@ -68,7 +68,10 @@
         "position": "Head of Compliance",
         "message": "Switching to Nefentus was the best decision I made for my payments!"
       }
-    ]
+    ],
+    "reviewTitleP1": "Hear Directly from ",
+    "reviewTitleP2": "Our Customers",
+    "reviewSubtitle": "Reviews"
   },
   "payment": {
     "heroHeading": "Accept Crypto in less than 5 minutes",

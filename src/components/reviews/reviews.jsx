@@ -27,10 +27,12 @@ const Reviews = () => {
   return (
     <div className={`container  ${styles.reviews}`}>
       <HeadingCenter
-        subtitle="Reviews"
+        subtitle={t("home.reviewSubtitle")}
         title={
           <>
-            Hear Directly from <br /> Our Customers
+            {t("home.reviewTitleP1")}
+            <br />
+            {t("home.reviewTitleP2")}
           </>
         }
       />
