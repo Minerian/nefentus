@@ -5,19 +5,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import IntroductionVideo from "../../assets/video/introduction.mp4";
-
-const list = [
-  "Introduction",
-  "Everything about payments",
-  "Everything around the topic of products",
-  "FAQ",
-  "Nefentus Basics",
-  "Nefentus Advanced",
-  "Everything around the topic Affiliate",
-];
+import { useTranslation } from "react-i18next";
 
 const SupportBody = () => {
   const [active, setActive] = useState(0);
+
+  const { t } = useTranslation();
+
+  const content = t("support.sideBar", { returnObjects: true });
 
   const handleChange = (index) => {
     setActive(index);
@@ -34,7 +29,7 @@ const SupportBody = () => {
   return (
     <div className={` ${styles.section}`}>
       <div className="container">
-        <h2>Support Center Questions:</h2>
+        <h2>{t("support.title")}</h2>
         <div className={`${styles.body}`}>
           <div className={styles.left} id="content">
             {active === 0 && <Introduction />}
@@ -42,7 +37,7 @@ const SupportBody = () => {
           </div>
           <div className={styles.right}>
             <div className={styles.list}>
-              {list.map((item, index) => (
+              {content.map((item, index) => (
                 <div
                   onClick={() => handleChange(index)}
                   className={`card ${styles.card} ${
@@ -75,58 +70,54 @@ const SupportBody = () => {
 export default SupportBody;
 
 const Introduction = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.content}>
-      <h3>Welcome to the support page from Nefentus Solutions!</h3>
+      <h3>{t("support.introduction.title")}</h3>
       <div className={styles.leftContent}>
         <p className={styles.description}>
-          You can find all the information regarding Nefentus Solutions in this
-          area. You can find detailed information on what you can do, links to
-          frequently asked questions and popular blog posts, as well as a
-          getting started guide that leads you through using the product
-          step-by-step.
+          {t("support.introduction.mainDescription")}
         </p>
         <video controls>
           <source src={IntroductionVideo} type="video/mp4" />
         </video>
-        <p className={styles.baner}>
-          We've structured the documentation page into four groups:
-        </p>
+        <p className={styles.baner}>{t("support.introduction.banner")}</p>
 
         <p className={styles.description}>
-          1. Essential information about the product
+          {t("support.introduction.description1")}
         </p>
         <p className={styles.description}>
-          2. Popular articles about product features
+          {t("support.introduction.description2")}
         </p>
         <p className={styles.description}>
-          3. Additional resources you might find interesting
+          {t("support.introduction.description3")}
         </p>
-        <p className={styles.description}>4. Ways to get in contact with us</p>
+        <p className={styles.description}>
+          {t("support.introduction.description4")}
+        </p>
       </div>
     </div>
   );
 };
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.contact}>
-      <h3>For more help, contact us!</h3>
-      <p className={styles.description}>
-        If you prefer a more personal touch, we're always here to help via phone
-        or email. Whether you have a quick question or need more in-depth
-        assistance, we're just a call or click away.
-      </p>
+      <h3>{t("support.contact.title")}</h3>
+      <p className={styles.description}>{t("support.contact.description")}</p>
 
       <div className={styles.cards}>
         <div className="card">
           <div className={styles.label}>
             <Link to="https://www.instagram.com/helpdesk.nefentus/">
-              Write on Instagram
+              {t("support.contact.button1Text")}{" "}
             </Link>
           </div>
           <div className={styles.info}>
-            You can write on instagram on{" "}
+            {t("support.contact.button1Description")}{" "}
             <u>
               <Link to="https://www.instagram.com/helpdesk.nefentus/">
                 helpdesk.nefentus
@@ -137,7 +128,7 @@ const Contact = () => {
         <div className="card">
           <div className={styles.label}>support@nefentus.com</div>
           <div className={styles.info}>
-            Your request will be answered within one day.
+            {t("support.contact.button2Description")}
           </div>
         </div>
       </div>

@@ -4,34 +4,10 @@ import Image from "../assets/image/affiliate.svg";
 import Why from "./../components/why/why";
 import Compare from "../components/compare/compare";
 import { useEffect } from "react";
-
-const content = [
-  {
-    title: "Overview",
-    description:
-      "At a glance, see how much you have earned and how many transactions have been completed.",
-  },
-  {
-    title: "Leaderboard",
-    description:
-      "Compare your performance to other affiliates and get listed on the leaderboard.",
-  },
-  {
-    title: "Goal function",
-    description:
-      "Track your commissions and compare revenues for your promoted products.",
-  },
-  {
-    title: "Mobile App",
-    description:
-      "Keep track of your commissions and get notified about sales with our app.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const Affiliate = () => {
-
   useEffect(() => {
-
     checkPermissions();
   });
 
@@ -46,35 +22,32 @@ const Affiliate = () => {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
 
-    fetch('http://localhost:8080/api/test/user', {
-      method: 'GET',
+    fetch("http://localhost:8080/api/test/user", {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     })
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-    
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
+  const { t } = useTranslation();
 
+  const content = t("affiliate.whyContent", { returnObjects: true });
 
   return (
     <div>
       <Layout
-        subtitle="Affiliate Program"
-        heading="Earn commissions effortlessly "
-        description="Sign up for Nefentus' affiliate program for free and start earning commissions on autopilot."
-        button={
-          <>
-            <p>Create your account</p>
-          </>
-        }
+        subtitle={t("affiliate.heroSubtitle")}
+        heading={t("affiliate.heroHeading")}
+        description={t("affiliate.heroDescription")}
+        button={<>{t("affiliate.heroButton")}</>}
         image={Image}
         list
       />
@@ -82,7 +55,9 @@ const Affiliate = () => {
       <Why
         title={
           <>
-            Products Tailored <br /> for Affiliate
+            {t("affiliate.whyTitleP1")}
+            <br />
+            {t("affiliate.whyTitleP2")}
           </>
         }
         content={content}

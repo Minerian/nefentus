@@ -240,6 +240,95 @@
     "infoButton": "Sign up",
     "forgot": "Forgot password?"
   },
+  "affiliate": {
+    "heroSubtitle": "Affiliate Program",
+    "heroHeading": "Earn commissions effortlessly ",
+    "heroDescription": "Sign up for Nefentus' affiliate program for free and start earning commissions on autopilot.",
+    "heroButton": "Create your account",
+    "affiliateList": [
+      "No investment required to join",
+      "Earn from products you believe",
+      "Safe & Secure",
+      "Potential for unlimited earnings"
+    ],
+    "whyTitleP1": "Products Tailored ",
+    "whyTitleP2": "for Affiliate",
+    "whyContent": [
+      {
+        "title": "Overview",
+        "description": "At a glance, see how much you have earned and how many transactions have been completed."
+      },
+      {
+        "title": "Leaderboard",
+        "description": "Compare your performance to other affiliates and get listed on the leaderboard."
+      },
+      {
+        "title": "Goal function",
+        "description": "Track your commissions and compare revenues for your promoted products."
+      },
+      {
+        "title": "Mobile App",
+        "description": "Keep track of your commissions and get notified about sales with our app."
+      }
+    ],
+    "compareContent": [
+      {
+        "type": "cons",
+        "title": "Difficulty in standing out among competitors in a crowded market",
+        "description": "With so many affiliate programs and traditional products available, it can be challenging for affiliates to differentiate themselves and their promotions from the competition. This can lead to lower engagement and sales, making it harder to earn commissions."
+      },
+      {
+        "title": "Difficulty in standing out among competitors in a crowded market",
+        "description": "Nefentus is a revolutionary platfomr and offers its affiliates a range of marketing materials, including banners and landing pages, to help them differentiate themselves and stand out in a crowded market. Additionally, the program offers attractive commissions and a range of products and services to promote, giving affiliates a competitive edge."
+      },
+      {
+        "type": "cons",
+        "title": "Dependence on the performance of the products or services",
+        "description": "Affiliates are at the mercy of the performance and quality of the products or services they are promoting. If the product or service underperforms, it can negatively impact an affiliate's reputation and earnings potential."
+      },
+      {
+        "title": "Dependence on the performance of the products or services",
+        "description": "Nefentus is committed to providing high-quality, reliable products and services to its customers, which ultimately benefits its affiliates by maintaining a positive reputation and ensuring customer satisfaction. We have been growing  quickly and have high levels of customer satisfaction."
+      },
+      {
+        "type": "cons",
+        "title": "Limited control over the product or service, including pricing",
+        "description": "Traditionally affiliates  have limited control over the products or services they promote, including pricing, customer support, and other aspects of the customer experience. This can lead to frustration or dissatisfaction among customers, which can ultimately impact an affiliate's earnings potential."
+      },
+      {
+        "title": "Limited control over the product or service, including pricing",
+        "description": "Nefentus' customer support team is available 24/7 to handle any issues or concerns that customers may have, ensuring a positive customer experience. We also offer very competitive pricing, ensuring that our products and services remain attractive to customers and affiliates alike."
+      }
+    ]
+  },
+  "support": {
+    "title": "Support Center Questions:",
+    "sideBar": [
+      "Introduction",
+      "Everything about payments",
+      "Everything around the topic of products",
+      "FAQ",
+      "Nefentus Basics",
+      "Nefentus Advanced",
+      "Everything around the topic Affiliate"
+    ],
+    "contact": {
+      "title": "For more help, contact us!",
+      "description": "If you prefer a more personal touch, we're always here to help via phone or email. Whether you have a quick question or need more in-depth assistance, we're just a call or click away.",
+      "button1Text": "Write on Instagram",
+      "button1Description": "You can write on instagram on",
+      "button2Description": "Your request will be answered within one day."
+    },
+    "introduction": {
+      "title": "Welcome to the support page from Nefentus Solutions!",
+      "mainDescription": "You can find all the information regarding Nefentus Solutions in this area. You can find detailed information on what you can do, links to frequently asked questions and popular blog posts, as well as a getting started guide that leads you through using the product step-by-step.",
+      "banner": "We've structured the documentation page into four groups:",
+      "description1": "1. Essential information about the product",
+      "description2": "2. Popular articles about product features",
+      "description3": "3. Additional resources you might find interesting",
+      "description4": "4. Ways to get in contact with us"
+    }
+  },
   "contact": {
     "title": "Free Onboarding Call",
     "description": "At Nefentus, we believe in supporting our clients every step of the way. That's why we offer free onboarding calls to assist with registration and setup. Whether you're a bar owner, consultant, coach, trainer, speaker, or agency owner, we're committed to finding the perfect solution for your unique needs.",

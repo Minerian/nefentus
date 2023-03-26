@@ -8,7 +8,7 @@ import FR from "../../../assets/icon/flags/fr.svg";
 import styles from "./languages.module.css";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 let list = [
   {
@@ -40,6 +40,7 @@ let list = [
 
 const Languages = () => {
   const query = useLocation();
+  const [langList, setLangList] = useState(list);
 
   const [language, setLanguage] = useState("EN");
 
@@ -49,26 +50,21 @@ const Languages = () => {
     i18n.changeLanguage(code);
 
     setLanguage(code.toUpperCase());
-
-    console.log(code);
   };
 
-  let listForRender = list;
+  useEffect(() => {
+    if (query.pathname === "/support") {
+      setLangList(list.slice(0, 2));
 
-  if (query.pathname === "/support") {
-    listForRender = list.slice(0, 2);
-
-    if (language.toLowerCase() === "en" || language.toLowerCase() === "de") {
-    } else {
       handleTrans("en");
-    }
-  } else if (query.pathname === "/privacy" || query.pathname === "/imprint") {
-    listForRender = list.slice(0, 1);
+    } else if (query.pathname === "/privacy" || query.pathname === "/imprint") {
+      setLangList(list.slice(0, 1));
 
-    handleTrans("en");
-  } else {
-    listForRender = list;
-  }
+      handleTrans("en");
+    } else {
+      setLangList(list);
+    }
+  }, []);
 
   return (
     <div className={styles.languages}>
@@ -84,7 +80,7 @@ const Languages = () => {
       </div>
       <div className={`${styles.dropdown}`}>
         <div className={`${styles.body} card`}>
-          {listForRender.map((item, index) => (
+          {langList.map((item, index) => (
             <div
               key={index}
               className={styles.item}

@@ -23,6 +23,8 @@ const Layout = ({
 }) => {
   const { t } = useTranslation();
 
+  const content = t("affiliate.affiliateList", { returnObjects: true });
+
   return (
     <div
       className={`${styles.layout} ${heading ? styles.hero : ""} ${
@@ -47,19 +49,19 @@ const Layout = ({
           <div className={styles.list}>
             <div>
               <img src={Checkmark} alt="" />
-              <p>No investment required to join</p>
+              <p>{content[0]}</p>
             </div>
             <div>
               <img src={Checkmark} alt="" />
-              <p>Earn from products you believe</p>
+              <p>{content[1]}</p>
             </div>
             <div>
               <img src={Checkmark} alt="" />
-              <p>Safe & Secure</p>
+              <p>{content[2]}</p>
             </div>
             <div>
               <img src={Checkmark} alt="" />
-              <p>Potential for unlimited earnings</p>
+              <p>{content[3]}</p>
             </div>
           </div>
         )}
