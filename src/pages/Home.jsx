@@ -7,11 +7,23 @@ import Logos from "../components/logos/logos";
 import Cards from "../components/cards/cards";
 import About from "../components/about/about";
 import Reviews from "../components/reviews/reviews";
+import backendAPI from "../api/backendAPI"
 
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 const Home = () => {
   const { t, i18n } = useTranslation();
+  const api = new backendAPI();
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("affiliate")) {
+      const paramValue = urlParams.get("affiliate");
+      localStorage.setItem("affiliateJoined" , paramValue);
+      api.countAffiliate(paramValue);
+    }
+  }, []);
 
   return (
     <>

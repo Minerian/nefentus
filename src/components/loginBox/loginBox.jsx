@@ -7,13 +7,15 @@ import { useState, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import backend_API from "../../api/backendAPI";
+
 const LoginBox = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [message, setMessage] = useState(null);
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  const backendAPI = new backend_API();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -26,57 +28,20 @@ const LoginBox = () => {
   }, []);
 
   async function loginUser(username1, password1) {
-    const url = "http://127.0.0.1:8080/api/auth/login";
-
-    const loginRequest = {
-      email: username1,
-      password: password1,
-    };
-
-    console.log(loginRequest);
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginRequest),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          setErrorMessage("Login failed");
-          throw new Error("Login failed");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        localStorage.setItem("token", data.jwtToken);
-        localStorage.setItem("email", data.email);
-        localStorage.setItem("affiliateLink", data.affiliateLink);
-        navigate("/dashboard/affiliate");
-      })
-      .catch((error) => {
-        setErrorMessage("Error:", error);
-        console.error("Error:", error);
-      });
+    try {
+      const data = await backendAPI.login(username1, password1);
+      navigate("/dashboard/affiliate");
+    } catch (error) {
+      setErrorMessage("Error:", error);
+      console.error("Error:", error);
+    }
   }
 
   const activateUser = async (token) => {
     try {
-      const response = await fetch("http://127.0.0.1:8080/api/auth/activate", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: token,
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setMessage("Account successfully activated");
-        console.log("Account successfully activated:", data);
-      } else {
-        console.error("Error activating account:", data);
-      }
+      const data = await backendAPI.activateAccount(token);
+      setMessage("Account successfully activated");
+      console.log("Account successfully activated:", data);
     } catch (error) {
       setErrorMessage("Error: ", error);
       console.error("Fetch error:", error);
@@ -102,7 +67,7 @@ const LoginBox = () => {
             )}
             {message && (
               <div className={styles.messagecontainer}>
-                <p>{message}</p>
+                <p style={{ color: "green" }}>{message}</p>
               </div>
             )}
           </div>
