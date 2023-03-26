@@ -11,7 +11,7 @@ const Signup = () => {
   const { t } = useTranslation();
 
   const count = (affiliate) => {
-    fetch('http://localhost:8080/api/dashboard/data/affiliate/count', {
+    fetch('http://localhost:8080/api/dashboards/data/affiliate/count', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -55,13 +55,12 @@ async function submitForm() {
     telNr: Telefon,
     email: Email,
     password: Password,
-    role: [UseOption],
+    roles: [UseOption],
     affiliate: affiliate,
-    username: Email, // Optional: Verwenden Sie den Teil vor dem @-Zeichen der E-Mail als Benutzername
   };
 
   try {
-    const response = await fetch("http://127.0.0.1:8080/api/auth/signup", {
+    const response = await fetch("http://127.0.0.1:8080/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
