@@ -9,6 +9,7 @@ import Video1 from "../../assets/video/phone.mp4";
 import Video2 from "../../assets/video/chart.mp4";
 import Video3 from "../../assets/video/target.mp4";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 const list = [
   {
@@ -27,6 +28,20 @@ const Cards = () => {
 
   const list2 = t("home.cardList", { returnObjects: true });
 
+  useEffect(() => {
+    const videos = document.querySelectorAll(".cardVideo");
+
+    const onLoad = () => {
+      videos.forEach((video) => video.play());
+    };
+
+    if (videos.length > 0) {
+      onLoad();
+    }
+
+    window.addEventListener("load", onLoad);
+  }, []);
+
   return (
     <div className="container break ">
       <HeadingCenter
@@ -37,7 +52,7 @@ const Cards = () => {
       <div className={styles.cards}>
         {list.map((item, index) => (
           <div className={`${styles.card} scroll card`}>
-            <video muted loop autoPlay playsInline>
+            <video className="cardVideo" muted loop playsInline>
               <source src={item.video} type="video/mp4" />
             </video>
             <p>{list2[index].title}</p>
