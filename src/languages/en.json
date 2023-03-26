@@ -37,12 +37,10 @@
     "simplifySubtitle": "Simplify",
     "simplifyTitle": "Manage crypto payments and invoicing",
     "simplifyDescription": "Our secure platform is an all-encompassing, secure platform which streamlines, automates, and facilitate various types of transactions, including traditional and digital currencies, for businesses and customers alike.",
-
     "payrollDescription": "Use our streamlined, efficient solution for managing employee compensation, including salary payments and benefit allocations.",
     "payrollSubtitle": "Process Payroll",
     "payrollTitleP1": "Grow with our",
     "payrollTitleP2": "payroll system",
-
     "aboutCard1Subtitle": "Rapid Adoption",
     "aboutCard1Title": "Users trust is reflected in their increased activity",
     "aboutCard1Description": "The growing user activity on Nefentus showcases our users' trust and the outstanding value they derive from our service. We are committed to continually delivering excellence and preserving their confidence.",
@@ -54,7 +52,6 @@
     "aboutCard3TitleP1": "Effortlessly connect ",
     "aboutCard3TitleP2": "with your other tools",
     "aboutCard3Description": "Easily integrating your existing financial stack with our platform not only enables you to access over 200 wallets for crypto payments but also allows you to leverage your current infrastructure, reduce the need for additional resources, streamline your financial operations, and gain better control over your business's financial data.",
-
     "reviewList": [
       {
         "name": "Stephan Walouch",
@@ -252,31 +249,60 @@
       {
         "label": "Overview",
         "links": [
-          { "text": "Home" },
-          { "text": "Payroll" },
-          { "text": "Payment" },
-          { "text": "Resources" },
-          { "text": "Affiliate" }
+          {
+            "text": "Home"
+          },
+          {
+            "text": "Payroll"
+          },
+          {
+            "text": "Payment"
+          },
+          {
+            "text": "Resources"
+          },
+          {
+            "text": "Affiliate"
+          }
         ]
       },
       {
         "label": "Join",
         "links": [
-          { "text": "Log in" },
-          { "text": "Sign up" },
-          { "text": "Play store" },
-          { "text": "App store" }
+          {
+            "text": "Log in"
+          },
+          {
+            "text": "Sign up"
+          },
+          {
+            "text": "Play store"
+          },
+          {
+            "text": "App store"
+          }
         ]
       },
       {
         "label": "Information",
-        "links": [{ "text": "Privacy Policy" }, { "text": "Imprint" }]
+        "links": [
+          {
+            "text": "Privacy Policy"
+          },
+          {
+            "text": "Imprint"
+          }
+        ]
       },
       {
         "label": "Company",
         "links": [
-          { "text": "office@nefentus.com" },
-          { "text": "Larnaca, Cyprus" }
+          {
+            "text": "office@nefentus.com"
+          },
+          {
+            "text": "Larnaca, Cyprus"
+          }
         ]
       }
     ]
