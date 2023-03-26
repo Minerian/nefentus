@@ -26,10 +26,10 @@ const LoginBox = () => {
   }, []);
 
   async function loginUser(username1, password1) {
-    const url = "http://127.0.0.1:8080/api/auth/signin";
+    const url = "http://127.0.0.1:8080/api/auth/login";
 
     const loginRequest = {
-      username: username1,
+      email: username1,
       password: password1,
     };
 
@@ -50,9 +50,7 @@ const LoginBox = () => {
         return response.json();
       })
       .then((data) => {
-        const jwtCookie = data.jwtToken;
-        const token = jwtCookie.split(";")[0].split("=")[1];
-        localStorage.setItem("token", token);
+        localStorage.setItem("token", data.jwtToken);
         localStorage.setItem("email", data.email);
         localStorage.setItem("affiliateLink", data.affiliateLink);
         navigate("/dashboard/affiliate");

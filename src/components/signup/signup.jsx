@@ -11,8 +11,8 @@ const Signup = () => {
   const { t } = useTranslation();
 
   const count = (affiliate) => {
-    fetch("http://localhost:8080/api/dashboard/data/affiliate/count", {
-      method: "POST",
+    fetch('http://localhost:8080/api/dashboard/data/affiliate/count', {
+      method: 'POST',
       headers: {
         "Content-Type": "application/json",
       },
@@ -48,26 +48,26 @@ const Signup = () => {
   const [Password, setPassword] = useState("");
   const [UseOption, setUseOption] = useState("Choose Options");
 
-  async function submitForm() {
-    const requestData = {
-      firstName: FirstName,
-      lastName: LastName,
-      telNr: Telefon,
-      email: Email,
-      password: Password,
-      role: [UseOption],
-      affiliate: affiliate,
-      username: Email, // Optional: Verwenden Sie den Teil vor dem @-Zeichen der E-Mail als Benutzername
-    };
+async function submitForm() {
+  const requestData = {
+    firstName: FirstName,
+    lastName: LastName,
+    telNr: Telefon,
+    email: Email,
+    password: Password,
+    role: [UseOption],
+    affiliate: affiliate,
+    username: Email, // Optional: Verwenden Sie den Teil vor dem @-Zeichen der E-Mail als Benutzername
+  };
 
-    try {
-      const response = await fetch("http://127.0.0.1:8080/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestData),
-      });
+  try {
+    const response = await fetch("http://127.0.0.1:8080/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestData),
+    });
 
       if (!response.ok) {
         setErrorMessage(`HTTP error: ${response.status}`);

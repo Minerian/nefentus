@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      <HashRouter>
+      <BrowserRouter>
         <ScrollToTop>
           <Routes>
             <Route
@@ -117,7 +117,7 @@ function App() {
             </Route>
           </Routes>
         </ScrollToTop>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 }
