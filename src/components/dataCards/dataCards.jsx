@@ -6,63 +6,33 @@ import Image3 from "../../assets/icon/automatons.svg";
 import Image4 from "../../assets/icon/products.svg";
 
 import Checkmark from "../../assets/icon/singleCheckmark.svg";
+import { useTranslation } from "react-i18next";
 
-const content = [
+const imageContent = [
   {
     icon: Image1,
-    title: "3.5% Commission",
-    description:
-      "Experience unparalleled payment processing, featuring strong conversion rates, popular and intuitive payment methods, and fast, safe transactions.",
-    list: [
-      "Strong conversion rates",
-      "Popular payment methods",
-      "Fast & Safe",
-      "Intuitive payment process",
-    ],
   },
   {
     icon: Image2,
-    title: "Smart Analytics",
-    description:
-      "We calculate key metrics for your business and keep track of your growth effortlessly.",
-    list: [
-      "See Measurable growth",
-      "Optimize processes",
-      "Access analytics",
-      "Gain Insights",
-    ],
   },
   {
     icon: Image3,
-    title: "Automatons",
-    description:
-      "Nefentus saves you from manual invoicing and simplifies your accounting.",
-    list: [
-      "Automated invoicing",
-      "Insightful dashboards",
-      "Financial overview",
-      "Completely complient ",
-    ],
   },
   {
     icon: Image4,
-    title: "Digital Products",
-    description:
-      "Securely upload digital products once to Nefentus and make them available for download after purchase, without any third-party providers.",
-    list: [
-      "Secure your Content",
-      "Access to digital products ",
-      "Have Your Own cloud",
-    ],
   },
 ];
 
 const DataCards = () => {
+  const { t } = useTranslation();
+
+  const content = t("payment.dataContent", { returnObjects: true });
+
   return (
     <div className={`container break ${styles.section}`}>
-      {content.map((item) => (
+      {content.map((item, index) => (
         <Card
-          image={item.icon}
+          image={imageContent[index].icon}
           title={item.title}
           list={item.list}
           description={item.description}

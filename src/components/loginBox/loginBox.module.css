@@ -74,6 +74,10 @@
   color: var(--gray-color);
 }
 
+.info p {
+  font-size: 1.2rem !important;
+}
+
 @media (max-width: 650px) {
   .login {
     margin: 0 2.5rem;
@@ -85,5 +89,9 @@
 
   .login h3 {
     font-size: 2.2rem;
+  }
+
+  .info p {
+    font-size: 1rem !important;
   }
 }

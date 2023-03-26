@@ -49,14 +49,23 @@ const Languages = () => {
     i18n.changeLanguage(code);
 
     setLanguage(code.toUpperCase());
+
+    console.log(code);
   };
 
   let listForRender = list;
 
   if (query.pathname === "/support") {
     listForRender = list.slice(0, 2);
+
+    if (language.toLowerCase() === "en" || language.toLowerCase() === "de") {
+    } else {
+      handleTrans("en");
+    }
   } else if (query.pathname === "/privacy" || query.pathname === "/imprint") {
     listForRender = list.slice(0, 1);
+
+    handleTrans("en");
   } else {
     listForRender = list;
   }

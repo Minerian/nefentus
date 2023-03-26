@@ -15,37 +15,24 @@ import Logo4 from "../assets/icon/methods/logo4.svg";
 import Logo5 from "../assets/icon/methods/logo5.svg";
 import Logo6 from "../assets/icon/methods/logo6.svg";
 import Logo7 from "../assets/icon/methods/logo7.svg";
+import { useTranslation } from "react-i18next";
 
 const list = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7];
 
-const content = [
-  {
-    title: "Made in Europe",
-    description:
-      "Our in-house team of expert IT specialists continuously develops and improves Nefentus to the highest standards,",
-  },
-  {
-    title: "GDPR compliant",
-    description:
-      "We prioritize data protection, adhering to the highest security and privacy standards to ensure the protection of your company and customers' data.",
-  },
-  {
-    title: "Secure",
-    description:
-      "With our powerful and secure servers that offer 100% availability, you can trust that your website will always be accessible, and your data will always be safe.",
-  },
-];
-
 const Payment = () => {
+  const { t } = useTranslation();
+
+  const content = t("payment.whyContent", { returnObjects: true });
+
   return (
     <div>
       <Circle />
       <Layout
-        heading="Accept Crypto in less than 5 minutes"
-        description="Experience the future of finance by revolutionizing your invoicing and payment processes with our advanced automation tools and secure crypto-based checkouts, simplifying financial management and maximizing revenue potential."
+        heading={t("payment.heroHeading")}
+        description={t("payment.heroDescription")}
         button={
           <>
-            <p>Start now, it’s free</p>
+            <p>{t("payment.heroButton")}</p>
             <img src={Arrow} alt="" />
           </>
         }
@@ -54,17 +41,19 @@ const Payment = () => {
 
       <Grow />
       <IconRow
-        subtitle="Dont Be Left Behind"
+        subtitle={t("payment.iconSubtitle")}
         title={
           <>
-            Adopt the Payment <br /> that Power the Future
+            {t("payment.iconTitleP1")}
+            <br />
+            {t("payment.iconTitleP2")}
           </>
         }
-        description="We offer a diverse range of payment options, including popular cryptocurrencies like Bitcoin, Ethereum, Ripple, and USDT, to help you effortlessly sell your products and services to a global audience. Our platform's flexibility and scalability enable you to customize your payment capabilities and stay ahead of the curve in today's rapidly evolving payment landscape. Join us today and take your business to the next level."
+        description={t("payment.iconDescription")}
         list={list}
       />
 
-      <Why title="Why Nefentus?" content={content} />
+      <Why title={t("payment.whyTitle")} content={content} />
       <DataCards />
 
       <PaymentCards />

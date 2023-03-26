@@ -2,26 +2,26 @@ import styles from "./payrollHero.module.css";
 import HeadingCenter from "./../headingCenter/headingCenter";
 
 import Image from "../../assets/image/dummy.png";
+import { useTranslation } from "react-i18next";
 
 const PayrollHero = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={`${styles.section} payroll container`}>
       <div>
         <HeadingCenter
           title={
             <>
-              The most effortless payroll <br /> processing for your business
+              {t("payroll.heroTitleP1")}
+              <br />
+              {t("payroll.heroTitleP2")}
             </>
           }
-          subtitle="Payroll Solutions"
+          subtitle={t("payroll.heroSubtitle")}
         />
         <p className={`${styles.description}`}>
-          Simplify your payroll process with Nefentus' flexible and efficient
-          crypto and FIAT payroll solutions. Add employees, set salaries, and
-          pay with ease, all while taking advantage of the benefits of
-          cryptocurrency. With our comprehensive reporting tools, you can gain
-          valuable insights into your payroll data, enabling you to optimize
-          your operations for improved productivity and profitability.
+          {t("payroll.heroDescription")}
         </p>
       </div>
 

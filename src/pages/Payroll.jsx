@@ -10,48 +10,54 @@ import Logo4 from "../assets/icon/payroll/logo4.svg";
 import Logo5 from "../assets/icon/payroll/logo5.svg";
 import Logo6 from "../assets/icon/payroll/logo6.svg";
 import Logo7 from "../assets/icon/payroll/logo7.svg";
+import { useTranslation } from "react-i18next";
 
 const list = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7];
 
 const Payroll = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <PayrollHero />
       <Layout
-        title={<>Effortlessly manage payroll with crypto</>}
-        description="Empower your employees with Nefentus' advanced crypto payroll solutions, enabling you to pay full or partial salaries and bonuses in cryptocurrency, as well as allocate shares of your token to build loyalty and incentivize productivity."
-        button="Get Started for Free"
-        subtitle="Manage"
+        title={<>{t("payroll.manageTitle")}</>}
+        description={t("payroll.manageDescription")}
+        button={t("payroll.manageButton")}
+        subtitle={t("payroll.manageSubtitle")}
       />
 
       <Layout
-        subtitle="Organize payment"
-        title={<>Effortlessly process employee benefits</>}
-        description="Efficiently manage your payroll with Nefentus' advanced features, including multi-currency and multi-chain support, lower transaction fees for global teams, onboarding through CSV file uploads, and scheduling of recurring salaries."
-        button="Get Started for Free"
+        subtitle={t("payroll.organizeSubtitle")}
+        title={<>{t("payroll.organizeSubtitle")}</>}
+        description={t("payroll.organizeDescription")}
+        button={t("payroll.manageButton")}
         reverse={true}
       />
 
       <Layout
         title={
           <>
-            Track all payments <br className="" /> in one place
+            {t("payroll.trackTitleP1")}
+            <br className="" />
+            {t("payroll.trackTitleP2")}
           </>
         }
-        description="Effortlessly review the status of all payment requests using Nefentus' visual dashboard, with the ability to easily send payment reminders to outstanding requests."
-        button="Get Started for Free"
-        subtitle="Track"
+        description={t("payroll.trackDescription")}
+        subtitle={t("payroll.trackSubtitle")}
+        button={t("payroll.manageButton")}
       />
 
       <IconRow
-        subtitle="Financial Stack"
+        subtitle={t("payroll.iconSubtitle")}
         title={
           <>
-            Streamline Your Payment <br className="md-mob" />
-            with Seamless Integrations
+            {t("payroll.iconTitleP1")}
+            <br className="md-mob" />
+            {t("payroll.iconTitleP2")}
           </>
         }
-        description="Simplify your payment processing with Nefentus' seamless platform, offering access to over 200 wallets for effortless acceptance and processing of cryptocurrency payments with advanced security features."
+        description={t("payroll.iconDescription")}
         list={list}
       />
 
