@@ -12,8 +12,6 @@ const Signup = () => {
   const { t } = useTranslation();
   const [errorMessage, setErrorMessage] = useState(null);
   const [message, setMessage] = useState(null);
-  const [affiliate, setAffiliate] = useState("");
-  const navigate = useNavigate();
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
   const [Telefon, setTelefon] = useState("");
@@ -22,14 +20,15 @@ const Signup = () => {
   const [UseOption, setUseOption] = useState("Choose Options");
   const api = new backendAPI();
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has("affiliate")) {
-      const paramValue = urlParams.get("affiliate");
-      setAffiliate(paramValue);
-      api.countAffiliate(paramValue);
+    const resetForm = () => {
+      setFirstName("");
+      setLastName("");
+      setTelefon("");
+      setEmail("");
+      setPassword("");
+      setUseOption("Choose Options");
     }
-  }, []);
+    
 
   async function submitForm() {
     const requestData = {
@@ -39,8 +38,9 @@ const Signup = () => {
       email: Email,
       password: Password,
       roles: [UseOption],
-      affiliate: affiliate,
+      affiliate: localStorage.getItem("affiliateJoined"),
     };
+    resetForm();
 
     const response = await api.register(requestData);
     console.log(response);

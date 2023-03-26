@@ -143,6 +143,9 @@ const AffiliateNavigation = () => {
 };
 
 const AffiliateHeader = () => {
+
+  const [copied, setCopied] = useState(false);
+
   return (
     <div className={styles.header}>
       <div className={styles.top}>
@@ -160,13 +163,28 @@ const AffiliateHeader = () => {
         <p className={styles.label}>Affiliate link: </p>
 
         <div className={styles.linkBox}>
-          <p className={styles.url}>
-            https://nefentus.com/signup?affiliate=
+          <p id="affiliate-link" className={styles.url } >
+            https://nefentus.com/?affiliate=
             {localStorage.getItem("affiliateLink")}
           </p>
-          <img src={UrlLink} alt="" />
+          <img
+            src={UrlLink}
+            alt=""
+            onClick={() => {
+              navigator.clipboard.writeText(
+                `https://nefentus.com/?affiliate=${localStorage.getItem("affiliateLink")}`
+              );
+              setCopied(true);
+            }}
+          />
+          
         </div>
       </div>
+      {copied && (
+            <div className={styles.tooltip}>
+              Link copied to clipboard!
+            </div>
+          )}
     </div>
   );
 };

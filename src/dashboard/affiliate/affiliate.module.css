@@ -6,6 +6,27 @@
   margin-bottom: 10rem;
 }
 
+.tooltip {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  padding: 0.5rem;
+  background-color: #4CAF50;
+  color: white;
+  z-index: 1;
+  animation: fadeout 10s forwards;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 .navigation p {
   font-size: 1.6rem;
 }
