@@ -40,7 +40,8 @@
   height: 4rem;
 }
 
-.layout > img {
+.layout > img,
+.layout > video {
   width: 52rem;
 }
 
@@ -84,11 +85,9 @@
     margin-top: 10rem;
   }
 
-  .layout > img {
+  .layout > img,
+  .layout > video {
     order: 1 !important;
-  }
-
-  .layout > img {
     width: 100%;
   }
 

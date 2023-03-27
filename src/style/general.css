@@ -183,7 +183,8 @@ a {
   animation-delay: 0.5s;
 }
 
-.hero > img {
+.hero > img,
+.hero > video {
   transform: scale(0);
   animation-duration: 1s;
   animation-timing-function: ease;
@@ -191,7 +192,8 @@ a {
   animation-delay: 0.5s;
 }
 
-.hero > img {
+.hero > img,
+.hero > video {
   animation-name: scaleUp;
 }
 

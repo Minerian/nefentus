@@ -74,6 +74,44 @@
   display: none;
 }
 
+.imageVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  transition: 0.5s ease;
+}
+
+.imageVideo video {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.speaker {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  z-index: 101;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 0.6rem;
+  display: flex;
+  align-items: center;
+  height: 2.6rem;
+  width: 2.6rem;
+  border-radius: 50%;
+  justify-content: center;
+  transition: 0.3 ease;
+}
+
+.speaker img {
+  width: 100%;
+
+  cursor: pointer;
+}
+
 @media (max-width: 900px) {
   .row {
     grid-template-columns: 1fr;

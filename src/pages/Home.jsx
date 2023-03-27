@@ -7,7 +7,12 @@ import Logos from "../components/logos/logos";
 import Cards from "../components/cards/cards";
 import About from "../components/about/about";
 import Reviews from "../components/reviews/reviews";
-import backendAPI from "../api/backendAPI"
+import backendAPI from "../api/backendAPI";
+
+import HomeHeroVideo from "../assets/video/homeHero.mp4";
+
+import Image1 from "../assets/image/pic1.jpg";
+import Image2 from "../assets/image/pic2.jpg";
 
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
@@ -20,14 +25,14 @@ const Home = () => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has("affiliate")) {
       const paramValue = urlParams.get("affiliate");
-      localStorage.setItem("affiliateJoined" , paramValue);
+      localStorage.setItem("affiliateJoined", paramValue);
       api.countAffiliate(paramValue);
     }
   }, []);
 
   return (
     <>
-      <Circle />
+      {/* <Circle /> */}
       <Layout
         heading={t("home.heroTitle")}
         description={t("home.heroDescription")}
@@ -37,6 +42,7 @@ const Home = () => {
             <img src={Arrow} alt="" />
           </>
         }
+        video={HomeHeroVideo}
         store={true}
       />
 
@@ -48,6 +54,7 @@ const Home = () => {
         title={t("home.simplifyTitle")}
         description={t("home.simplifyDescription")}
         button={t("home.layoutButton")}
+        image={Image1}
       />
 
       <Layout
@@ -60,6 +67,7 @@ const Home = () => {
         button={t("home.layoutButton")}
         subtitle={t("home.payrollSubtitle")}
         reverse={true}
+        image={Image2}
       />
 
       <About />

@@ -19,6 +19,7 @@ const Layout = ({
   store,
   subtitle,
   reverse,
+  video,
   list,
 }) => {
   const { t } = useTranslation();
@@ -83,12 +84,27 @@ const Layout = ({
           </div>
         )}
       </div>
-      <img
-        className={heading ? "" : "scroll"}
-        src={image}
-        alt=""
-        style={{ order: reverse ? 1 : 2 }}
-      />
+      {!video && (
+        <img
+          className={heading ? "" : "scroll"}
+          src={image}
+          alt=""
+          style={{ order: reverse ? 1 : 2 }}
+        />
+      )}
+
+      {video && (
+        <video
+          style={{ order: reverse ? 1 : 2 }}
+          className={heading ? "" : ""}
+          muted
+          loop
+          autoPlay
+          playsInline
+        >
+          <source src={video} type="video/mp4" />
+        </video>
+      )}
     </div>
   );
 };
