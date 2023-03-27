@@ -26,8 +26,8 @@
 }
 
 .image img {
-  height: 30rem;
-  width: auto;
+  height: auto;
+  width: 100%;
 }
 
 @media (max-width: 650px) {

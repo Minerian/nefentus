@@ -17,6 +17,9 @@ import Logo6 from "../assets/icon/methods/logo6.svg";
 import Logo7 from "../assets/icon/methods/logo7.svg";
 import { useTranslation } from "react-i18next";
 
+import HeroImage from "../assets/image/paymentHero.png";
+import WhyImage from "../assets/image/safePayment.png";
+
 const list = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7];
 
 const Payment = () => {
@@ -37,6 +40,7 @@ const Payment = () => {
           </>
         }
         store={true}
+        image={HeroImage}
       />
 
       <Grow />
@@ -53,7 +57,7 @@ const Payment = () => {
         list={list}
       />
 
-      <Why title={t("payment.whyTitle")} content={content} />
+      <Why title={t("payment.whyTitle")} content={content} image={WhyImage} />
       <DataCards />
 
       <PaymentCards />
