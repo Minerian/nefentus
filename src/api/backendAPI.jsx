@@ -66,7 +66,7 @@ export default class backendAPI {
     }
 
 
-    async checkPermissions() {
+    async checkPermissionAff() {
 
         if (!this.token) {
             // Der Benutzer ist nicht angemeldet
@@ -84,6 +84,40 @@ export default class backendAPI {
 
         const response = await fetch(url, options);
         return response.ok;
+    }
+
+
+    async checkPermissionAdmin() {
+        if (!this.token) {
+            // Der Benutzer ist nicht angemeldet
+            return false;
+        }
+
+        const url = `${this.baseURL}/dashboard/admin`;
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${this.token}`,
+            },
+        };
+
+        const response = await fetch(url, options);
+        return response.ok;
+    }
+
+    async getAdminDashboardTotalStats() {
+        const url = `${this.baseURL}/dashboard/admin/data`;
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${this.token}`,
+            }
+        };
+        const response = await fetch(url, options);
+        const data = await response.json();
+        return data;
     }
 
     async getAffiliateDashboardTotalStats() {
