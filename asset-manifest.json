@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/nefentus/static/css/main.a28fb3e4.css",
-    "main.js": "/nefentus/static/js/main.61236340.js",
+    "main.css": "/nefentus/static/css/main.c9a976b4.css",
+    "main.js": "/nefentus/static/js/main.0b7c6006.js",
     "static/media/introduction.mp4": "/nefentus/static/media/introduction.9f95a60485070b478523.mp4",
     "static/media/gradient.png": "/nefentus/static/media/gradient.7a3809bf1380d22bf1bb.png",
     "static/media/image3.png": "/nefentus/static/media/image3.82fedc0a7a57290abab8.png",
-    "static/media/grow3.svg": "/nefentus/static/media/grow3.dcbf3a1ea35c7d68879fa83d03556547.svg",
     "static/media/dummy.png": "/nefentus/static/media/dummy.733ca248575b3d54cf82.png",
     "static/media/image1.png": "/nefentus/static/media/image1.09788296bca5478dfd8a.png",
+    "static/media/paymentHero.png": "/nefentus/static/media/paymentHero.cfdb0b855c7f5fde7dd0.png",
     "static/media/target.mp4": "/nefentus/static/media/target.34187ae58040a85927a9.mp4",
+    "static/media/grow3.svg": "/nefentus/static/media/grow3.e88ff8c0ce6624cf321b8b92607bbc4a.svg",
     "static/media/why.png": "/nefentus/static/media/why.1a62cc9c24e1e6cac676.png",
+    "static/media/safePayment.png": "/nefentus/static/media/safePayment.e9630d2d5b6917e6f6e3.png",
     "static/media/chart.mp4": "/nefentus/static/media/chart.cde6a149199519104cd8.mp4",
     "static/media/Euclid-Medium.ttf": "/nefentus/static/media/Euclid-Medium.a5befbfcb71cd093cc56.ttf",
     "static/media/Euclid-Regular.ttf": "/nefentus/static/media/Euclid-Regular.d54600880dc63db716f2.ttf",
@@ -18,14 +20,14 @@
     "static/media/bag.png": "/nefentus/static/media/bag.bac3d39d3097230ffe14.png",
     "static/media/image2.png": "/nefentus/static/media/image2.1935c7bf856e2209d15f.png",
     "static/media/fr.svg": "/nefentus/static/media/fr.e137c52b97bd58a1c820e2d514cc4a89.svg",
+    "static/media/grow2.svg": "/nefentus/static/media/grow2.44620965cd0a2e9cf7d8ec0b62af394b.svg",
     "static/media/wallet.png": "/nefentus/static/media/wallet.328931874d1a01bbfa22.png",
     "static/media/case.png": "/nefentus/static/media/case.a9a513e07980434fd9c9.png",
     "static/media/graphic1.svg": "/nefentus/static/media/graphic1.2780a630e290246a4c05dcc0c9257dbf.svg",
     "static/media/ar.svg": "/nefentus/static/media/ar.5ef6b63931b58c5412f4824f5b50852c.svg",
     "static/media/graphic3.svg": "/nefentus/static/media/graphic3.e576779ee58b57882d00a481bed7ac05.svg",
-    "static/media/grow2.svg": "/nefentus/static/media/grow2.45bb185ff801ebc2e136488ba8592d19.svg",
     "static/media/affiliate.svg": "/nefentus/static/media/affiliate.b43d6a3e2df81ebde25c8167844a8842.svg",
-    "static/media/grow1.svg": "/nefentus/static/media/grow1.8d5fd7a7a0350f8275511b38d28bd372.svg",
+    "static/media/grow1.svg": "/nefentus/static/media/grow1.5211a85350a164581222159f35bedb70.svg",
     "static/media/invoicing.svg": "/nefentus/static/media/invoicing.e36ee48c320620efc1fe3a56d7117def.svg",
     "static/media/apple.svg": "/nefentus/static/media/apple.ca82ced485cfc77738b8c22ce5cef938.svg",
     "static/media/logo.svg": "/nefentus/static/media/logo.74d258fe648b01b073939bc33f5c3a69.svg",
@@ -69,11 +71,11 @@
     "static/media/whiteCheckmark.svg": "/nefentus/static/media/whiteCheckmark.c470fc13b6a43973af10748916e8d093.svg",
     "static/media/circle.svg": "/nefentus/static/media/circle.50122e71c27d62dbc89506214927765d.svg",
     "static/media/line.svg": "/nefentus/static/media/line.a645ec91e6e91d5d1648b21f66ccac3c.svg",
-    "main.a28fb3e4.css.map": "/nefentus/static/css/main.a28fb3e4.css.map",
-    "main.61236340.js.map": "/nefentus/static/js/main.61236340.js.map"
+    "main.c9a976b4.css.map": "/nefentus/static/css/main.c9a976b4.css.map",
+    "main.0b7c6006.js.map": "/nefentus/static/js/main.0b7c6006.js.map"
   },
   "entrypoints": [
-    "static/css/main.a28fb3e4.css",
-    "static/js/main.61236340.js"
+    "static/css/main.c9a976b4.css",
+    "static/js/main.0b7c6006.js"
   ]
 }
