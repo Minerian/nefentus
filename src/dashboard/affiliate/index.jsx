@@ -14,7 +14,7 @@ import UrlLink from "../../assets/icon/link.svg";
 
 import { Line } from "react-chartjs-2";
 
-import backend_API from "../../api/backendAPI"
+import backend_API from "../../api/backendAPI";
 
 import {
   Chart as ChartJS,
@@ -30,7 +30,6 @@ import { useEffect, useState } from "react";
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 const AffiliateBody = () => {
-
   const backendAPI = new backend_API();
 
   const navigate = useNavigate();
@@ -119,7 +118,6 @@ const AffiliateBody = () => {
 export default AffiliateBody;
 
 const AffiliateNavigation = () => {
-
   const backendAPI = new backend_API();
 
   const logOut = async () => {
@@ -143,7 +141,6 @@ const AffiliateNavigation = () => {
 };
 
 const AffiliateHeader = () => {
-
   const [copied, setCopied] = useState(false);
 
   return (
@@ -163,7 +160,7 @@ const AffiliateHeader = () => {
         <p className={styles.label}>Affiliate link: </p>
 
         <div className={styles.linkBox}>
-          <p id="affiliate-link" className={styles.url } >
+          <p id="affiliate-link" className={styles.url}>
             https://nefentus.com/?affiliate=
             {localStorage.getItem("affiliateLink")}
           </p>
@@ -172,19 +169,18 @@ const AffiliateHeader = () => {
             alt=""
             onClick={() => {
               navigator.clipboard.writeText(
-                `https://nefentus.com/?affiliate=${localStorage.getItem("affiliateLink")}`
+                `https://nefentus.com/?affiliate=${localStorage.getItem(
+                  "affiliateLink"
+                )}`
               );
               setCopied(true);
             }}
           />
-          
         </div>
       </div>
       {copied && (
-            <div className={styles.tooltip}>
-              Link copied to clipboard!
-            </div>
-          )}
+        <div className={styles.tooltip}>Link copied to clipboard!</div>
+      )}
     </div>
   );
 };

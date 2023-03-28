@@ -12,6 +12,10 @@ import Logo6 from "../assets/icon/payroll/logo6.svg";
 import Logo7 from "../assets/icon/payroll/logo7.svg";
 import { useTranslation } from "react-i18next";
 
+import Image1 from "../assets/image/payroll1.png";
+import Image2 from "../assets/image/payroll2.svg";
+import Image3 from "../assets/image/payroll3.svg";
+
 const list = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7];
 
 const Payroll = () => {
@@ -25,6 +29,7 @@ const Payroll = () => {
         description={t("payroll.manageDescription")}
         button={t("payroll.manageButton")}
         subtitle={t("payroll.manageSubtitle")}
+        image={Image1}
       />
 
       <Layout
@@ -33,6 +38,7 @@ const Payroll = () => {
         description={t("payroll.organizeDescription")}
         button={t("payroll.manageButton")}
         reverse={true}
+        image={Image2}
       />
 
       <Layout
@@ -46,6 +52,7 @@ const Payroll = () => {
         description={t("payroll.trackDescription")}
         subtitle={t("payroll.trackSubtitle")}
         button={t("payroll.manageButton")}
+        image={Image3}
       />
 
       <IconRow

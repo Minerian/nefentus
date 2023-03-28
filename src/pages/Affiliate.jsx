@@ -1,6 +1,7 @@
 import Layout from "./../components/layout/layout";
 
 import Image from "../assets/image/affiliate.svg";
+import Image2 from "../assets/image/affiliate2.png";
 import Why from "./../components/why/why";
 import Compare from "../components/compare/compare";
 import { useEffect } from "react";
@@ -61,6 +62,7 @@ const Affiliate = () => {
           </>
         }
         content={content}
+        image={Image2}
       />
 
       <Compare />

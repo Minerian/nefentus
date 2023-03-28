@@ -1,7 +1,7 @@
 import styles from "./payrollHero.module.css";
 import HeadingCenter from "./../headingCenter/headingCenter";
 
-import Image from "../../assets/image/dummy.png";
+import Image from "../../assets/image/payrollHero.png";
 import { useTranslation } from "react-i18next";
 
 const PayrollHero = () => {
