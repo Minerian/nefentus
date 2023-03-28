@@ -36,10 +36,26 @@ const AffiliateBody = () => {
 
   const checkPermissions = async () => {
     try {
-      const response = await backendAPI.checkPermissions();
+      const response = await backendAPI.checkPermissionAff();
       if (!response) {
-        navigate("/");
+        const responseNew = await backendAPI.checkPermissionAdmin();
+        if (!responseNew) {
+          navigate("/");
+        } else {
+          setDashboardAdmin();
+        }
+      } else {
+        setDashboard();
       }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const setDashboardAdmin = async () => {
+    try {
+      const data = await backendAPI.getAdminDashboardTotalStats();
+      fillCards(data);
     } catch (error) {
       console.error(error);
     }
@@ -90,7 +106,6 @@ const AffiliateBody = () => {
 
   useEffect(() => {
     checkPermissions();
-    setDashboard();
   }, []);
 
   return (
@@ -226,15 +241,29 @@ const Card = ({ title, amount, percentage }) => {
   );
 };
 
-const labels = [
-  "Jan, 2022",
-  "May, 2022",
-  "July, 2022",
-  "Nov, 2022",
-  "Jan, 2023",
-  "Mar, 2023",
-];
+const today = new Date();
+const oneDay = 24 * 60 * 60 * 1000; // Millisekunden in einem Tag
+const days = Math.round((new Date("Mar 01 2023") - today) / oneDay); // Berechne die Anzahl der Tage zwischen heute und dem 1. März 2023
+const labels = Array.from({ length: days }, (_, i) => {
+  const date = new Date(today.getTime() + i * oneDay);
+  const month = date.toLocaleString("default", { month: "short" });
+  const day = date.getDate();
+  return `${month}, ${day}`;
+});
 
+const data = {
+  labels,
+  datasets: [
+    {
+      label: "Dataset 1",
+      data: labels.map(() => 0),
+      borderColor: "#1595C2",
+      backgroundColor: "#1595C2",
+    },
+  ],
+};
+
+// Rest des Codes bleibt gleich
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -267,7 +296,7 @@ export const options = {
       ticks: {
         // Include a eur sign in the ticks
         callback: function (value, index, ticks) {
-          return value + ".00K €";
+          return value + "K €";
         },
         padding: 10,
         color: "#c4c4c4",
@@ -296,18 +325,6 @@ export const options = {
   },
 };
 
-const data = {
-  labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: labels.map(() => Math.floor(Math.random() * 160) + 20),
-      borderColor: "#1595C2",
-      backgroundColor: "#1595C2",
-    },
-  ],
-};
-
 const Graph = () => {
   return (
     <div className={`card ${styles.graphCard}`}>
@@ -318,13 +335,13 @@ const Graph = () => {
         </div>
 
         <div className={styles.datePicker}>
-          <p>Jan 01 2022</p>
+          <p>{labels[0]}</p>
           <p> - </p>
-          <p>Mar 01 2023</p>
+          <p>{labels[labels.length - 1]}</p>
         </div>
       </div>
 
-      {/*<Line options={options} data={null} />*/}
+      <Line options={options} data={data} />
     </div>
   );
 };
