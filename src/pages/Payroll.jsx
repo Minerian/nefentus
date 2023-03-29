@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import Image1 from "../assets/image/payroll1.png";
 import Image2 from "../assets/image/payroll2.svg";
 import Image3 from "../assets/image/payroll3.svg";
+import { Helmet } from "react-helmet";
 
 const list = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7];
 
@@ -23,6 +24,9 @@ const Payroll = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Nefentus | Payroll</title>
+      </Helmet>
       <PayrollHero />
       <Layout
         title={<>{t("payroll.manageTitle")}</>}

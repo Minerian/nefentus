@@ -19,6 +19,7 @@ import { useTranslation } from "react-i18next";
 
 import HeroImage from "../assets/image/paymentHero.png";
 import WhyImage from "../assets/image/safePayment.png";
+import { Helmet } from "react-helmet";
 
 const list = [Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7];
 
@@ -29,6 +30,9 @@ const Payment = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Nefentus | Payment</title>
+      </Helmet>
       <Circle />
       <Layout
         heading={t("payment.heroHeading")}

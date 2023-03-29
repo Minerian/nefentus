@@ -6,6 +6,7 @@ import Why from "./../components/why/why";
 import Compare from "../components/compare/compare";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 const Affiliate = () => {
   useEffect(() => {
@@ -44,6 +45,9 @@ const Affiliate = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Nefentus | Affiliate</title>
+      </Helmet>
       <Layout
         subtitle={t("affiliate.heroSubtitle")}
         heading={t("affiliate.heroHeading")}

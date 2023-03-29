@@ -11,6 +11,8 @@ import backendAPI from "../api/backendAPI";
 
 import HomeHeroVideo from "../assets/video/homeHero.mp4";
 
+import { Helmet } from "react-helmet";
+
 import Image1 from "../assets/image/pic1.jpg";
 import Image2 from "../assets/image/pic2.jpg";
 
@@ -32,6 +34,9 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Nefentus | Home</title>
+      </Helmet>
       {/* <Circle /> */}
       <Layout
         heading={t("home.heroTitle")}
