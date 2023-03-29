@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/nefentus/static/css/main.2bf96742.css",
-    "main.js": "/nefentus/static/js/main.c5bf7df2.js",
+    "main.css": "/nefentus/static/css/main.7359e815.css",
+    "main.js": "/nefentus/static/js/main.9f972615.js",
     "static/media/introduction.mp4": "/nefentus/static/media/introduction.9f95a60485070b478523.mp4",
     "static/media/leon.mp4": "/nefentus/static/media/leon.7dfadc3c7fe5e3f17798.mp4",
     "static/media/homeHero.mp4": "/nefentus/static/media/homeHero.ec7bc336b359ab03a929.mp4",
@@ -50,6 +50,7 @@
     "static/media/logo3.svg": "/nefentus/static/media/logo3.5dcdca713ecdb0f6e94fae0c392c1b44.svg",
     "static/media/logo5.svg": "/nefentus/static/media/logo5.90d1c0f7131dcc07010528eff60a2a15.svg",
     "static/media/automatons.svg": "/nefentus/static/media/automatons.29c23368b6b20fe9005f14c81f1a6cad.svg",
+    "static/media/attachment.svg": "/nefentus/static/media/attachment.cffa00ab64c6e45633801737182b9bcd.svg",
     "static/media/analytics.svg": "/nefentus/static/media/analytics.7a66c5e0e57f0b2d3c88c95cb7180145.svg",
     "static/media/commision.svg": "/nefentus/static/media/commision.1d216eb893f1ac97d64444c216f3cb4e.svg",
     "static/media/speaker.svg": "/nefentus/static/media/speaker.129ab76fb24a76f2b2aff03ce117af1e.svg",
@@ -61,6 +62,7 @@
     "static/media/link.svg": "/nefentus/static/media/link.f4773fe66082a9982fcc3b3bf31f598d.svg",
     "static/media/products.svg": "/nefentus/static/media/products.4c2962091410d0d353398727c3b96362.svg",
     "static/media/qrcode.svg": "/nefentus/static/media/qrcode.b0dc78391843414ba88752f88085bd6a.svg",
+    "static/media/settings.svg": "/nefentus/static/media/settings.af265918cff8d8473304b3f365555b48.svg",
     "static/media/cons.svg": "/nefentus/static/media/cons.3be5ff1c8ef4c0d34c4ddf208d089808.svg",
     "static/media/logout.svg": "/nefentus/static/media/logout.fda02b951ea22e8c87e0c1c63ef3212c.svg",
     "static/media/money.svg": "/nefentus/static/media/money.311a4391a8e954af0361a30d6e679117.svg",
@@ -71,21 +73,25 @@
     "index.html": "/nefentus/index.html",
     "static/media/negative.svg": "/nefentus/static/media/negative.6838325ea369357cddd026c28a5a8bfd.svg",
     "static/media/de.svg": "/nefentus/static/media/de.51e48411206d246a21c2b98e5a123520.svg",
+    "static/media/fail.svg": "/nefentus/static/media/fail.39292c90e2952485503e8618b6de59d4.svg",
     "static/media/positive.svg": "/nefentus/static/media/positive.95aac1c03c68705a19c077c0134d4848.svg",
     "static/media/youtube.svg": "/nefentus/static/media/youtube.f4d112d43f4880c330ae8569ce896a57.svg",
     "static/media/arrow.svg": "/nefentus/static/media/arrow.eb891bb010ab3f57eaba7f81b58690c3.svg",
     "static/media/es.svg": "/nefentus/static/media/es.5dc07ae28b2ebd33465c6c38ec30df83.svg",
     "static/media/moneyW.svg": "/nefentus/static/media/moneyW.38c1591cf4816185fbac88045209b6d3.svg",
     "static/media/check.svg": "/nefentus/static/media/check.2f518247c98bd93659e2a882f7038195.svg",
+    "static/media/correct.svg": "/nefentus/static/media/correct.dada138f9727b473391077c86102f908.svg",
     "static/media/dropdown.svg": "/nefentus/static/media/dropdown.73324084a729fb37d3473117bb736d94.svg",
+    "static/media/dropdownWhite.svg": "/nefentus/static/media/dropdownWhite.a6294b4d7160ec6b88987ae098ba8817.svg",
     "static/media/whiteCheckmark.svg": "/nefentus/static/media/whiteCheckmark.c470fc13b6a43973af10748916e8d093.svg",
+    "static/media/file.svg": "/nefentus/static/media/file.d12a8fac5a5899192b17338bd02c6e85.svg",
     "static/media/circle.svg": "/nefentus/static/media/circle.50122e71c27d62dbc89506214927765d.svg",
     "static/media/line.svg": "/nefentus/static/media/line.a645ec91e6e91d5d1648b21f66ccac3c.svg",
-    "main.2bf96742.css.map": "/nefentus/static/css/main.2bf96742.css.map",
-    "main.c5bf7df2.js.map": "/nefentus/static/js/main.c5bf7df2.js.map"
+    "main.7359e815.css.map": "/nefentus/static/css/main.7359e815.css.map",
+    "main.9f972615.js.map": "/nefentus/static/js/main.9f972615.js.map"
   },
   "entrypoints": [
-    "static/css/main.2bf96742.css",
-    "static/js/main.c5bf7df2.js"
+    "static/css/main.7359e815.css",
+    "static/js/main.9f972615.js"
   ]
 }
