@@ -9,6 +9,7 @@ import Logo from "../../assets/logo/logo.svg";
 import styles from "./affiliate.module.css";
 
 import Logout from "../../assets/icon/logout.svg";
+import Settings from "../../assets/icon/settings.svg";
 
 import UrlLink from "../../assets/icon/link.svg";
 
@@ -28,6 +29,7 @@ import {
 } from "chart.js";
 import { useEffect, useState } from "react";
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
+import ProfileBox from "../profileBox/profileBox";
 
 const AffiliateBody = () => {
   const backendAPI = new backend_API();
@@ -40,7 +42,7 @@ const AffiliateBody = () => {
       if (!response) {
         const responseNew = await backendAPI.checkPermissionAdmin();
         if (!responseNew) {
-          navigate("/");
+          // navigate("/");
         } else {
           setDashboardAdmin();
         }
@@ -147,10 +149,20 @@ const AffiliateNavigation = () => {
     <div className={styles.navigation}>
       <img src={Logo} alt="" />
 
-      <Link onClick={logOut} to="/" className={styles.logout}>
-        <p>Log out</p>
-        <img src={Logout} alt="" />
-      </Link>
+      <div className={styles.right}>
+        <div className={`${styles.settingsBody} card`}>
+          <Link to="/dashboard/settings" className={styles.logout}>
+            <img src={Settings} alt="" />
+            <p>Settings</p>
+          </Link>
+          <Link onClick={logOut} to="/" className={styles.logout}>
+            <img src={Logout} alt="" />
+            <p>Log out</p>
+          </Link>
+        </div>
+
+        <ProfileBox />
+      </div>
     </div>
   );
 };

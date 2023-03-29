@@ -261,3 +261,9 @@ nav {
     display: none;
   }
 }
+
+/* Dashboard */
+.dashboard {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+}

@@ -22,6 +22,7 @@ import Privacy from "./pages/Privacy";
 import Imprint from "./pages/Imprint";
 import { useEffect } from "react";
 import AffiliateDashboard from "./dashboard/Affiliate";
+import Settings from "./dashboard/Settings";
 
 function App() {
   useEffect(() => {
@@ -42,7 +43,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <ScrollToTop>
           <Routes>
             <Route
@@ -120,10 +121,18 @@ function App() {
                   </>
                 }
               />
+              <Route
+                path="/dashboard/settings"
+                element={
+                  <>
+                    <Settings />
+                  </>
+                }
+              />
             </Route>
           </Routes>
         </ScrollToTop>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
