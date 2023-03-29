@@ -9,7 +9,7 @@ import Video1 from "../../assets/video/phone.mp4";
 import Video2 from "../../assets/video/chart.mp4";
 import Video3 from "../../assets/video/target.mp4";
 import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const list = [
   {
@@ -28,19 +28,20 @@ const Cards = () => {
 
   const list2 = t("home.cardList", { returnObjects: true });
 
-  useEffect(() => {
-    const videos = document.querySelectorAll(".cardVideo");
+  const videoRefs = [useRef(null), useRef(null), useRef(null)];
 
-    const onLoad = () => {
-      videos.forEach((video) => video.play());
-    };
-
-    if (videos.length > 0) {
-      onLoad();
+  const handleLoad = (videoRef) => {
+    if (videoRef.current) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {})
+          .catch((error) => {
+            console.log("Playback prevented by browser");
+          });
+      }
     }
-
-    window.addEventListener("load", onLoad);
-  }, []);
+  };
 
   return (
     <div className="container break ">
@@ -52,7 +53,15 @@ const Cards = () => {
       <div className={styles.cards}>
         {list.map((item, index) => (
           <div className={`${styles.card} scroll card`}>
-            <video className="cardVideo" muted loop playsInline>
+            <video
+              ref={videoRefs[index]}
+              className="cardVideo"
+              autoPlay
+              playsInline
+              muted
+              loop
+              onLoadedData={() => handleLoad(videoRefs[index])}
+            >
               <source src={item.video} type="video/mp4" />
             </video>
             <p>{list2[index].title}</p>

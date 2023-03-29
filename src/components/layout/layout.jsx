@@ -9,6 +9,7 @@ import Dummy from "../../assets/image/dummy.png";
 import Checkmark from "../../assets/icon/singleCheckmark.svg";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useEffect, useRef } from "react";
 
 const Layout = ({
   heading,
@@ -25,6 +26,23 @@ const Layout = ({
   const { t } = useTranslation();
 
   const content = t("affiliate.affiliateList", { returnObjects: true });
+
+  const videoRef = useRef(null);
+
+  const handleLoad = (event) => {
+    if (videoRef.current) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // Reprodukcija počinje
+          })
+          .catch((error) => {
+            console.log("Playback prevented by browser");
+          });
+      }
+    }
+  };
 
   return (
     <div
@@ -95,12 +113,15 @@ const Layout = ({
 
       {video && (
         <video
+          onLoadedData={handleLoad}
+          ref={videoRef}
           style={{ order: reverse ? 1 : 2 }}
           className={heading ? "" : ""}
-          muted
-          loop
+          controls={false}
           autoPlay
           playsInline
+          muted
+          loop
         >
           <source src={video} type="video/mp4" />
         </video>

@@ -2,6 +2,7 @@ import styles from "./navigation.module.css";
 
 import Logo from "../../assets/logo/logo.svg";
 
+import Hamburger from "../../assets/icon/hamburger.svg";
 import DropDown from "../../assets/icon/dropdown.svg";
 import Button from "../button/button";
 import Languages from "./languages.jsx/languages";
@@ -90,9 +91,11 @@ const Navigation = () => {
         </div>
 
         <div className={styles.mobMenu}>
-          <p className="standard" onClick={() => setOpenMenu(true)}>
-            {t("navigation.menu")}
-          </p>
+          <Link to="/signup">
+            <div className={styles.mobButton}>{t("navigation.menu")}</div>
+          </Link>
+
+          <img src={Hamburger} alt="" onClick={() => setOpenMenu(true)} />
         </div>
       </div>
 

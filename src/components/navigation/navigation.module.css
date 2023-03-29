@@ -341,4 +341,22 @@
     opacity: 1;
     transform: translateX(0px);
   }
+
+  .mobButton {
+    font-size: 1.2rem;
+    border: 1px solid var(--white-color);
+    border-radius: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    font-weight: 400;
+  }
+
+  .mobMenu {
+    display: flex !important;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mobMenu img {
+    width: 1.6rem;
+  }
 }
