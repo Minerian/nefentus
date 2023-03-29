@@ -244,6 +244,13 @@
   color: var(--gray-color);
 }
 
+.chartContainer {
+  display: flex;
+  width: 100%;
+  height: 30rem;
+  overflow: hidden;
+}
+
 @media (max-width: 900px) {
   .header .top {
     flex-direction: column;
@@ -299,6 +306,13 @@
 
   .graphAmount {
     font-size: 2rem;
+  }
+
+  .chartContainer {
+    display: flex;
+    width: 100%;
+    height: 15rem;
+    overflow: hidden;
   }
 }
 

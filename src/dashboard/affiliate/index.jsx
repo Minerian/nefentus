@@ -269,8 +269,10 @@ const data = {
     {
       label: "Dataset 1",
       data: labels.map(() => 0),
+
       borderColor: "#1595C2",
       backgroundColor: "#1595C2",
+      tension: 0.1,
     },
   ],
 };
@@ -288,6 +290,7 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
+  maintainAspectRatio: false,
 
   plugins: {
     legend: {
@@ -310,6 +313,9 @@ export const options = {
         callback: function (value, index, ticks) {
           return value + "K €";
         },
+        // beginAtZero: true,
+        beginAtZero: true,
+        maxTicksLimit: 8,
         padding: 10,
         color: "#c4c4c4",
         font: {
@@ -353,7 +359,9 @@ const Graph = () => {
         </div>
       </div>
 
-      <Line options={options} data={data} />
+      <div className={styles.chartContainer}>
+        <Line options={options} data={data} />
+      </div>
     </div>
   );
 };
