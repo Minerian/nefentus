@@ -1,8 +1,11 @@
 import styles from "./profileBox.module.css";
 
 import Arrow from "../../assets/icon/dropdownWhite.svg";
+import { useEffect } from "react";
 
 const ProfileBox = () => {
+
+
   return (
     <div className={styles.profileBox}>
       <div className={styles.avatar}>
@@ -11,10 +14,10 @@ const ProfileBox = () => {
 
       <div className={styles.info}>
         <div className={styles.nameBox}>
-          <p className={styles.name}>Ruth J. Sharp</p>
+          <p className={styles.name}>{localStorage.getItem("firstName") + " " +localStorage.getItem("lastName")}</p>
           <img src={Arrow} alt="" />
         </div>
-        <p className={styles.email}>ruth.sharp@gmail.com</p>
+        <p className={styles.email}>{localStorage.getItem("email")}</p>
       </div>
     </div>
   );

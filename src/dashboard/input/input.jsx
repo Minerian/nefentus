@@ -15,7 +15,7 @@ const Input = ({ label, placeholder, type = "text" }) => {
 
 export default Input;
 
-export const Attachment = ({ label }) => {
+export const Attachment = ({ label, onUpload }) => {
   const inputRef = useRef(null);
 
   const [text, setText] = useState(false);
@@ -24,14 +24,29 @@ export const Attachment = ({ label }) => {
     inputRef.current.click();
   };
 
-  const handleChange = () => {
-    const fileName = inputRef.current.value.split("\\").pop();
+  const allowedExtensions = ["jpg", "jpeg", "png", "JPG", "PNG", "JPEG"];
 
-    setText(fileName);
+  function checkFileExtension(extension) {
+    return allowedExtensions.includes(extension);
+  }
+
+
+  const handleChange = () => {
+    const file = inputRef.current.files[0];
+    const fileName = inputRef.current.value.split("\\").pop();
+    var extension = fileName.split(".").pop();
+    console.log(extension);
+    if(checkFileExtension(extension)){
+      setText(fileName);
+      onUpload(file);
+    }else{
+      //todo throw new Error maybe with toast!
+    }
   };
 
   return (
     <>
+    
       <div className={styles.input}>
         <p>{label}</p>
 

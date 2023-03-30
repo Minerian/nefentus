@@ -43,12 +43,9 @@ const Signup = () => {
     resetForm();
 
     const response = await api.register(requestData);
-    console.log(response);
-    if (!response.ok) {
-      setErrorMessage(`HTTP error: ${response.status}`);
-      throw new Error(`HTTP error: ${response.status}`);
+    if (response == null) {
+      setErrorMessage("Error when registering");
     }else{
-      console.log("Response from server:", response);
       setMessage("Please confirm your email address to proceed.");  
     }
   

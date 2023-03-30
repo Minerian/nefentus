@@ -29,22 +29,27 @@ const LoginBox = () => {
 
   async function loginUser(username1, password1) {
     try {
-      const data = await backendAPI.login(username1, password1);
-      navigate("/dashboard/affiliate");
+      const response = await backendAPI.login(username1, password1);
+      if(response == null){
+        setErrorMessage("Invalid Login data");
+        return;
+      }
+        navigate("/dashboard/affiliate");
     } catch (error) {
-      setErrorMessage("Error:", error);
-      console.error("Error:", error);
+      setErrorMessage("There was an error logging in");
     }
   }
 
   const activateUser = async (token) => {
     try {
-      const data = await backendAPI.activateAccount(token);
+      const response = await backendAPI.activateAccount(token);
+      if(response == null) {
+        setErrorMessage("Error on activating account: ");
+        return;
+      }
       setMessage("Account successfully activated");
-      console.log("Account successfully activated:", data);
     } catch (error) {
-      setErrorMessage("Error: ", error);
-      console.error("Fetch error:", error);
+      setErrorMessage("Error on activating account: ");
     }
   };
 
@@ -62,7 +67,7 @@ const LoginBox = () => {
           <div>
             {errorMessage && (
               <div className={styles.errormessagecontainer}>
-                <p>{errorMessage}</p>
+                <p style={{ color: "red" }}> {errorMessage}</p>
               </div>
             )}
             {message && (

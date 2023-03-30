@@ -10,6 +10,8 @@ import Correct from "../../assets/icon/correct.svg";
 import Fail from "../../assets/icon/fail.svg";
 import Button from "../../components/button/button";
 import { Link } from "react-router-dom";
+import backend_API from "../../api/backendAPI";
+
 
 const nav = [
   "Profile",
@@ -59,8 +61,8 @@ const SettingsBody = () => {
         </div>
 
         <div className={styles.info}>
-          <p className={styles.name}>Ruth J. Sharp</p>
-          <p className={styles.email}>ruth.sharp@gmail.com</p>
+          <p className={styles.name}>{localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")}</p>
+          <p className={styles.email}>{localStorage.getItem("email")}</p> 
         </div>
       </div>
 
@@ -133,6 +135,22 @@ const profileContent = [
 ];
 
 const ProfileBody = () => {
+  const [file, setFile] = useState(null);
+
+  const backendAPI = new backend_API(); 
+
+  const handleUpload = (uploadedFile) => {
+    setFile(uploadedFile);
+  };
+
+  const handleConfirm = () => {
+    if (file) {
+      backendAPI.uploadFile(file);
+    } else {
+      // TODO: show error, maybe with toast!
+    }
+  };
+
   return (
     <div>
       {profileContent.map((item) => (
@@ -145,9 +163,9 @@ const ProfileBody = () => {
         </div>
       ))}
 
-      <Attachment label="Upload logo image" />
+      <Attachment label="Upload logo image" onUpload={handleUpload} />
 
-      <Buttons functions={["", ""]} buttons={["Reset", "Confirm"]} />
+      <Buttons functions={["", handleConfirm]} buttons={["Reset", "Confirm"]} />
     </div>
   );
 };
