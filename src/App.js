@@ -23,6 +23,7 @@ import Imprint from "./pages/Imprint";
 import { useEffect } from "react";
 import AffiliateDashboard from "./dashboard/Affiliate";
 import Settings from "./dashboard/Settings";
+import Vendor from "./dashboard/Vendor";
 
 function App() {
   useEffect(() => {
@@ -126,6 +127,14 @@ function App() {
                 element={
                   <>
                     <Settings />
+                  </>
+                }
+              />
+              <Route
+                path="/dashboard/vendor"
+                element={
+                  <>
+                    <Vendor />
                   </>
                 }
               />

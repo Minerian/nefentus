@@ -1,5 +1,5 @@
 .sidebarWrapper {
-  width: 22.7rem;
+  width: 20rem;
   height: 100%;
   min-height: 100vh;
   border: 0px;
@@ -15,7 +15,7 @@
   bottom: 0;
   right: 0px;
 
-  padding: 3rem 2rem;
+  padding: 2rem 2rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -30,19 +30,19 @@
 }
 
 .logo img {
-  height: 2.8rem;
+  height: 2.4rem;
 }
 
 .items {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .item {
-  height: 4rem;
+  height: 3.5rem;
   font-size: 1.4rem;
-  padding-left: 2rem;
+  padding-left: 1rem;
   display: flex;
   align-items: center;
   border-radius: 0.5rem;
@@ -69,4 +69,30 @@
 
 .active svg {
   fill: var(--white-color);
+}
+
+.close {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .sidebarWrapper {
+    position: fixed;
+    width: 100%;
+
+    transition: 0.5s ease;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .close {
+    font-size: 18px;
+    display: initial;
+
+    cursor: pointer;
+  }
 }
