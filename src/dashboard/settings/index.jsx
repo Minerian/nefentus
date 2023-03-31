@@ -1,4 +1,5 @@
-import Input, { Attachment, Authentificator } from "../input/input";
+import { Attachment, Authentificator } from "../input/input";
+import Input from "../../components/input/input";
 import styles from "./settings.module.css";
 import { useRef, useState } from "react";
 
@@ -12,6 +13,7 @@ import Button from "../../components/button/button";
 import { Link } from "react-router-dom";
 import backend_API from "../../api/backendAPI";
 import Cookies from "universal-cookie";
+import { loadLanguages, use } from "i18next";
 
 
 const nav = [
@@ -43,7 +45,8 @@ const instruction = [
 
 const SettingsBody = () => {
   const [active, setActive] = useState(0);
-const cookies = new Cookies();
+
+  const cookies = new Cookies();
   return (
     <div className={`${styles.body} container`}>
       <div className={styles.navigation}>
@@ -58,12 +61,12 @@ const cookies = new Cookies();
 
       <div className={styles.profile}>
         <div className={styles.avatar}>
-        <img src={localStorage.getItem("profile_pic")} alt="Profile picture" />
+          <img src={localStorage.getItem("profile_pic")} alt="Profile picture" />
         </div>
 
         <div className={styles.info}>
           <p className={styles.name}>{localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")}</p>
-          <p className={styles.email}>{localStorage.getItem("email")}</p> 
+          <p className={styles.email}>{localStorage.getItem("email")}</p>
         </div>
       </div>
 
@@ -102,54 +105,88 @@ const cookies = new Cookies();
 
 export default SettingsBody;
 
-const profileContent = [
-  {
-    label: "Full Name",
-    placeholder: "Enter your name",
-    type: "text",
-  },
-  {
-    label: "Username",
-    placeholder: "Enter your username",
-    type: "text",
-  },
-  {
-    label: "Email Address",
-    placeholder: "Enter your email",
-    type: "text",
-  },
-  {
-    label: "Business",
-    placeholder: "Enter your bussiness",
-    type: "text",
-  },
-  {
-    label: "Phone Number",
-    placeholder: "Enter your number",
-    type: "text",
-  },
-  {
-    label: "Support Email Address",
-    placeholder: "Enter email for support",
-    type: "text",
-  },
-];
 
 const ProfileBody = () => {
-  const [file, setFile] = useState(null);
 
-  const backendAPI = new backend_API(); 
+
+  const [file, setFile] = useState(null);
+  const [fullName, setFullName] = useState(localStorage.getItem("firstName") + " " + localStorage.getItem("lastName"));
+  const [username , setUsername] = useState(localStorage.getItem("username"));
+  const [supportEmail, setSupportEmail] = useState(localStorage.getItem("email"));
+  const [business, setBusiness] = useState(localStorage.getItem("business"));
+  const [phoneNumber, setPhoneNumber] = useState(localStorage.getItem("phoneNumber"));
+  const [email, setEmail] = useState(localStorage.getItem("email"));
+
+  const profileContent = [
+    {
+      label: "Full Name",
+      type: "text",
+      value: fullName,
+      onChange: setFullName,
+    },
+    {
+      label: "Username",
+      type: "text",
+      value: username,
+      onChange: setUsername,
+    },
+    {
+      label: "Email Address",
+      type: "text",
+      value: email,
+      onChange: setEmail,
+    },
+    {
+      label: "Business",
+      type: "text",
+      value: business,
+      onChange: setBusiness,
+
+    },
+    {
+      label: "Phone Number",
+      type: "text",
+      value: phoneNumber,
+      onChange: setPhoneNumber,
+
+    },
+    {
+      label: "Support Email Address",
+      type: "text",
+      value: supportEmail,
+      onChange: setSupportEmail,
+    },
+  ];
+
+  const backendAPI = new backend_API();
 
   const handleUpload = (uploadedFile) => {
     setFile(uploadedFile);
   };
 
   const handleConfirm = () => {
+    const requestData = {
+      fullName: fullName,
+      username: username,
+      phoneNumber: phoneNumber,
+      email: email,
+      business: business,
+      supportEmail: supportEmail,
+    };
+    
     if (file) {
       backendAPI.uploadFile(file);
-    } else {
-      // TODO: show error, maybe with toast!
-    }
+    }       
+    backendAPI.update(requestData);
+  };
+
+  const resetValues = () => {
+    setFullName(localStorage.getItem("firstName") + " " + localStorage.getItem("lastName"));
+    setSupportEmail(localStorage.getItem("email"));
+    setBusiness(localStorage.getItem("business"));
+    setPhoneNumber(localStorage.getItem("phoneNumber"));
+    setUsername(localStorage.getItem("username"));
+    setEmail(localStorage.getItem("email"));
   };
 
   return (
@@ -160,13 +197,15 @@ const ProfileBody = () => {
             label={item.label}
             placeholder={item.placeholder}
             type={item.type}
+            value={item.value}
+            setState={item.onChange}
           />
         </div>
       ))}
 
       <Attachment label="Upload logo image" onUpload={handleUpload} />
 
-      <Buttons functions={["", handleConfirm]} buttons={["Reset", "Confirm"]} />
+      <Buttons functions={[resetValues, handleConfirm]} buttons={["Reset", "Confirm"]} />
     </div>
   );
 };
@@ -210,7 +249,7 @@ const PasswordBody = () => {
       <Authentificator
         placeholder={"Google Authentificator"}
         connected={true}
-        handleClick={() => {}}
+        handleClick={() => { }}
       />
 
       <Buttons functions={["", ""]} buttons={["Reset", "Confirm"]} />

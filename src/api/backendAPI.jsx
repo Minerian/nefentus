@@ -28,6 +28,37 @@ export default class backendAPI {
         }
     }
 
+    async update(formData) {
+        try {
+            const url = `${this.baseURL}/auth/update`;
+            const options = {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${this.token}`,
+                },
+                body: JSON.stringify(formData),
+            };
+            const response = await fetch(url, options);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const data = await response.json();
+            console.log(data);
+            localStorage.setItem("email", data.email);
+            localStorage.setItem("contactEmail", data.contactEmail);
+            localStorage.setItem("firstName", data.firstName);
+            localStorage.setItem("lastName", data.lastName);
+            localStorage.setItem("business", data.business);
+            localStorage.setItem("phoneNumber", data.phoneNumber);
+            localStorage.setItem("username", data.username);
+            localStorage.setItem('profile_pic', data.imgData);
+            return response;
+        } catch (error) {
+            return null; // or return some default value
+        }
+    }
+
     async uploadFile(file) {
         try {
             const formData = new FormData();
@@ -94,9 +125,13 @@ export default class backendAPI {
             const data = await response.json();
             localStorage.setItem("token", data.jwtToken);
             localStorage.setItem("email", data.email);
+            localStorage.setItem("contactEmail", data.contactEmail);
             localStorage.setItem("affiliateLink", data.affiliateLink);
             localStorage.setItem("firstName", data.firstName);
             localStorage.setItem("lastName", data.lastName);
+            localStorage.setItem("business", data.business);
+            localStorage.setItem("phoneNumber", data.phoneNumber);
+            localStorage.setItem("username", data.username);
             localStorage.setItem('profile_pic', data.imgData);
             return response;
         } catch (error) {
