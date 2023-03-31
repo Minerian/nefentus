@@ -8,7 +8,7 @@ import Cards from "../components/cards/cards";
 import About from "../components/about/about";
 import Reviews from "../components/reviews/reviews";
 import backendAPI from "../api/backendAPI";
-
+import Cookies from "universal-cookie";
 import HomeHeroVideo from "../assets/video/homeHero.mp4";
 
 import { Helmet } from "react-helmet";
@@ -22,7 +22,7 @@ import { useEffect } from "react";
 const Home = () => {
   const { t, i18n } = useTranslation();
   const api = new backendAPI();
-
+  const cookies = new Cookies();
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has("affiliate")) {
@@ -30,6 +30,8 @@ const Home = () => {
       localStorage.setItem("affiliateJoined", paramValue);
       api.countAffiliate(paramValue);
     }
+
+    console.log(cookies.get("profile_pic"));
   }, []);
 
   return (

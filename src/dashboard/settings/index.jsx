@@ -11,6 +11,7 @@ import Fail from "../../assets/icon/fail.svg";
 import Button from "../../components/button/button";
 import { Link } from "react-router-dom";
 import backend_API from "../../api/backendAPI";
+import Cookies from "universal-cookie";
 
 
 const nav = [
@@ -42,7 +43,7 @@ const instruction = [
 
 const SettingsBody = () => {
   const [active, setActive] = useState(0);
-
+const cookies = new Cookies();
   return (
     <div className={`${styles.body} container`}>
       <div className={styles.navigation}>
@@ -57,7 +58,7 @@ const SettingsBody = () => {
 
       <div className={styles.profile}>
         <div className={styles.avatar}>
-          <img src="" alt="" />
+        <img src={localStorage.getItem("profile_pic")} alt="Profile picture" />
         </div>
 
         <div className={styles.info}>

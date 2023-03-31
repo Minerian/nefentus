@@ -1,20 +1,20 @@
 import styles from "./profileBox.module.css";
 
 import Arrow from "../../assets/icon/dropdownWhite.svg";
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
+import Cookies from "universal-cookie";
+import backendAPI from "../../api/backendAPI";
 const ProfileBox = () => {
-
 
   return (
     <div className={styles.profileBox}>
       <div className={styles.avatar}>
-        <img src="" alt="" />
+        <img src={localStorage.getItem("profile_pic")} alt="profile picture" />
       </div>
 
       <div className={styles.info}>
         <div className={styles.nameBox}>
-          <p className={styles.name}>{localStorage.getItem("firstName") + " " +localStorage.getItem("lastName")}</p>
+          <p className={styles.name}>{localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")}</p>
           <img src={Arrow} alt="" />
         </div>
         <p className={styles.email}>{localStorage.getItem("email")}</p>

@@ -1,8 +1,10 @@
-
+import Cookies from "universal-cookie";
 export default class backendAPI {
+
     constructor() {
         this.baseURL = "http://localhost:8080/api";
         this.token = localStorage.getItem("token");
+        this.cookies = new Cookies();
     }
 
     async register(formData) {
@@ -31,7 +33,7 @@ export default class backendAPI {
             const formData = new FormData();
             formData.append("file", file);
 
-            const response = await fetch(`${this.baseURL}/dashboard/admin/upload`, {
+            const response = await fetch(`${this.baseURL}/auth/upload`, {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${this.token}`,
@@ -95,9 +97,9 @@ export default class backendAPI {
             localStorage.setItem("affiliateLink", data.affiliateLink);
             localStorage.setItem("firstName", data.firstName);
             localStorage.setItem("lastName", data.lastName);
+            localStorage.setItem('profile_pic', data.imgData);
             return response;
         } catch (error) {
-            console.error("There was an error logging in:", error);
             return null; // or return some default value
         }
     }
@@ -131,7 +133,7 @@ export default class backendAPI {
             // Der Benutzer ist nicht angemeldet
             return false;
         }
-    
+
         const url = `${this.baseURL}/dashboard/affiliate`;
         const options = {
             method: "GET",
@@ -140,7 +142,7 @@ export default class backendAPI {
                 Authorization: `Bearer ${this.token}`,
             },
         };
-    
+
         try {
             const response = await fetch(url, options);
             if (!response.ok) {
@@ -159,7 +161,7 @@ export default class backendAPI {
             // Der Benutzer ist nicht angemeldet
             return false;
         }
-    
+
         const url = `${this.baseURL}/dashboard/admin`;
         const options = {
             method: "GET",
@@ -168,7 +170,7 @@ export default class backendAPI {
                 Authorization: `Bearer ${this.token}`,
             },
         };
-    
+
         try {
             const response = await fetch(url, options);
             if (!response.ok) {
@@ -237,11 +239,11 @@ export default class backendAPI {
                 body: affiliate,
             };
             const response = await fetch(url, options);
-    
+
             if (!response.ok) {
                 throw new Error(`Network response was not ok (${response.status} ${response.statusText})`);
             }
-    
+
             const data = await response.json();
             return data;
         } catch (error) {
@@ -249,5 +251,5 @@ export default class backendAPI {
             throw error;
         }
     }
-    
+
 }
