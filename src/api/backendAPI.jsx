@@ -78,10 +78,11 @@ export default class backendAPI {
 
             const data = await response.json();
             console.log(data);
-            // todo: handle success response
+            localStorage.setItem("profile_pic", data.message);
+            return response;
         } catch (error) {
             console.error("There was an error uploading the file:", error);
-            // todo: handle error response
+            return null;
         }
     };
 

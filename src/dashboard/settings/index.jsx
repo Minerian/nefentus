@@ -1,7 +1,7 @@
 import { Attachment, Authentificator } from "../input/input";
 import Input from "../../components/input/input";
 import styles from "./settings.module.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Logo from "../../assets/logo/logo.svg";
 
@@ -45,12 +45,30 @@ const instruction = [
 
 const SettingsBody = () => {
   const [active, setActive] = useState(0);
+  const [profilePicUrl, setProfilePicUrl] = useState(localStorage.getItem("profile_pic"));
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setProfilePicUrl(localStorage.getItem('profile_pic'));
+      setCounter(counter+1);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, [counter]);
+
+
 
   const cookies = new Cookies();
+  
   return (
     <div className={`${styles.body} container`}>
       <div className={styles.navigation}>
-        <img src={Logo} alt="" />
+        <img src={Logo} alt=""/>
 
         <div className={styles.button}>
           <Link to="/dashboard/affiliate" color="white">
@@ -61,7 +79,7 @@ const SettingsBody = () => {
 
       <div className={styles.profile}>
         <div className={styles.avatar}>
-          <img src={localStorage.getItem("profile_pic")} alt="Profile picture" />
+          <img key={Date.now()} src={`${profilePicUrl}?${counter}`} alt="Profile picture"/>
         </div>
 
         <div className={styles.info}>
@@ -111,11 +129,13 @@ const ProfileBody = () => {
 
   const [file, setFile] = useState(null);
   const [fullName, setFullName] = useState(localStorage.getItem("firstName") + " " + localStorage.getItem("lastName"));
-  const [username , setUsername] = useState(localStorage.getItem("username"));
+  const [username, setUsername] = useState(localStorage.getItem("username"));
   const [supportEmail, setSupportEmail] = useState(localStorage.getItem("email"));
   const [business, setBusiness] = useState(localStorage.getItem("business"));
   const [phoneNumber, setPhoneNumber] = useState(localStorage.getItem("phoneNumber"));
   const [email, setEmail] = useState(localStorage.getItem("email"));
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [message, setMessage] = useState(null);
 
   const profileContent = [
     {
@@ -164,7 +184,47 @@ const ProfileBody = () => {
     setFile(uploadedFile);
   };
 
-  const handleConfirm = () => {
+  const checkErrors = () => {
+    if (!fullName || !fullName.trim()) {
+      setErrorMessage('Full name is required.');
+      return null;
+    }
+
+    if (!username || !username.trim()) {
+      setErrorMessage('Username is required.');
+      return null;
+    }
+
+    if (!supportEmail || !supportEmail.trim()) {
+      setErrorMessage('Support email is required.');
+      return null;
+    }
+
+    if (!business || !business.trim()) {
+      setErrorMessage('Business name is required.');
+      return null;
+    }
+
+    if (!phoneNumber || !phoneNumber.trim()) {
+      setErrorMessage('Phone number is required.');
+      return null;
+    }
+
+    if (!email || !email.trim()) {
+      setErrorMessage('Email is required.');
+      return null;
+    }
+
+    return true;
+  }
+
+  const handleConfirm = async () => {
+
+    if (checkErrors() == null) {
+      return;
+    }
+    setErrorMessage(null);
+
     const requestData = {
       fullName: fullName,
       username: username,
@@ -173,11 +233,22 @@ const ProfileBody = () => {
       business: business,
       supportEmail: supportEmail,
     };
-    
+
     if (file) {
-      backendAPI.uploadFile(file);
-    }       
-    backendAPI.update(requestData);
+
+      const response = await backendAPI.uploadFile(file);
+      if (response == null) {
+        setErrorMessage("Error on uploading the profile picture");
+        return;
+      }
+    }
+
+    const response2 = await backendAPI.update(requestData);
+    if (response2 == null) {
+      setErrorMessage("Error on updating data");
+      return;
+    }
+    window.location.reload();
   };
 
   const resetValues = () => {
@@ -190,7 +261,20 @@ const ProfileBody = () => {
   };
 
   return (
+
     <div>
+      <div>
+        {errorMessage && (
+          <div className={styles.errormessagecontainer}>
+            <p style={{ color: "red" }}> {errorMessage}</p>
+          </div>
+        )}
+        {message && (
+          <div className={styles.messagecontainer}>
+            <p style={{ color: "green" }}>{message}</p>
+          </div>
+        )}
+      </div>
       {profileContent.map((item) => (
         <div>
           <Input
