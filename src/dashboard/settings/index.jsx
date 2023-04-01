@@ -1,5 +1,5 @@
 import { Attachment, Authentificator } from "../input/input";
-import Input from "../../components/input/input";
+import Input from "../input/input";
 import styles from "./settings.module.css";
 import { useEffect, useRef, useState } from "react";
 
@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import backend_API from "../../api/backendAPI";
 import Cookies from "universal-cookie";
 import { loadLanguages, use } from "i18next";
-
+import InputComponent from "./../../components/input/input";
 
 const nav = [
   "Profile",
@@ -45,30 +45,30 @@ const instruction = [
 
 const SettingsBody = () => {
   const [active, setActive] = useState(0);
-  const [profilePicUrl, setProfilePicUrl] = useState(localStorage.getItem("profile_pic"));
+  const [profilePicUrl, setProfilePicUrl] = useState(
+    localStorage.getItem("profile_pic")
+  );
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     const handleStorageChange = () => {
-      setProfilePicUrl(localStorage.getItem('profile_pic'));
-      setCounter(counter+1);
+      setProfilePicUrl(localStorage.getItem("profile_pic"));
+      setCounter(counter + 1);
     };
 
-    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener("storage", handleStorageChange);
 
     return () => {
-      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener("storage", handleStorageChange);
     };
   }, [counter]);
 
-
-
   const cookies = new Cookies();
-  
+
   return (
     <div className={`${styles.body} container`}>
       <div className={styles.navigation}>
-        <img src={Logo} alt=""/>
+        <img src={Logo} alt="" />
 
         <div className={styles.button}>
           <Link to="/dashboard/affiliate" color="white">
@@ -79,11 +79,19 @@ const SettingsBody = () => {
 
       <div className={styles.profile}>
         <div className={styles.avatar}>
-          <img key={Date.now()} src={`${profilePicUrl}?${counter}`} alt="Profile picture"/>
+          <img
+            key={Date.now()}
+            src={`${profilePicUrl}?${counter}`}
+            alt="Profile picture"
+          />
         </div>
 
         <div className={styles.info}>
-          <p className={styles.name}>{localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")}</p>
+          <p className={styles.name}>
+            {localStorage.getItem("firstName") +
+              " " +
+              localStorage.getItem("lastName")}
+          </p>
           <p className={styles.email}>{localStorage.getItem("email")}</p>
         </div>
       </div>
@@ -123,16 +131,19 @@ const SettingsBody = () => {
 
 export default SettingsBody;
 
-
 const ProfileBody = () => {
-
-
   const [file, setFile] = useState(null);
-  const [fullName, setFullName] = useState(localStorage.getItem("firstName") + " " + localStorage.getItem("lastName"));
+  const [fullName, setFullName] = useState(
+    localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
+  );
   const [username, setUsername] = useState(localStorage.getItem("username"));
-  const [supportEmail, setSupportEmail] = useState(localStorage.getItem("email"));
+  const [supportEmail, setSupportEmail] = useState(
+    localStorage.getItem("email")
+  );
   const [business, setBusiness] = useState(localStorage.getItem("business"));
-  const [phoneNumber, setPhoneNumber] = useState(localStorage.getItem("phoneNumber"));
+  const [phoneNumber, setPhoneNumber] = useState(
+    localStorage.getItem("phoneNumber")
+  );
   const [email, setEmail] = useState(localStorage.getItem("email"));
   const [errorMessage, setErrorMessage] = useState(null);
   const [message, setMessage] = useState(null);
@@ -145,12 +156,6 @@ const ProfileBody = () => {
       onChange: setFullName,
     },
     {
-      label: "Username",
-      type: "text",
-      value: username,
-      onChange: setUsername,
-    },
-    {
       label: "Email Address",
       type: "text",
       value: email,
@@ -161,20 +166,12 @@ const ProfileBody = () => {
       type: "text",
       value: business,
       onChange: setBusiness,
-
     },
     {
       label: "Phone Number",
       type: "text",
       value: phoneNumber,
       onChange: setPhoneNumber,
-
-    },
-    {
-      label: "Support Email Address",
-      type: "text",
-      value: supportEmail,
-      onChange: setSupportEmail,
     },
   ];
 
@@ -186,40 +183,39 @@ const ProfileBody = () => {
 
   const checkErrors = () => {
     if (!fullName || !fullName.trim()) {
-      setErrorMessage('Full name is required.');
+      setErrorMessage("Full name is required.");
       return null;
     }
 
     if (!username || !username.trim()) {
-      setErrorMessage('Username is required.');
+      setErrorMessage("Username is required.");
       return null;
     }
 
     if (!supportEmail || !supportEmail.trim()) {
-      setErrorMessage('Support email is required.');
+      setErrorMessage("Support email is required.");
       return null;
     }
 
     if (!business || !business.trim()) {
-      setErrorMessage('Business name is required.');
+      setErrorMessage("Business name is required.");
       return null;
     }
 
     if (!phoneNumber || !phoneNumber.trim()) {
-      setErrorMessage('Phone number is required.');
+      setErrorMessage("Phone number is required.");
       return null;
     }
 
     if (!email || !email.trim()) {
-      setErrorMessage('Email is required.');
+      setErrorMessage("Email is required.");
       return null;
     }
 
     return true;
-  }
+  };
 
   const handleConfirm = async () => {
-
     if (checkErrors() == null) {
       return;
     }
@@ -235,7 +231,6 @@ const ProfileBody = () => {
     };
 
     if (file) {
-
       const response = await backendAPI.uploadFile(file);
       if (response == null) {
         setErrorMessage("Error on uploading the profile picture");
@@ -252,7 +247,9 @@ const ProfileBody = () => {
   };
 
   const resetValues = () => {
-    setFullName(localStorage.getItem("firstName") + " " + localStorage.getItem("lastName"));
+    setFullName(
+      localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
+    );
     setSupportEmail(localStorage.getItem("email"));
     setBusiness(localStorage.getItem("business"));
     setPhoneNumber(localStorage.getItem("phoneNumber"));
@@ -288,7 +285,10 @@ const ProfileBody = () => {
 
       <Attachment label="Upload logo image" onUpload={handleUpload} />
 
-      <Buttons functions={[resetValues, handleConfirm]} buttons={["Reset", "Confirm"]} />
+      <Buttons
+        functions={[resetValues, handleConfirm]}
+        buttons={["Reset", "Confirm"]}
+      />
     </div>
   );
 };
@@ -317,8 +317,32 @@ const passwordContent = [
 ];
 
 const PasswordBody = () => {
+  const [openBox, setOpenBox] = useState(false);
+  const handleConfirm = () => {
+    setOpenBox(true);
+  };
+
+  const handleClose = () => {
+    setOpenBox(false);
+  };
+
   return (
     <div>
+      {openBox && (
+        <div className={styles.modal}>
+          <div className={`${styles.popup} card`}>
+            <p>Enter verification code:</p>
+
+            <InputComponent />
+
+            <Buttons
+              functions={[handleClose, ""]}
+              buttons={["Cancel", "Confirm"]}
+            />
+          </div>
+        </div>
+      )}
+
       {passwordContent.map((item) => (
         <div>
           <Input
@@ -328,14 +352,12 @@ const PasswordBody = () => {
           />
         </div>
       ))}
-
       <Authentificator
         placeholder={"Google Authentificator"}
         connected={true}
-        handleClick={() => { }}
+        handleClick={() => {}}
       />
-
-      <Buttons functions={["", ""]} buttons={["Reset", "Confirm"]} />
+      <Buttons functions={["", handleConfirm]} buttons={["Reset", "Confirm"]} />
     </div>
   );
 };

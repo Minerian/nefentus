@@ -224,6 +224,33 @@
   padding: 1rem 2rem;
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.popup {
+  text-align: center;
+  border-radius: 1rem;
+  padding: 3rem;
+  width: 100%;
+  margin: 2.5rem;
+  max-width: 50rem;
+}
+
+.modal p {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
 @media (max-width: 900px) {
   .navigation img {
     height: 2.2rem;
