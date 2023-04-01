@@ -251,7 +251,12 @@
       "button": "Enviar correo electrónico",
       "info": "¿No sabe su correo electrónico? ¡Por favor, póngase en contacto con el soporte!"
       },
-  
+      "reset-password": {
+        "title": "Restablecer contraseña",
+        "button": "restablecer",
+        "info": "¿No quieres restablecer tu contraseña? Inicia sesión en su lugar.",
+        "button-label-confirm": "Confirmar contraseña"
+        },
     "footer": {
       "copyright": "© 2023 Nefentus. All rights reserved.",
       "content": [

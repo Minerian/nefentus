@@ -27,7 +27,6 @@ const ResetPassword = () => {
     } else {
     }
   }, []);
-
   async function ResetPassword(token, confirmPass, pass) {
     if (confirmPass !== pass) {
       setErrorMessage("Passwords are not equal!");
@@ -54,7 +53,7 @@ const ResetPassword = () => {
         <div className={styles.top}>
           <img src={Logo} alt="" />
 
-          <h3>{t("forgot-password.title")}</h3>
+          <h3>{t("reset-password.title")}</h3>
           <div>
             {errorMessage && (
               <div className={styles.errormessagecontainer}>
@@ -78,14 +77,14 @@ const ResetPassword = () => {
         <Input
           value={CPassword}
           setState={setCPassword}
-          label={t("signUp.passwordLabel")}
+          label={t("reset-password.button-label-confirm")}
           placeholder={t("signUp.passwordPlaceholder")}
           secure
         />
-        <Button link={null} onClick={handleClick}>{t("forgot-password.button")}</Button>
+        <Button link={null} onClick={handleClick}>{t("reset-password.button")}</Button>
         <div className={styles.info}>
           <p>
-            {t("forgot-password.info")}
+            {t("reset-password.info")}
           </p>
         </div>
       </div>

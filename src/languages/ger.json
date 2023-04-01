@@ -12,6 +12,12 @@
     "signUp": "Jetzt loslegen",
     "menu": "Menu"
   },
+  "reset-password": {
+    "title": "Passwort zurücksetzen",
+    "button": "zurücksetzen",
+    "info": "Möchten Sie Ihr Passwort nicht zurücksetzen? Stattdessen einloggen.",
+    "button-label-confirm": "Passwort bestätigen"
+    },
   "forgot-password": {
     "title": "Passwort vergessen",
     "button": "E-Mail senden",

@@ -217,6 +217,12 @@
     "button": "Send email",
     "info": "Dont know your email please contact the support! "
   },
+  "reset-password": {
+    "title": "Reset Password",
+    "button": "reset",
+    "info": "Don't want to reset your password? Login instead.",
+    "button-label-confirm": "Confirm password"
+  },
   "signUp": {
     "titleP1": "Get started with",
     "titleP2": "Nefentus",

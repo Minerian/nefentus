@@ -13,19 +13,10 @@ const PasswordForgot = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [message, setMessage] = useState(null);
   const [Username, setUsername] = useState("");
-  const [Password, setPassword] = useState("");
   const navigate = useNavigate();
   const backendAPI = new backend_API();
   const { t } = useTranslation();
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has("token")) {
-      const paramValue = urlParams.get("token");
-      activateUser(paramValue);
-    } else {
-    }
-  }, []);
 
   async function sendResetMail(username1) {
     try {
@@ -34,24 +25,12 @@ const PasswordForgot = () => {
         setErrorMessage("Invalid Email!");
         return;
       }
-        navigate("/dashboard/affiliate");
+        setMessage("Password reset sent!");
     } catch (error) {
       setErrorMessage("There was an error sending the email!");
     }
   }
 
-  const activateUser = async (token) => {
-    try {
-      const response = await backendAPI.activateAccount(token);
-      if(response == null) {
-        setErrorMessage("Error on activating account: ");
-        return;
-      }
-      setMessage("Account successfully activated");
-    } catch (error) {
-      setErrorMessage("Error on activating account: ");
-    }
-  };
 
   function handleClick() {
     sendResetMail(Username);
