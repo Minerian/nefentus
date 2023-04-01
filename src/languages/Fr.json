@@ -12,6 +12,11 @@
     "signUp": "Commencer ",
     "menu": "Menu"
   },
+  "forgot-password": {
+    "title": "Mot de passe oublié",
+    "button": "Envoyer un e-mail",
+    "info": "Vous ne connaissez pas votre adresse e-mail ? Veuillez contacter le support !"
+    },
   "home": {
     "heroTitle": "Augmentez le niveau de votre entreprise avec Nefentus ",
     "heroDescription": "Notre automatisation révolutionnaire de pointe et nos caisses crypto sécurisées vous permettent de vous concentrer sur votre activité principale tout en maximisant vos gains. Laissez les paiements manuels derrière vous et adoptez dès aujourd'hui l'avenir du commerce. ",

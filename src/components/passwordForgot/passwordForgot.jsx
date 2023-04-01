@@ -1,15 +1,15 @@
 import Input from "../input/input";
-import styles from "./loginBox.module.css";
+import styles from "./passwordForgot.module.css";
 
 import Logo from "../../assets/logo/logo.svg";
-import Button from "./../button/button";
+import Button from "../button/button";
 import { useState, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import backend_API from "../../api/backendAPI";
 
-const LoginBox = () => {
+const PasswordForgot = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [message, setMessage] = useState(null);
   const [Username, setUsername] = useState("");
@@ -27,16 +27,16 @@ const LoginBox = () => {
     }
   }, []);
 
-  async function loginUser(username1, password1) {
+  async function sendResetMail(username1) {
     try {
-      const response = await backendAPI.login(username1, password1);
+      const response = await backendAPI.forgotPassword(username1);
       if(response == null){
-        setErrorMessage("Invalid Login data");
+        setErrorMessage("Invalid Email!");
         return;
       }
         navigate("/dashboard/affiliate");
     } catch (error) {
-      setErrorMessage("There was an error logging in");
+      setErrorMessage("There was an error sending the email!");
     }
   }
 
@@ -54,7 +54,7 @@ const LoginBox = () => {
   };
 
   function handleClick() {
-    loginUser(Username, Password);
+    sendResetMail(Username);
   }
 
   return (
@@ -63,7 +63,7 @@ const LoginBox = () => {
         <div className={styles.top}>
           <img src={Logo} alt="" />
 
-          <h3>{t("login.title")}</h3>
+          <h3>{t("forgot-password.title")}</h3>
           <div>
             {errorMessage && (
               <div className={styles.errormessagecontainer}>
@@ -84,27 +84,15 @@ const LoginBox = () => {
           label={t("signUp.emailLabel")}
           placeholder={t("signUp.emailPlaceholder")}
         />
-        <Input
-          value={Password}
-          setState={setPassword}
-          label={t("signUp.passwordLabel")}
-          placeholder={t("signUp.passwordPlaceholder")}
-          secure
-        />
-        <Button onClick={handleClick}>{t("login.button")}</Button>
+        <Button link={null} onClick={handleClick}>{t("forgot-password.button")}</Button>
         <div className={styles.info}>
           <p>
-            {t("login.info")}
-            <u>
-              <Link to="/signUp">{t("login.infoButton")}</Link>
-            </u>
+            {t("forgot-password.info")}
           </p>
-
-          <p>{t("login.forgot")}</p>
         </div>
       </div>
     </div>
   );
 };
 
-export default LoginBox;
+export default PasswordForgot;

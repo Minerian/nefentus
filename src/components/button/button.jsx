@@ -13,11 +13,18 @@ const Button = ({ children, className, color, link = "/signup", onClick }) => {
             : "linear-gradient(94.15deg, #0784B5 -27.47%, #66BFDE 118.26%)",
       }}
     >
-      <Link to={link}>
+      
+      {link ? (
+        <Link to={link}>
+          <div style={{ color: color === "white" ? "#000" : "#fff" }}>
+            {children}
+          </div>
+        </Link>
+      ) : (
         <div style={{ color: color === "white" ? "#000" : "#fff" }}>
           {children}
         </div>
-      </Link>
+      )}
     </div>
   );
 };

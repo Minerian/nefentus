@@ -212,6 +212,11 @@
       }
     ]
   },
+  "forgot-password": {
+    "title": "Forgot Password",
+    "button": "Send email",
+    "info": "Dont know your email please contact the support! "
+  },
   "signUp": {
     "titleP1": "Get started with",
     "titleP2": "Nefentus",
@@ -334,7 +339,6 @@
     "description": "At Nefentus, we believe in supporting our clients every step of the way. That's why we offer free onboarding calls to assist with registration and setup. Whether you're a bar owner, consultant, coach, trainer, speaker, or agency owner, we're committed to finding the perfect solution for your unique needs.",
     "button": "Book a call"
   },
-
   "footer": {
     "copyright": "© 2023 Nefentus. All rights reserved.",
     "content": [

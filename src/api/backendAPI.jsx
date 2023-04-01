@@ -14,9 +14,52 @@ export default class backendAPI {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${this.token}`,
                 },
                 body: JSON.stringify(formData),
+            };
+            const response = await fetch(url, options);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response;
+        } catch (error) {
+            return null; // or return some default value
+        }
+    }
+
+    async forgotPassword(email) {
+        try {
+            const url = `${this.baseURL}/auth/forgot-password`;
+            const options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: email,
+            };
+            const response = await fetch(url, options);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response;
+        } catch (error) {
+            return null; // or return some default value
+        }
+    }
+
+    async resetPassword(newPassword, token) {
+        try {
+            const request = {
+                token: token,
+                newPassword: newPassword
+            }
+            const url = `${this.baseURL}/auth/reset-password`;
+            const options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(request),
             };
             const response = await fetch(url, options);
             if (!response.ok) {

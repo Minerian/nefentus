@@ -20,10 +20,12 @@ import Affiliate from "./pages/Affiliate";
 import Support from "./pages/Support";
 import Privacy from "./pages/Privacy";
 import Imprint from "./pages/Imprint";
+import PasswordForgot from "./pages/PasswordForgot"
 import { useEffect } from "react";
 import AffiliateDashboard from "./dashboard/Affiliate";
 import Settings from "./dashboard/Settings";
 import Vendor from "./dashboard/Vendor";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   useEffect(() => {
@@ -57,6 +59,9 @@ function App() {
             />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/forgot-password" element={<><PasswordForgot/></>}/>
+            <Route path="/reset-password" element={<><ResetPassword/></>}/>
+
             <Route
               path="/payment"
               element={
@@ -112,7 +117,6 @@ function App() {
                 </>
               }
             />
-
             <Route path="/dashboard">
               <Route
                 path="/dashboard/affiliate"

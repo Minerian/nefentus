@@ -12,6 +12,11 @@
     "signUp": "Jetzt loslegen",
     "menu": "Menu"
   },
+  "forgot-password": {
+    "title": "Passwort vergessen",
+    "button": "E-Mail senden",
+    "info": "Sie wissen Ihre E-Mail-Adresse nicht? Bitte kontaktieren Sie den Support!"
+    },
   "home": {
     "heroTitle": "Skalieren Sie Ihr Geschäft mit Nefentus",
     "heroDescription": "Unsere revolutionäre, hochmoderne Automatisierung und sichere Krypto-Checkouts ermöglichen es Ihnen, sich auf Ihr Kerngeschäft zu konzentrieren und gleichzeitig Ihre Einnahmen zu maximieren. Verabschieden Sie sich von manuellen Zahlungen und nutzen Sie heute die Zukunft des Handels.",

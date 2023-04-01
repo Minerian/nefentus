@@ -246,6 +246,11 @@
       "description": "En Nefentus, creemos en el apoyo a nuestros clientes en cada paso del camino. Por eso ofrecemos llamadas de bienvenida gratuitas para ayudarle con el registro y la configuración. Tanto si es propietario de un bar, consultor, coach, formador, conferenciante o propietario de una agencia, nos comprometemos a encontrar la solución perfecta para sus necesidades específicas",
       "button": "Reservar una llamada"
     },
+    "forgot-password": {
+      "title": "Olvidé mi contraseña",
+      "button": "Enviar correo electrónico",
+      "info": "¿No sabe su correo electrónico? ¡Por favor, póngase en contacto con el soporte!"
+      },
   
     "footer": {
       "copyright": "© 2023 Nefentus. All rights reserved.",

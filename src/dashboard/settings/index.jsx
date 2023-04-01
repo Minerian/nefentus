@@ -261,7 +261,6 @@ const ProfileBody = () => {
   };
 
   return (
-
     <div>
       <div>
         {errorMessage && (
