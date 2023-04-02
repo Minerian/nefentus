@@ -42,7 +42,7 @@ const AffiliateBody = () => {
       if (!response) {
         const responseNew = await backendAPI.checkPermissionAdmin();
         if (!responseNew) {
-          // navigate("/");
+          navigate("/login");
         } else {
           setDashboardAdmin();
         }

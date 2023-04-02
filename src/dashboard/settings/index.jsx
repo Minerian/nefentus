@@ -1,5 +1,5 @@
 import { Attachment, Authentificator } from "../input/input";
-import Input from "../input/input";
+import Input from "../../components/input/input";
 import styles from "./settings.module.css";
 import { useEffect, useRef, useState } from "react";
 
@@ -14,7 +14,8 @@ import { Link } from "react-router-dom";
 import backend_API from "../../api/backendAPI";
 import Cookies from "universal-cookie";
 import { loadLanguages, use } from "i18next";
-import InputComponent from "./../../components/input/input";
+import InputComponent from "../../components/input/input";
+import backendAPI from "../../api/backendAPI";
 
 const nav = [
   "Profile",
@@ -136,15 +137,13 @@ const ProfileBody = () => {
   const [fullName, setFullName] = useState(
     localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
   );
-  const [username, setUsername] = useState(localStorage.getItem("username"));
-  const [supportEmail, setSupportEmail] = useState(
-    localStorage.getItem("email")
-  );
-  const [business, setBusiness] = useState(localStorage.getItem("business"));
+  const [business, setBusiness] = useState(
+    localStorage.getItem("business"));
   const [phoneNumber, setPhoneNumber] = useState(
     localStorage.getItem("phoneNumber")
   );
-  const [email, setEmail] = useState(localStorage.getItem("email"));
+  const [email, setEmail] = useState(
+    localStorage.getItem("email"));
   const [errorMessage, setErrorMessage] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -187,16 +186,6 @@ const ProfileBody = () => {
       return null;
     }
 
-    if (!username || !username.trim()) {
-      setErrorMessage("Username is required.");
-      return null;
-    }
-
-    if (!supportEmail || !supportEmail.trim()) {
-      setErrorMessage("Support email is required.");
-      return null;
-    }
-
     if (!business || !business.trim()) {
       setErrorMessage("Business name is required.");
       return null;
@@ -223,11 +212,9 @@ const ProfileBody = () => {
 
     const requestData = {
       fullName: fullName,
-      username: username,
       phoneNumber: phoneNumber,
       email: email,
       business: business,
-      supportEmail: supportEmail,
     };
 
     if (file) {
@@ -250,10 +237,8 @@ const ProfileBody = () => {
     setFullName(
       localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
     );
-    setSupportEmail(localStorage.getItem("email"));
     setBusiness(localStorage.getItem("business"));
     setPhoneNumber(localStorage.getItem("phoneNumber"));
-    setUsername(localStorage.getItem("username"));
     setEmail(localStorage.getItem("email"));
   };
 
@@ -293,34 +278,81 @@ const ProfileBody = () => {
   );
 };
 
-const passwordContent = [
-  {
-    label: "Current Password",
-    placeholder: "Enter your password",
-    type: "password",
-  },
-  {
-    label: "New Password",
-    placeholder: "Enter new password",
-    type: "password",
-  },
-  {
-    label: "Confirm Password",
-    placeholder: "Confirm new email",
-    type: "password",
-  },
-  {
-    label: "Email Authentification",
-    placeholder: "Enter email for authentification",
-    type: "text",
-  },
-];
+
 
 const PasswordBody = () => {
+
+
+
   const [openBox, setOpenBox] = useState(false);
-  const handleConfirm = () => {
+  const [currentPassword, setCurrentPassword] = useState(null);
+  const [newPassword, setNewPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
+  const [verificationCode, setVerificationCode] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [message, setMessage] = useState(null);
+  const [errorMessageBox, setErrorMessageBox] = useState(null);
+
+  const backendAPI = new backend_API();
+
+  const passwordContent = [
+    {
+      label: "Current Password",
+      placeholder: "Enter your password",
+      type: "password",
+      value: currentPassword,
+      onChange: setCurrentPassword
+    },
+    {
+      label: "New Password",
+      placeholder: "Enter new password",
+      type: "password",
+      value: newPassword,
+      onChange: setNewPassword
+    },
+    {
+      label: "Confirm Password",
+      placeholder: "Confirm new password",
+      type: "password",
+      value: confirmPassword,
+      onChange: setConfirmPassword
+    }
+  ];
+
+  const handleConfirm = async () => {
+
+    if (newPassword !== confirmPassword) {
+      setErrorMessage("Passwords are not equal");
+      return;
+    }
+
+    const response = await backendAPI.forgotPasswordDashboard(newPassword, currentPassword);
+    if (response == null) {
+      setErrorMessage("Old password is not the right one!");
+      return;
+    }
+    setErrorMessage(null);
     setOpenBox(true);
   };
+
+  const handleConfirmCode = async () => {
+
+    const response = await backendAPI.resetPasswordDashboard(verificationCode);
+    if (response == null) {
+      setErrorMessageBox("Code is not valid or too old!");
+      return;
+    }
+    setErrorMessageBox(null);
+    setMessage("Password succesfully changed!");
+    resetValues();
+    setOpenBox(false);
+  };
+
+  const resetValues = () => {
+    setConfirmPassword(null);
+    setCurrentPassword(null);
+    setNewPassword(null);
+  }
 
   const handleClose = () => {
     setOpenBox(false);
@@ -332,30 +364,46 @@ const PasswordBody = () => {
         <div className={styles.modal}>
           <div className={`${styles.popup} card`}>
             <p>Enter verification code:</p>
-
-            <InputComponent />
+            {errorMessageBox && (
+              <div className={styles.errormessagecontainer}>
+                <p style={{ color: "red" }}> {errorMessage}</p>
+              </div>
+            )}
+            <InputComponent value={verificationCode} setState={setVerificationCode} />
 
             <Buttons
-              functions={[handleClose, ""]}
+              functions={[handleClose, handleConfirmCode]}
               buttons={["Cancel", "Confirm"]}
             />
           </div>
         </div>
       )}
-
+      {errorMessage && (
+        <div className={styles.errormessagecontainer}>
+          <p style={{ color: "red" }}> {errorMessage}</p>
+        </div>
+      )}
+       {message && (
+          <div className={styles.messagecontainer}>
+            <p style={{ color: "green" }}>{message}</p>
+          </div>
+        )}
       {passwordContent.map((item) => (
         <div>
           <Input
             label={item.label}
             placeholder={item.placeholder}
             type={item.type}
+            setState={item.onChange}
+            value={item.value}
+            secure
           />
         </div>
       ))}
       <Authentificator
         placeholder={"Google Authentificator"}
         connected={true}
-        handleClick={() => {}}
+        handleClick={() => { }}
       />
       <Buttons functions={["", handleConfirm]} buttons={["Reset", "Confirm"]} />
     </div>

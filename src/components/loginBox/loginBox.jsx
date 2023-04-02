@@ -91,7 +91,7 @@ const LoginBox = () => {
           placeholder={t("signUp.passwordPlaceholder")}
           secure
         />
-        <Button onClick={handleClick}>{t("login.button")}</Button>
+        <Button link={null} onClick={handleClick}>{t("login.button")}</Button>
         <div className={styles.info}>
           <p>
             {t("login.info")}
