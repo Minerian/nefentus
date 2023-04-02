@@ -3,12 +3,17 @@ import styles from "./input.module.css";
 import Image from "../../assets/icon/attachment.svg";
 import { useRef, useState } from "react";
 
-const Input = ({ label, placeholder, type = "text" }) => {
+const Input = ({ label, placeholder, type = "text", setState, value }) => {
+
+  const handleChange = (e) => {
+    setState(e.target.value);
+  };
+
   return (
     <div className={styles.input}>
       <p>{label}</p>
 
-      <input type={type} name="" id="" placeholder={placeholder} />
+      <input type={type} name="" id="" value={value} placeholder={placeholder} onChange={handleChange}/>
     </div>
   );
 };

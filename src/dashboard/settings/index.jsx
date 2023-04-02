@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import backend_API from "../../api/backendAPI";
 import Cookies from "universal-cookie";
 import { loadLanguages, use } from "i18next";
-import InputComponent from "../../components/input/input";
+import InputComponent from "../input/input";
 import backendAPI from "../../api/backendAPI";
 
 const nav = [
@@ -258,7 +258,7 @@ const ProfileBody = () => {
       </div>
       {profileContent.map((item) => (
         <div>
-          <Input
+          <InputComponent
             label={item.label}
             placeholder={item.placeholder}
             type={item.type}
@@ -390,7 +390,7 @@ const PasswordBody = () => {
         )}
       {passwordContent.map((item) => (
         <div>
-          <Input
+          <InputComponent
             label={item.label}
             placeholder={item.placeholder}
             type={item.type}
