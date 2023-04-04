@@ -34,39 +34,15 @@ const VendorBody = () => {
 
   const checkPermissions = async () => {
     try {
-      const response = await backendAPI.checkPermissionAff();
-      if (!response) {
-        const responseNew = await backendAPI.checkPermissionAdmin();
-        if (!responseNew) {
-          // navigate("/");
-        } else {
-          setDashboardAdmin();
-        }
-      } else {
-        setDashboard();
+      const response = await backendAPI.checkPermissionVendor();
+      if (response == null) {
+        navigate("/");
       }
     } catch (error) {
       console.error(error);
     }
   };
 
-  const setDashboardAdmin = async () => {
-    try {
-      const data = await backendAPI.getAdminDashboardTotalStats();
-      fillCards(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const setDashboard = async () => {
-    try {
-      const data = await backendAPI.getVendorDashboardTotalStats();
-      fillCards(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const [signUps, setSignUps] = useState(0);
   const [signUpsPercentage, setSignUpsPercentage] = useState(0.0);

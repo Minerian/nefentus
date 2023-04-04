@@ -2,7 +2,7 @@ import Cookies from "universal-cookie";
 export default class backendAPI {
 
     constructor() {
-        this.baseURL = "https://nefentus.com:8443/api";
+        this.baseURL = "http://localhost:8080/api";
         this.token = localStorage.getItem("token");
         this.cookies = new Cookies();
     }
@@ -283,6 +283,34 @@ export default class backendAPI {
             return false;
         }
     }
+
+    async checkPermissionVendor() {
+        if (!this.token) {
+            // Der Benutzer ist nicht angemeldet
+            return null;
+        }
+
+        const url = `${this.baseURL}/dashboard/vendor`;
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${this.token}`,
+            },
+        };
+
+        try {
+            const response = await fetch(url, options);
+            if (!response.ok) {
+                throw new Error("Failed to check admin permissions");
+            }
+            return response;
+        } catch (error) {
+            console.error("Error checking admin permissions:", error);
+            return null;
+        }
+    }
+
 
 
     async checkPermissionAdmin() {

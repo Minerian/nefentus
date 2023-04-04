@@ -170,6 +170,12 @@ const AffiliateNavigation = () => {
 const AffiliateHeader = () => {
   const [copied, setCopied] = useState(false);
 
+  const navigate = useNavigate();
+
+  const handleClick = async () => {
+    navigate("/dashboard/vendor");
+  }
+
   return (
     <div className={styles.header}>
       <div className={styles.top}>
@@ -180,7 +186,7 @@ const AffiliateHeader = () => {
           </p>
         </div>
 
-        <Button color="white">Vendor Dashboard</Button>
+        <Button color="white" link={null} onClick={handleClick}>Vendor Dashboard</Button>
       </div>
 
       <div className={styles.link}>
