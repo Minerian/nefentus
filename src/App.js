@@ -20,12 +20,16 @@ import Affiliate from "./pages/Affiliate";
 import Support from "./pages/Support";
 import Privacy from "./pages/Privacy";
 import Imprint from "./pages/Imprint";
-import PasswordForgot from "./pages/PasswordForgot"
+import PasswordForgot from "./pages/PasswordForgot";
 import { useEffect } from "react";
 import AffiliateDashboard from "./dashboard/Affiliate";
 import Settings from "./dashboard/Settings";
 import Vendor from "./dashboard/Vendor";
 import ResetPassword from "./pages/ResetPassword";
+import Product from "./dashboard/Product";
+import DashboardLayout from "./dashboard/dashboardLayout/dashboardLayout";
+import Transactions from "./dashboard/Transactions";
+import PaymentDashboard from "./dashboard/Payment";
 
 function App() {
   useEffect(() => {
@@ -59,8 +63,22 @@ function App() {
             />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/forgot-password" element={<><PasswordForgot/></>}/>
-            <Route path="/reset-password" element={<><ResetPassword/></>}/>
+            <Route
+              path="/forgot-password"
+              element={
+                <>
+                  <PasswordForgot />
+                </>
+              }
+            />
+            <Route
+              path="/reset-password"
+              element={
+                <>
+                  <ResetPassword />
+                </>
+              }
+            />
 
             <Route
               path="/payment"
@@ -137,9 +155,45 @@ function App() {
               <Route
                 path="/dashboard/vendor"
                 element={
-                  <>
+                  <DashboardLayout>
                     <Vendor />
-                  </>
+                  </DashboardLayout>
+                }
+              />
+
+              <Route
+                path="/dashboard/product"
+                element={
+                  <DashboardLayout>
+                    <Product />
+                  </DashboardLayout>
+                }
+              />
+
+              <Route
+                path="/dashboard/transactions"
+                element={
+                  <DashboardLayout>
+                    <Transactions />
+                  </DashboardLayout>
+                }
+              />
+
+              <Route
+                path="/dashboard/payment"
+                element={
+                  <DashboardLayout>
+                    <PaymentDashboard />
+                  </DashboardLayout>
+                }
+              />
+
+              <Route
+                path="/dashboard/vendor/settings"
+                element={
+                  <DashboardLayout>
+                    <Settings type="vendor" />
+                  </DashboardLayout>
                 }
               />
             </Route>

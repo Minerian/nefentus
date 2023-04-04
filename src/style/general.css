@@ -267,3 +267,17 @@ nav {
   display: grid;
   grid-template-columns: max-content 1fr;
 }
+
+.dashboard-body {
+  margin: 0 5rem;
+}
+
+@media (max-width: 900px) {
+  .dashboard {
+    display: initial !important;
+  }
+
+  .dashboard-body {
+    margin: 0 2.5rem;
+  }
+}

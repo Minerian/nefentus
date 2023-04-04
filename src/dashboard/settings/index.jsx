@@ -16,6 +16,7 @@ import Cookies from "universal-cookie";
 import { loadLanguages, use } from "i18next";
 import InputComponent from "../input/input";
 import backendAPI from "../../api/backendAPI";
+import Header from "../header/header";
 
 const nav = [
   "Profile",
@@ -44,7 +45,7 @@ const instruction = [
   },
 ];
 
-const SettingsBody = () => {
+const SettingsBody = ({ type }) => {
   const [active, setActive] = useState(0);
   const [profilePicUrl, setProfilePicUrl] = useState(
     localStorage.getItem("profile_pic")
@@ -67,16 +68,27 @@ const SettingsBody = () => {
   const cookies = new Cookies();
 
   return (
-    <div className={`${styles.body} container`}>
-      <div className={styles.navigation}>
-        <img src={Logo} alt="" />
+    <div
+      className={`${styles.body} ${
+        type === "vendor" ? "dashboard-body" : "container"
+      }`}
+      style={{ paddingTop: type === "vendor" ? "0" : "2rem" }}
+    >
+      {type === "vendor" ? (
+        <Header title={"Settings"} />
+      ) : (
+        <>
+          <div className={styles.navigation}>
+            <img src={Logo} alt="" />
 
-        <div className={styles.button}>
-          <Link to="/dashboard/affiliate" color="white">
-            Back to dashboard
-          </Link>
-        </div>
-      </div>
+            <div className={styles.button}>
+              <Link to="/dashboard/affiliate" color="white">
+                Back to dashboard
+              </Link>
+            </div>
+          </div>
+        </>
+      )}
 
       <div className={styles.profile}>
         <div className={styles.avatar}>
@@ -137,13 +149,11 @@ const ProfileBody = () => {
   const [fullName, setFullName] = useState(
     localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")
   );
-  const [business, setBusiness] = useState(
-    localStorage.getItem("business"));
+  const [business, setBusiness] = useState(localStorage.getItem("business"));
   const [phoneNumber, setPhoneNumber] = useState(
     localStorage.getItem("phoneNumber")
   );
-  const [email, setEmail] = useState(
-    localStorage.getItem("email"));
+  const [email, setEmail] = useState(localStorage.getItem("email"));
   const [errorMessage, setErrorMessage] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -278,12 +288,7 @@ const ProfileBody = () => {
   );
 };
 
-
-
 const PasswordBody = () => {
-
-
-
   const [openBox, setOpenBox] = useState(false);
   const [currentPassword, setCurrentPassword] = useState(null);
   const [newPassword, setNewPassword] = useState(null);
@@ -301,32 +306,34 @@ const PasswordBody = () => {
       placeholder: "Enter your password",
       type: "password",
       value: currentPassword,
-      onChange: setCurrentPassword
+      onChange: setCurrentPassword,
     },
     {
       label: "New Password",
       placeholder: "Enter new password",
       type: "password",
       value: newPassword,
-      onChange: setNewPassword
+      onChange: setNewPassword,
     },
     {
       label: "Confirm Password",
       placeholder: "Confirm new password",
       type: "password",
       value: confirmPassword,
-      onChange: setConfirmPassword
-    }
+      onChange: setConfirmPassword,
+    },
   ];
 
   const handleConfirm = async () => {
-
     if (newPassword !== confirmPassword) {
       setErrorMessage("Passwords are not equal");
       return;
     }
 
-    const response = await backendAPI.forgotPasswordDashboard(newPassword, currentPassword);
+    const response = await backendAPI.forgotPasswordDashboard(
+      newPassword,
+      currentPassword
+    );
     if (response == null) {
       setErrorMessage("Old password is not the right one!");
       return;
@@ -336,7 +343,6 @@ const PasswordBody = () => {
   };
 
   const handleConfirmCode = async () => {
-
     const response = await backendAPI.resetPasswordDashboard(verificationCode);
     if (response == null) {
       setErrorMessageBox("Code is not valid or too old!");
@@ -352,7 +358,7 @@ const PasswordBody = () => {
     setConfirmPassword(null);
     setCurrentPassword(null);
     setNewPassword(null);
-  }
+  };
 
   const handleClose = () => {
     setOpenBox(false);
@@ -369,7 +375,10 @@ const PasswordBody = () => {
                 <p style={{ color: "red" }}> {errorMessage}</p>
               </div>
             )}
-            <InputComponent value={verificationCode} setState={setVerificationCode} />
+            <InputComponent
+              value={verificationCode}
+              setState={setVerificationCode}
+            />
 
             <Buttons
               functions={[handleClose, handleConfirmCode]}
@@ -383,11 +392,11 @@ const PasswordBody = () => {
           <p style={{ color: "red" }}> {errorMessage}</p>
         </div>
       )}
-       {message && (
-          <div className={styles.messagecontainer}>
-            <p style={{ color: "green" }}>{message}</p>
-          </div>
-        )}
+      {message && (
+        <div className={styles.messagecontainer}>
+          <p style={{ color: "green" }}>{message}</p>
+        </div>
+      )}
       {passwordContent.map((item) => (
         <div>
           <InputComponent
@@ -403,7 +412,7 @@ const PasswordBody = () => {
       <Authentificator
         placeholder={"Google Authentificator"}
         connected={true}
-        handleClick={() => { }}
+        handleClick={() => {}}
       />
       <Buttons functions={["", handleConfirm]} buttons={["Reset", "Confirm"]} />
     </div>

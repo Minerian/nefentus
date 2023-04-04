@@ -4,11 +4,10 @@ import VendorBody from "./vendor/index";
 
 const Vendor = () => {
   return (
-    <div className="dashboard" style={{ height: "100vh", overflow: "hidden" }}>
-      <Sidebar />
+    <>
       <VendorBody />
-      <Countdown />
-    </div>
+      {/* <Countdown /> */}
+    </>
   );
 };
 

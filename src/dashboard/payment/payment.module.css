@@ -1,0 +1,251 @@
+.top {
+  margin-bottom: 3rem;
+}
+
+.top h4 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.top p {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+}
+
+.card {
+  padding: 3rem;
+  border-radius: 1rem;
+
+  margin-bottom: 10rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 500;
+
+  margin-bottom: 2rem;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  position: relative;
+}
+
+.inputWrapper {
+  padding: 3rem 0;
+  padding-right: 5rem;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.inputWrapper > div > p {
+  font-size: 1.6rem !important;
+}
+
+.inputWrapper input,
+.inputWrapper > div:nth-child(2) > div {
+  font-size: 1.4rem !important;
+}
+
+.bill {
+  padding-left: 5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bill .label {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--gray-color);
+}
+
+.bill .price {
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 3.5rem;
+}
+
+.item:nth-child(3) {
+  margin-bottom: 3rem;
+}
+
+.itemTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.itemTitle p {
+  font-size: 1.8rem;
+}
+
+.itemDescription {
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+  line-height: 140%;
+  color: var(--gray-color);
+}
+
+.button {
+  background-color: white;
+  padding: 1.4rem 10rem;
+  width: max-content;
+  color: var(--black-color);
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalBox {
+  border-radius: 1rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 38.2rem;
+  position: relative;
+}
+
+.modalBox img {
+  width: 5rem;
+  margin-bottom: 1rem;
+}
+
+.modalTitle {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--white-color);
+  margin-bottom: 1rem;
+}
+
+.modalInfo {
+  font-size: 1.4rem;
+  color: var(--gray-color);
+  width: 100%;
+  text-align: center;
+  padding-bottom: 3rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modalInfo span {
+  font-weight: 500;
+}
+
+.close {
+  position: absolute;
+  font-size: 1.6rem;
+  top: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+}
+
+.modalBody {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modalBody img {
+  width: 100%;
+  padding: 0 4.5rem;
+}
+
+.modalItem {
+  font-weight: 500;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 1.4rem;
+
+  color: var(--gray-color);
+}
+
+.buttons {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.modalButton {
+  font-size: 1.3rem;
+  padding: 1rem 0;
+  text-align: center;
+  border: 1px solid;
+  cursor: pointer;
+
+  border-radius: 1rem;
+}
+
+.button1 {
+  color: var(--white-color);
+
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.button2 {
+  color: black;
+  background-color: white;
+  border-color: white;
+}
+
+@media (max-width: 900px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+
+  .inputWrapper {
+    border-right: 0;
+    padding-right: 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .bill {
+    padding-top: 3rem;
+    padding-left: 0;
+  }
+
+  .button {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .modalBox {
+    padding: 2rem;
+  }
+
+  .modalBody img {
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+}

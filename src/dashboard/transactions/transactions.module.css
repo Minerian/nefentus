@@ -1,0 +1,162 @@
+.top {
+  display: flex;
+  margin-bottom: 3rem;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.top h3 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.top p {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+}
+
+.top span {
+  color: #23c215;
+}
+
+.input {
+  position: relative;
+  width: 26.3rem;
+  display: flex;
+  gap: 0.7rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.input input {
+  width: 100%;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.input img {
+  width: 1.2rem;
+}
+
+.top .card {
+  border-radius: 1rem;
+}
+
+.table {
+  width: 100%;
+}
+
+.table ul {
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 2fr 1fr 1fr 1.2fr 1.2fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.table ul li {
+  list-style-type: none;
+
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tableHead li {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #c4c4c4;
+  text-align: left;
+  opacity: 0.6;
+}
+
+.tableBody {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--gray-color);
+}
+
+.tableBody ul:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tableHead ul {
+  padding: 0 3rem;
+}
+
+.tableBody ul {
+  padding: 3rem;
+}
+
+.table li:first-child {
+  color: var(--white-color) !important;
+}
+
+.tableBody li:nth-child(5) {
+  background-color: rgba(21, 149, 194, 0.1);
+  color: #1595c2;
+
+  padding: 0.3rem 1rem;
+  border-radius: 0.2rem;
+  width: max-content;
+}
+
+.tableBody li:last-child {
+  color: #1595c2;
+  cursor: pointer;
+}
+
+@media (max-width: 1100px) {
+  .tableHead li {
+    font-size: 1rem;
+  }
+
+  .tableBody li {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .input {
+    width: 100%;
+    max-width: 50rem;
+  }
+
+  .card {
+    overflow-x: scroll;
+  }
+
+  .card::-webkit-scrollbar {
+    display: none;
+  }
+
+  .table {
+    width: max-content;
+  }
+
+  .table li {
+    padding-right: 2.5rem !important;
+  }
+
+  .tableHead li {
+    font-size: 1.2rem;
+  }
+
+  .tableBody li {
+    font-size: 1.4rem;
+  }
+}

@@ -8,6 +8,10 @@
   position: relative;
 }
 
+.hamburger {
+  display: none;
+}
+
 .sidebar {
   position: sticky;
   left: 0;
@@ -79,7 +83,10 @@
   .sidebarWrapper {
     position: fixed;
     width: 100%;
-
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
     transition: 0.5s ease;
   }
 
@@ -94,5 +101,14 @@
     display: initial;
 
     cursor: pointer;
+  }
+
+  .hamburger {
+    display: initial;
+    width: 2.4rem;
+
+    margin-left: 2.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: -2.5rem;
   }
 }

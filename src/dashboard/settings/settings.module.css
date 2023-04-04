@@ -1,5 +1,4 @@
 .body {
-  padding-top: 2rem;
   padding-bottom: 5rem;
 }
 
@@ -37,9 +36,9 @@
   cursor: pointer;
 }
 
-.body h2 {
+/* .body h2 {
   font-size: 3rem;
-}
+} */
 
 .profile {
   margin-top: 4.5rem;

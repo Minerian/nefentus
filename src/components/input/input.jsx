@@ -26,24 +26,39 @@ const Input = ({ label, placeholder, value, setState, secure }) => {
 
 export default Input;
 
-export const Options = ({ value, setValue }) => {
+export const Options = ({ value, options = [], setValue, label = "" }) => {
   const [open, setOpen] = useState(false);
 
   const { t } = useTranslation();
 
   return (
     <div className={`${styles.inputWrapper} ${styles.option}`}>
-      <p className={styles.label}>{t("signUp.optionLabel")}</p>
+      <p className={styles.label}>
+        {label.length > 0 ? label : t("signUp.optionLabel")}
+      </p>
 
-      <div className={styles.input} onClick={() => setOpen((prev) => !prev)}>
+      <div
+        className={`option ${styles.input}`}
+        onClick={() => setOpen((prev) => !prev)}
+      >
         {value} <img src={dropDown} alt="" />
         {open && (
           <div className={`card ${styles.body}`}>
-            <p onClick={() => setValue("Vendor")}>{t("signUp.option1")}</p>
-            <p onClick={() => setValue("Affiliate")}>{t("signUp.option2")}</p>
-            <p onClick={() => setValue("Vendor / Affiliate")}>
-              {t("signUp.option1")} / {t("signUp.option2")}
-            </p>
+            {options.length > 0 ? (
+              options.map((item) => (
+                <p onClick={() => setValue(item)}>{item}</p>
+              ))
+            ) : (
+              <>
+                <p onClick={() => setValue("Vendor")}>{t("signUp.option1")}</p>
+                <p onClick={() => setValue("Affiliate")}>
+                  {t("signUp.option2")}
+                </p>
+                <p onClick={() => setValue("Vendor / Affiliate")}>
+                  {t("signUp.option1")} / {t("signUp.option2")}
+                </p>
+              </>
+            )}
           </div>
         )}
       </div>

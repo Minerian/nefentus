@@ -4,12 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Negative from "../../assets/icon/negative.svg";
 import Positive from "../../assets/icon/positive.svg";
 
-import Logo from "../../assets/logo/logo.svg";
-
 import styles from "./vendor.module.css";
-
-import Logout from "../../assets/icon/logout.svg";
-import Settings from "../../assets/icon/settings.svg";
 
 import UrlLink from "../../assets/icon/link.svg";
 
@@ -30,6 +25,7 @@ import {
 import { useEffect, useState } from "react";
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
 import ProfileBox from "../profileBox/profileBox";
+import Header from "../header/header";
 
 const VendorBody = () => {
   const backendAPI = new backend_API();
@@ -127,7 +123,7 @@ const VendorBody = () => {
 
   return (
     <div className={`${styles.body}`}>
-      <VendorNavigation />
+      <Header title="Dashboard" />
       <VendorHeader />
 
       <div className={styles.row}>
@@ -146,39 +142,6 @@ const VendorBody = () => {
 };
 
 export default VendorBody;
-
-const VendorNavigation = () => {
-  const backendAPI = new backend_API();
-
-  const logOut = async () => {
-    try {
-      const data = await backendAPI.signout();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  return (
-    <div className={styles.navigation}>
-      <img src={Logo} alt="" />
-
-      <div className={styles.right}>
-        <div className={`${styles.settingsBody} card`}>
-          <Link to="/dashboard/settings" className={styles.logout}>
-            <img src={Settings} alt="" />
-            <p>Settings</p>
-          </Link>
-          <Link onClick={logOut} to="/" className={styles.logout}>
-            <img src={Logout} alt="" />
-            <p>Log out</p>
-          </Link>
-        </div>
-
-        <ProfileBox />
-      </div>
-    </div>
-  );
-};
 
 const VendorHeader = () => {
   const [copied, setCopied] = useState(false);
