@@ -2,7 +2,7 @@ import Cookies from "universal-cookie";
 export default class backendAPI {
 
     constructor() {
-        this.baseURL = "http://localhost:8080/api";
+        this.baseURL = "https://nefentus.com:8443/api";
         this.token = localStorage.getItem("token");
         this.cookies = new Cookies();
     }

@@ -260,22 +260,35 @@ const Card = ({ title, amount, percentage }) => {
 };
 
 const today = new Date();
+
+// Anzahl der Tage zwischen heute und dem 1. April 2023
 const oneDay = 24 * 60 * 60 * 1000; // Millisekunden in einem Tag
-const days = Math.round((new Date("Mar 01 2023") - today) / oneDay); // Berechne die Anzahl der Tage zwischen heute und dem 1. März 2023
-const labels = Array.from({ length: days }, (_, i) => {
-  const date = new Date(today.getTime() + i * oneDay);
+const days = Math.round((today - new Date("Apr 01 2023")) / oneDay);
+
+// Erstelle die Labels für den Chart
+const labels = [];
+for (let i = 0; i < days; i += 2) {
+  const date = new Date("Apr 01 2023");
+  date.setDate(date.getDate() + i);
   const month = date.toLocaleString("default", { month: "short" });
   const day = date.getDate();
-  return `${month}, ${day}`;
-});
+  labels.push(`${month}, ${day}`);
+}
+if (labels[labels.length - 1] !== today.toLocaleDateString()) {
+  const month = today.toLocaleString("default", { month: "short" });
+  const day = today.getDate();
+  labels.push(`${month}, ${day}`);
+}
+
+
+const randomData = Array.from({ length: days }, () => 0);
 
 const data = {
   labels,
   datasets: [
     {
-      label: "Dataset 1",
-      data: labels.map(() => 0),
-
+      label: "Income",
+      data: randomData,
       borderColor: "#1595C2",
       backgroundColor: "#1595C2",
       tension: 0.1,
@@ -311,6 +324,7 @@ export const options = {
 
   scales: {
     y: {
+      beginAtZero: true,
       grid: {
         color: "rgba(255,255,255,8%)",
       },
@@ -321,6 +335,7 @@ export const options = {
         },
         // beginAtZero: true,
         beginAtZero: true,
+        suggestedMin: 0,
         maxTicksLimit: 8,
         padding: 10,
         color: "#c4c4c4",
