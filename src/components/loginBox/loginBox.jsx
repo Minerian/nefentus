@@ -9,6 +9,8 @@ import { useTranslation } from "react-i18next";
 
 import backend_API from "../../api/backendAPI";
 
+import CheckBox from "../../assets/icon/whiteCheckmark.svg";
+
 const LoginBox = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [message, setMessage] = useState(null);
@@ -17,6 +19,8 @@ const LoginBox = () => {
   const navigate = useNavigate();
   const backendAPI = new backend_API();
   const { t } = useTranslation();
+
+  const [checkBox, setCheckBox] = useState(false);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -30,11 +34,11 @@ const LoginBox = () => {
   async function loginUser(username1, password1) {
     try {
       const response = await backendAPI.login(username1, password1);
-      if(response == null){
+      if (response == null) {
         setErrorMessage("Invalid Login data");
         return;
       }
-        navigate("/dashboard/affiliate");
+      navigate("/dashboard/affiliate");
     } catch (error) {
       setErrorMessage("There was an error logging in");
     }
@@ -43,7 +47,7 @@ const LoginBox = () => {
   const activateUser = async (token) => {
     try {
       const response = await backendAPI.activateAccount(token);
-      if(response == null) {
+      if (response == null) {
         setErrorMessage("Error on activating account: ");
         return;
       }
@@ -91,7 +95,21 @@ const LoginBox = () => {
           placeholder={t("signUp.passwordPlaceholder")}
           secure
         />
-        <Button link={null} onClick={handleClick}>{t("login.button")}</Button>
+
+        <div className={styles.remeberInfo}>
+          <div onClick={() => setCheckBox((prev) => !prev)}>
+            <div className={styles.checkBox}>
+              {checkBox && <img src={CheckBox} alt="" />}
+            </div>
+            <p>Remeber me</p>
+          </div>
+
+          <p>{t("login.forgot")}</p>
+        </div>
+
+        <Button link={null} onClick={handleClick}>
+          {t("login.button")}
+        </Button>
         <div className={styles.info}>
           <p>
             {t("login.info")}
@@ -99,8 +117,6 @@ const LoginBox = () => {
               <Link to="/signUp">{t("login.infoButton")}</Link>
             </u>
           </p>
-
-          <p>{t("login.forgot")}</p>
         </div>
       </div>
     </div>
