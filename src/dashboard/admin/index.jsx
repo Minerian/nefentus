@@ -118,7 +118,11 @@ const AdminBody = ({ type }) => {
   return (
     <>
       <div className={styles.body}>
-        <Header title="Admin Dashboard" />
+        <Header
+          title={`${
+            type === "admin" ? "Admin" : type === "diamond" ? "Diamond" : "Gold"
+          } Dashboard`}
+        />
         <TopInfo
           title="Overview information"
           description="Total info data for all users & user management."
@@ -127,17 +131,14 @@ const AdminBody = ({ type }) => {
             Add User
           </Button>
         </TopInfo>
-        <div
-          className={`${styles.rows} ${type === "gold" ? styles.goldRows : ""}`}
-        >
-          {type !== "gold" &&
-            cardsContent.map((item) => (
-              <Card
-                title={item.title}
-                amount={item.amount}
-                percentage={item.percentage}
-              />
-            ))}
+        <div className={`${styles.rows}`}>
+          {cardsContent.map((item) => (
+            <Card
+              title={item.title}
+              amount={item.amount}
+              percentage={item.percentage}
+            />
+          ))}
 
           <Graph />
 
@@ -196,7 +197,9 @@ const AdminBody = ({ type }) => {
 
               {type === "admin" && (
                 <div className={styles.button}>
-                  <Button color="white">KYC Requests</Button>
+                  <Button color="white" link={"/dashboard/kyc"}>
+                    KYC Requests
+                  </Button>
                 </div>
               )}
             </div>

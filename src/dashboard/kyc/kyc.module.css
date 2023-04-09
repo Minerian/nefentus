@@ -95,6 +95,14 @@
   object-fit: cover;
 }
 
+.name {
+  font-size: 1.4rem;
+}
+
+.id {
+  font-size: 1rem;
+}
+
 .modalWrapper > div > div {
   width: 38.5rem;
 }
@@ -129,7 +137,7 @@
   cursor: pointer;
 }
 
-.button > div {
+.checkButton > div {
   width: 100%;
   margin-top: 2rem;
 }

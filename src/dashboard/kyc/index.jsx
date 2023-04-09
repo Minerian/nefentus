@@ -359,7 +359,7 @@ const Table = ({ data }) => {
                 ))}
               </div>
 
-              <div className={styles.button}>
+              <div className={styles.checkButton}>
                 <Button onClick={() => setCheckModal(false)} color="white">
                   Close
                 </Button>
