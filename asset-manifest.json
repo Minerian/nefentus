@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nefentus/static/css/main.8180e6c6.css",
-    "main.js": "/nefentus/static/js/main.af7b85d1.js",
+    "main.js": "/nefentus/static/js/main.608b67b7.js",
     "static/media/introduction.mp4": "/nefentus/static/media/introduction.9f95a60485070b478523.mp4",
     "static/media/leon.mp4": "/nefentus/static/media/leon.7dfadc3c7fe5e3f17798.mp4",
     "static/media/homeHero.mp4": "/nefentus/static/media/homeHero.ec7bc336b359ab03a929.mp4",
@@ -14,6 +14,7 @@
     "static/media/payroll3.svg": "/nefentus/static/media/payroll3.95f60e91815a61070914d71f2c231039.svg",
     "static/media/affiliate2.png": "/nefentus/static/media/affiliate2.ba56e458141c011743dd.png",
     "static/media/paymentHero.png": "/nefentus/static/media/paymentHero.cfdb0b855c7f5fde7dd0.png",
+    "static/media/paymentHome.png": "/nefentus/static/media/paymentHome.352cf97b15d8127634fc.png",
     "static/media/target.mp4": "/nefentus/static/media/target.34187ae58040a85927a9.mp4",
     "static/media/grow3.svg": "/nefentus/static/media/grow3.e88ff8c0ce6624cf321b8b92607bbc4a.svg",
     "static/media/why.png": "/nefentus/static/media/why.1a62cc9c24e1e6cac676.png",
@@ -29,11 +30,10 @@
     "static/media/fr.svg": "/nefentus/static/media/fr.e137c52b97bd58a1c820e2d514cc4a89.svg",
     "static/media/grow2.svg": "/nefentus/static/media/grow2.57a27f894fb06f842b2556da240d6176.svg",
     "static/media/wallet.png": "/nefentus/static/media/wallet.328931874d1a01bbfa22.png",
+    "static/media/payrollHome.png": "/nefentus/static/media/payrollHome.45562441afdf4df70373.png",
     "static/media/payroll2.svg": "/nefentus/static/media/payroll2.80165488a39b4f5980cd4e73b417e9e6.svg",
     "static/media/case.png": "/nefentus/static/media/case.a9a513e07980434fd9c9.png",
-    "static/media/pic2.jpg": "/nefentus/static/media/pic2.a709636bb9454bbc310e.jpg",
     "static/media/graphic1.svg": "/nefentus/static/media/graphic1.2780a630e290246a4c05dcc0c9257dbf.svg",
-    "static/media/pic1.jpg": "/nefentus/static/media/pic1.0f8e32e9fa028375600a.jpg",
     "static/media/ar.svg": "/nefentus/static/media/ar.def704fb8dd00e554b3c9777d711f11b.svg",
     "static/media/graphic3.svg": "/nefentus/static/media/graphic3.3712b0ab9f0a8bcc913792d427154b62.svg",
     "static/media/grow1.svg": "/nefentus/static/media/grow1.5211a85350a164581222159f35bedb70.svg",
@@ -101,10 +101,10 @@
     "static/media/circle.svg": "/nefentus/static/media/circle.50122e71c27d62dbc89506214927765d.svg",
     "static/media/line.svg": "/nefentus/static/media/line.a645ec91e6e91d5d1648b21f66ccac3c.svg",
     "main.8180e6c6.css.map": "/nefentus/static/css/main.8180e6c6.css.map",
-    "main.af7b85d1.js.map": "/nefentus/static/js/main.af7b85d1.js.map"
+    "main.608b67b7.js.map": "/nefentus/static/js/main.608b67b7.js.map"
   },
   "entrypoints": [
     "static/css/main.8180e6c6.css",
-    "static/js/main.af7b85d1.js"
+    "static/js/main.608b67b7.js"
   ]
 }
