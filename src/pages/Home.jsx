@@ -13,8 +13,8 @@ import HomeHeroVideo from "../assets/video/homeHero.mp4";
 
 import { Helmet } from "react-helmet";
 
-import Image1 from "../assets/image/pic1.jpg";
-import Image2 from "../assets/image/pic2.jpg";
+import Image1 from "../assets/image/paymentHome.png";
+import Image2 from "../assets/image/payrollHome.png";
 
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
