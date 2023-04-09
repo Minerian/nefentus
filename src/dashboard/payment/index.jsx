@@ -7,6 +7,8 @@ import styles from "./payment.module.css";
 import Checkmark from "../../assets/icon/checkmark.svg";
 
 import QR from "../../assets/image/qr.svg";
+import TopInfo from "../topInfo/topInfo";
+import ModalOverlay from "../modal/modalOverlay";
 
 const PaymentBody = () => {
   const [value, setValue] = useState("Choose one");
@@ -20,21 +22,17 @@ const PaymentBody = () => {
       <div>
         <Header title={"Payment"} />
 
-        <div className={styles.top}>
-          <h4>Make the payment</h4>
-
-          <p>
-            To make a payment you need to choose payment options and enter valid
-            email.
-          </p>
-        </div>
+        <TopInfo
+          title={"Make the payment"}
+          description="To make a payment you need to choose payment options and enter valid email."
+        />
 
         <div className={`card ${styles.card}`}>
           <div className={styles.title}>Payment details</div>
 
           <div className={styles.body}>
             <div className={styles.inputWrapper}>
-              <Input label={"Email"} placeholder={"Enter email"} />
+              <Input dashboard label={"Email"} placeholder={"Enter email"} />
               <Options
                 label="Currency options"
                 value={value}
@@ -45,9 +43,10 @@ const PaymentBody = () => {
                   "Bitcoin",
                   "Bitcoin",
                 ]}
+                dashboard
                 setValue={setValue}
               />
-              <Input label={"Amout"} placeholder={"Enter amount"} />
+              <Input label={"Amout"} placeholder={"Enter amount"} dashboard />
             </div>
 
             <div className={styles.bill}>
@@ -146,19 +145,19 @@ export default PaymentBody;
 
 const Modal = ({ title, info, successful, children, close }) => {
   return (
-    <div className={styles.modalOverlay}>
-      <div className={`${styles.modalBox} card`}>
-        {successful && <img src={Checkmark} alt="" />}
-        {!successful && (
-          <p className={styles.close} onClick={close}>
-            X
-          </p>
-        )}
+    <ModalOverlay style={{ width: "100%", maxWidth: "38.2rem" }}>
+      {successful && (
+        <img className={styles.modalImage} src={Checkmark} alt="" />
+      )}
+      {!successful && (
+        <p className={styles.close} onClick={close}>
+          X
+        </p>
+      )}
 
-        <div className={styles.modalTitle}>{title}</div>
-        <div className={styles.modalInfo}>{info}</div>
-        {children}
-      </div>
-    </div>
+      <div className={styles.modalTitle}>{title}</div>
+      <div className={styles.modalInfo}>{info}</div>
+      {children}
+    </ModalOverlay>
   );
 };

@@ -97,7 +97,7 @@ export default TransactionsBody;
 const Table = ({ data }) => {
   return (
     <div className={`${styles.card} card`}>
-      <div className={`${styles.table}`}>
+      <div className={`${styles.table} dashboard-table`}>
         <div className={styles.tableHead}>
           <ul>
             <li>Product</li>

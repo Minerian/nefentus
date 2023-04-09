@@ -4,22 +4,23 @@ import styles from "./product.module.css";
 
 import Edit from "../../assets/icon/edit.svg";
 import Delete from "../../assets/icon/delete.svg";
+import TopInfo from "../topInfo/topInfo";
 
 const ProductBody = () => {
   return (
     <div className={`dashboard-body`}>
       <Header title="Products" />
 
-      <div className={styles.top}>
-        <div>
-          <h3>Total</h3>
-          <p>
+      <TopInfo
+        title="Total"
+        description={
+          <>
             You’ve added <span>3</span> new product this month
-          </p>
-        </div>
-
+          </>
+        }
+      >
         <Button color="white">Create New product</Button>
-      </div>
+      </TopInfo>
 
       <div className={styles.row}>
         <Card

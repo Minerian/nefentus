@@ -53,3 +53,13 @@
 
   z-index: 100;
 }
+
+.dashboardLabel {
+  font-size: 1.6rem !important;
+}
+
+.dashboardInput {
+  font-size: 1.4rem !important;
+  color: var(--gray-color) !important;
+  padding: 1.6rem 2rem !important;
+}

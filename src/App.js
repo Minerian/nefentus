@@ -30,6 +30,9 @@ import Product from "./dashboard/Product";
 import DashboardLayout from "./dashboard/dashboardLayout/dashboardLayout";
 import Transactions from "./dashboard/Transactions";
 import PaymentDashboard from "./dashboard/Payment";
+import PayrollDashboard from "./dashboard/Payroll";
+import Wallet from "./dashboard/Wallet";
+import Admin from "./dashboard/Admin";
 
 function App() {
   useEffect(() => {
@@ -185,6 +188,33 @@ function App() {
                   <DashboardLayout>
                     <PaymentDashboard />
                   </DashboardLayout>
+                }
+              />
+
+              <Route
+                path="/dashboard/payroll"
+                element={
+                  <DashboardLayout>
+                    <PayrollDashboard />
+                  </DashboardLayout>
+                }
+              />
+
+              <Route
+                path="/dashboard/wallet"
+                element={
+                  <DashboardLayout>
+                    <Wallet />
+                  </DashboardLayout>
+                }
+              />
+
+              <Route
+                path="/dashboard/admin"
+                element={
+                  <>
+                    <Admin />
+                  </>
                 }
               />
 

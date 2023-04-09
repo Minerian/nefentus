@@ -1,28 +1,3 @@
-.body {
-}
-
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 3rem;
-}
-
-.top h3 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-
-.top p {
-  font-size: 1.6rem;
-  color: var(--gray-color);
-}
-
-.top span {
-  color: #23c215;
-}
-
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

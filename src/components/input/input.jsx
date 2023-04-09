@@ -4,21 +4,40 @@ import dropDown from "../../assets/icon/dropdown.svg";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const Input = ({ label, placeholder, value, setState, secure }) => {
+const Input = ({
+  label,
+  placeholder,
+  value,
+  setState,
+  secure,
+  disabled,
+  dashboard,
+  number,
+  date,
+}) => {
   const handleChange = (e) => {
     setState(e.target.value);
   };
 
   return (
     <div className={styles.inputWrapper}>
-      <p className={styles.label}>{label}</p>
+      {label && (
+        <p
+          className={`${styles.label} ${
+            dashboard ? styles.dashboardLabel : ""
+          }`}
+        >
+          {label}
+        </p>
+      )}
 
       <input
-        className={styles.input}
-        type={secure ? "password" : "text"}
+        className={`${styles.input} ${dashboard ? styles.dashboardInput : ""}`}
+        type={secure ? "password" : number ? "number" : date ? "date" : "text"}
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
+        disabled={disabled}
       />
     </div>
   );
@@ -26,19 +45,33 @@ const Input = ({ label, placeholder, value, setState, secure }) => {
 
 export default Input;
 
-export const Options = ({ value, options = [], setValue, label = "" }) => {
+export const Options = ({
+  value,
+  options = [],
+  setValue,
+  label = "",
+  dashboard,
+}) => {
   const [open, setOpen] = useState(false);
 
   const { t } = useTranslation();
 
   return (
     <div className={`${styles.inputWrapper} ${styles.option}`}>
-      <p className={styles.label}>
-        {label.length > 0 ? label : t("signUp.optionLabel")}
-      </p>
+      {label.length > 0 && (
+        <p
+          className={`${styles.label} ${
+            dashboard ? styles.dashboardLabel : ""
+          }`}
+        >
+          {label.length > 0 ? label : t("signUp.optionLabel")}
+        </p>
+      )}
 
       <div
-        className={`option ${styles.input}`}
+        className={`option ${styles.input} ${
+          dashboard ? styles.dashboardInput : ""
+        }`}
         onClick={() => setOpen((prev) => !prev)}
       >
         {value} <img src={dropDown} alt="" />

@@ -85,7 +85,7 @@ const Layout = ({
           </div>
         )}
 
-        {button && <Button>{button}</Button>}
+        {button && <Button link="/signup">{button}</Button>}
 
         {store && (
           <div className={styles.store}>

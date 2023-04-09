@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./button.module.css";
 
-const Button = ({ children, className, color, link = "/signup", onClick }) => {
+const Button = ({ children, className, color, link, onClick }) => {
   return (
     <div
       className={`${styles.button} ${className}`}
@@ -13,7 +13,6 @@ const Button = ({ children, className, color, link = "/signup", onClick }) => {
             : "linear-gradient(94.15deg, #0784B5 -27.47%, #66BFDE 118.26%)",
       }}
     >
-      
       {link ? (
         <Link to={link}>
           <div style={{ color: color === "white" ? "#000" : "#fff" }}>

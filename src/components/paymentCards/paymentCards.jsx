@@ -44,7 +44,9 @@ const PaymentCards = () => {
             </div>
           </div>
 
-          <Button color="white">{t("payment.paymentButton")}</Button>
+          <Button link="/signup" color="white">
+            {t("payment.paymentButton")}
+          </Button>
         </div>
         <div className={`${styles.boldCard} ${styles.card}`}>
           <div>
@@ -62,7 +64,9 @@ const PaymentCards = () => {
             </div>
           </div>
 
-          <Button color="white">{t("payment.paymentButton")}</Button>
+          <Button link="/signup" color="white">
+            {t("payment.paymentButton")}
+          </Button>
         </div>
       </div>
     </div>

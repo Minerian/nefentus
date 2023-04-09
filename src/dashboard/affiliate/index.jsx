@@ -1,9 +1,6 @@
 import Button from "./../../components/button/button";
 import { Link, useNavigate } from "react-router-dom";
 
-import Negative from "../../assets/icon/negative.svg";
-import Positive from "../../assets/icon/positive.svg";
-
 import Logo from "../../assets/logo/logo.svg";
 
 import styles from "./affiliate.module.css";
@@ -30,6 +27,9 @@ import {
 import { useEffect, useState } from "react";
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
 import ProfileBox from "../profileBox/profileBox";
+import PercentageInfo from "../percentageInfo/percentageInfo";
+import { transformNumber } from "./../func/transformNumber";
+import Card from "../card/card";
 
 const AffiliateBody = () => {
   const backendAPI = new backend_API();
@@ -42,7 +42,7 @@ const AffiliateBody = () => {
       if (!response) {
         const responseNew = await backendAPI.checkPermissionAdmin();
         if (!responseNew) {
-          navigate("/login");
+          // navigate("/login");
         } else {
           setDashboardAdmin();
         }
@@ -174,7 +174,7 @@ const AffiliateHeader = () => {
 
   const handleClick = async () => {
     navigate("/dashboard/vendor");
-  }
+  };
 
   return (
     <div className={styles.header}>
@@ -186,7 +186,9 @@ const AffiliateHeader = () => {
           </p>
         </div>
 
-        <Button color="white" link={null} onClick={handleClick}>Vendor Dashboard</Button>
+        <Button color="white" link={null} onClick={handleClick}>
+          Vendor Dashboard
+        </Button>
       </div>
 
       <div className={styles.link}>
@@ -218,47 +220,6 @@ const AffiliateHeader = () => {
   );
 };
 
-function transformNumber(num) {
-  let str = num.toString();
-  let result = "";
-
-  for (let i = str.length - 1, j = 0; i >= 0; i--, j++) {
-    if (j === 2) {
-      result = "." + result;
-      j = -1;
-    }
-    result = str[i] + result;
-  }
-
-  return result.replace(/^(\d)(\d{3}\.)/, "$1,$2");
-}
-
-const Card = ({ title, amount, percentage }) => {
-  const positive = amount > 0 ? true : false;
-
-  return (
-    <div className={`card ${styles.card}`}>
-      <h4>{title}</h4>
-      <p className={styles.amount}>
-        {positive ? `+` : ``}
-        {title === "Incomes" ? `$` : ``}
-        {transformNumber(amount)}
-      </p>
-
-      <div className={styles.info}>
-        <img src={positive ? Positive : Negative} alt="" />
-        <p className={styles.percentage}>
-          <span style={{ color: positive ? "#23C215" : "#C21515" }}>
-            {positive ? `+` : `-`}
-            {percentage}%
-          </span>{" "}
-          vs last 30 days
-        </p>
-      </div>
-    </div>
-  );
-};
-
 const today = new Date();
 
 // Anzahl der Tage zwischen heute und dem 1. April 2023
@@ -279,7 +240,6 @@ if (labels[labels.length - 1] !== today.toLocaleDateString()) {
   const day = today.getDate();
   labels.push(`${month}, ${day}`);
 }
-
 
 const randomData = Array.from({ length: days }, () => 0);
 

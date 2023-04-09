@@ -1,18 +1,3 @@
-.top {
-  margin-bottom: 3rem;
-}
-
-.top h4 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-
-.top p {
-  font-size: 1.6rem;
-  color: var(--gray-color);
-}
-
 .card {
   padding: 3rem;
   border-radius: 1rem;
@@ -42,15 +27,6 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
-}
-
-.inputWrapper > div > p {
-  font-size: 1.6rem !important;
-}
-
-.inputWrapper input,
-.inputWrapper > div:nth-child(2) > div {
-  font-size: 1.4rem !important;
 }
 
 .bill {
@@ -105,32 +81,7 @@
   border-radius: 1rem;
 }
 
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 101;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modalBox {
-  border-radius: 1rem;
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 38.2rem;
-  position: relative;
-}
-
-.modalBox img {
+.modalImage {
   width: 5rem;
   margin-bottom: 1rem;
 }
@@ -240,11 +191,7 @@
     text-align: center;
   }
 
-  .modalBox {
-    padding: 2rem;
-  }
-
-  .modalBody img {
+  .modalImage {
     width: 100%;
     padding: 0 1.5rem;
   }
