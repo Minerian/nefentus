@@ -33,6 +33,7 @@ import PaymentDashboard from "./dashboard/Payment";
 import PayrollDashboard from "./dashboard/Payroll";
 import Wallet from "./dashboard/Wallet";
 import Admin from "./dashboard/Admin";
+import Kyc from "./dashboard/Kyc";
 
 function App() {
   useEffect(() => {
@@ -214,6 +215,14 @@ function App() {
                 element={
                   <>
                     <Admin />
+                  </>
+                }
+              />
+              <Route
+                path="/dashboard/kyc"
+                element={
+                  <>
+                    <Kyc />
                   </>
                 }
               />
