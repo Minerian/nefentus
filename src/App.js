@@ -34,6 +34,7 @@ import PayrollDashboard from "./dashboard/Payroll";
 import Wallet from "./dashboard/Wallet";
 import Admin from "./dashboard/Admin";
 import Kyc from "./dashboard/Kyc";
+import CookieBanner from "./components/cookieBanner/cookieBanner";
 
 function App() {
   useEffect(() => {
@@ -238,6 +239,9 @@ function App() {
             </Route>
           </Routes>
         </ScrollToTop>
+
+        {/* COOKIE BANNER */}
+        <CookieBanner />
       </BrowserRouter>
     </div>
   );
