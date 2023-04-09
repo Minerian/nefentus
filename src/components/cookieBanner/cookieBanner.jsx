@@ -4,7 +4,7 @@ import Cookie from "../../assets/icon/cookie.svg";
 
 import styles from "./cookie.module.css";
 
-const CookieBanner = () => {
+const CookieBanner = ({ close }) => {
   return (
     <div className={`${styles.banner} card`}>
       <div className={styles.left}>
@@ -18,8 +18,12 @@ const CookieBanner = () => {
       </div>
 
       <div className={styles.buttons}>
-        <div className={`${styles.button} ${styles.button1}`}>Decline</div>
-        <div className={`${styles.button} ${styles.button2}`}>Accept</div>
+        <div className={`${styles.button} ${styles.button1}`} onClick={close}>
+          Decline
+        </div>
+        <div className={`${styles.button} ${styles.button2}`} onClick={close}>
+          Accept
+        </div>
       </div>
     </div>
   );

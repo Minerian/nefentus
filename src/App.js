@@ -21,7 +21,7 @@ import Support from "./pages/Support";
 import Privacy from "./pages/Privacy";
 import Imprint from "./pages/Imprint";
 import PasswordForgot from "./pages/PasswordForgot";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AffiliateDashboard from "./dashboard/Affiliate";
 import Settings from "./dashboard/Settings";
 import Vendor from "./dashboard/Vendor";
@@ -53,9 +53,11 @@ function App() {
     });
   }, []);
 
+  const [cookie, setCookie] = useState(true);
+
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <ScrollToTop>
           <Routes>
             <Route
@@ -215,10 +217,29 @@ function App() {
                 path="/dashboard/admin"
                 element={
                   <>
-                    <Admin />
+                    <Admin type={"admin"} />
                   </>
                 }
               />
+
+              <Route
+                path="/dashboard/diamond"
+                element={
+                  <>
+                    <Admin type={"diamond"} />
+                  </>
+                }
+              />
+
+              <Route
+                path="/dashboard/gold"
+                element={
+                  <>
+                    <Admin type={"gold"} />
+                  </>
+                }
+              />
+
               <Route
                 path="/dashboard/kyc"
                 element={
@@ -241,8 +262,8 @@ function App() {
         </ScrollToTop>
 
         {/* COOKIE BANNER */}
-        <CookieBanner />
-      </BrowserRouter>
+        {cookie && <CookieBanner close={() => setCookie(false)} />}
+      </HashRouter>
     </div>
   );
 }

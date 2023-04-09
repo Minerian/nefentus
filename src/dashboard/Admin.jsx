@@ -1,9 +1,9 @@
 import AdminBody from "./admin/index";
 
-const Admin = () => {
+const Admin = ({ type }) => {
   return (
     <div className="container">
-      <AdminBody />
+      <AdminBody type={type} />
     </div>
   );
 };

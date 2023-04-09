@@ -7,7 +7,7 @@ import Header from "../header/header";
 import TopInfo from "../topInfo/topInfo";
 import styles from "./admin.module.css";
 import { options } from "./../graph/graph";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalOverlay from "../modal/modalOverlay";
 
 const cardsContent = [
@@ -110,7 +110,7 @@ const tableData = [
   ],
 ];
 
-const AdminBody = () => {
+const AdminBody = ({ type }) => {
   const [value, setValue] = useState("Filter");
 
   const [openModal, setOpenModal] = useState(false);
@@ -127,14 +127,17 @@ const AdminBody = () => {
             Add User
           </Button>
         </TopInfo>
-        <div className={styles.rows}>
-          {cardsContent.map((item) => (
-            <Card
-              title={item.title}
-              amount={item.amount}
-              percentage={item.percentage}
-            />
-          ))}
+        <div
+          className={`${styles.rows} ${type === "gold" ? styles.goldRows : ""}`}
+        >
+          {type !== "gold" &&
+            cardsContent.map((item) => (
+              <Card
+                title={item.title}
+                amount={item.amount}
+                percentage={item.percentage}
+              />
+            ))}
 
           <Graph />
 
@@ -191,30 +194,34 @@ const AdminBody = () => {
                 </div>
               </div>
 
-              <div className={styles.button}>
-                <Button color="white">KYC Requests</Button>
+              {type === "admin" && (
+                <div className={styles.button}>
+                  <Button color="white">KYC Requests</Button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {type !== "gold" && (
+          <div className={styles.tableWrapper}>
+            <div className={styles.top}>
+              <h4>User Management</h4>
+
+              <div className={styles.inputs}>
+                <Input placeholder="Search" dashboard />
+
+                <Options
+                  value={value}
+                  options={["Roles", "Status", "Incomes"]}
+                  dashboard
+                  setValue={setValue}
+                />
               </div>
             </div>
+            <Table data={tableData} type={type} />
           </div>
-        </div>
-
-        <div className={styles.tableWrapper}>
-          <div className={styles.top}>
-            <h4>User Management</h4>
-
-            <div className={styles.inputs}>
-              <Input placeholder="Search" dashboard />
-
-              <Options
-                value={value}
-                options={["Roles", "Status", "Incomes"]}
-                dashboard
-                setValue={setValue}
-              />
-            </div>
-          </div>
-          <Table data={tableData} />
-        </div>
+        )}
       </div>
 
       <div className={styles.modalWrapper}>
@@ -264,20 +271,40 @@ const AdminBody = () => {
 
 export default AdminBody;
 
-const Table = ({ data }) => {
+const header = [
+  <li>Name</li>,
+  <li>Roles</li>,
+  <li>Email</li>,
+  <li>Status</li>,
+  <li>Incomes</li>,
+  <li>Join on</li>,
+  <li>Action</li>,
+];
+
+const Table = ({ data, type }) => {
+  const [tableHeader, setTableHeader] = useState(header);
+
+  useEffect(() => {
+    if (type === "admin") {
+      setTableHeader(header);
+    } else if (type === "diamond") {
+      setTableHeader((prev) => {
+        const arr = header.slice(0, header.length - 1);
+
+        return [...arr];
+      });
+    }
+  }, []);
+
   return (
     <div className={`${styles.tableCard} card`}>
-      <div className={`${styles.table} dashboard-table`}>
+      <div
+        className={`${styles.table} ${
+          type === "admin" ? styles.tableAdmin : styles.tableDiamond
+        } dashboard-table`}
+      >
         <div className={styles.tableHead}>
-          <ul>
-            <li>Name</li>
-            <li>Roles</li>
-            <li>Email</li>
-            <li>Status</li>
-            <li>Incomes</li>
-            <li>Join on</li>
-            <li>Action</li>
-          </ul>
+          <ul>{tableHeader}</ul>
         </div>
         <div className={styles.tableBody}>
           {data.map((items, lineIndex) => (
@@ -300,8 +327,9 @@ const Table = ({ data }) => {
                   )}
                 </>
               ))}
-
-              <li>{data[lineIndex][3] ? "Disable" : "Enable"}</li>
+              {type === "admin" && (
+                <li>{data[lineIndex][3] ? "Disable" : "Enable"}</li>
+              )}
             </ul>
           ))}
         </div>
