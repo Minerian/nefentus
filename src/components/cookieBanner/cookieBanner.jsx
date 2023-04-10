@@ -5,14 +5,16 @@ import Cookie from "../../assets/icon/cookie.svg";
 import styles from "./cookie.module.css";
 import setCookie from "../setCookie/setCookie";
 
-const CookieBanner = () => {
+const CookieBanner = ( {close} ) => {
 
   const accept = ()=>{
     setCookie("acceptCookie", true);
+   close();
   }
 
   const decline = ()=>{
     setCookie("acceptCookie", false)
+    close();
   }
 
   return (

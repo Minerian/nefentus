@@ -54,6 +54,7 @@ function App() {
     });
   }, []);
 
+  const [ck, setCK] = useState(Cookies.get("acceptCookie"));
 
   return (
     <div className="App">
@@ -262,7 +263,7 @@ function App() {
         </ScrollToTop>
         
         {/* COOKIE BANNER */}
-        {!Cookies.get("acceptCookie")  && <CookieBanner />}
+        {!ck  && <CookieBanner close={() => setCK(true)} />}
       </BrowserRouter>
     </div>
   );

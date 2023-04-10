@@ -1,0 +1,336 @@
+
+> nefentus@0.1.0 start
+> react-scripts start
+
+(node:41539) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:41539) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view nefentus in the browser.
+
+  Local:            http://localhost:3000/nefentus
+  On Your Network:  http://192.168.0.17:3000/nefentus
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:10:  'ck' is assigned a value but never used     no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:10:  'ck' is assigned a value but never used     no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:10:  'ck' is assigned a value but never used     no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:10:  'ck' is assigned a value but never used     no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:10:  'ck' is assigned a value but never used     no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:10:  'ck' is assigned a value but never used     no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/App.js
+  Line 266:45:  'setCookie' is not defined  no-undef
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:    'Contact' is defined but never used         no-unused-vars
+  Line 6:8:    'setCookies' is defined but never used      no-unused-vars
+  Line 9:3:    'HashRouter' is defined but never used      no-unused-vars
+  Line 57:14:  'setCK' is assigned a value but never used  no-unused-vars
+
+ERROR in [eslint] 
+src/App.js
+  Line 266:45:  'setCookie' is not defined  no-undef
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:  'Contact' is defined but never used     no-unused-vars
+  Line 6:8:  'setCookies' is defined but never used  no-unused-vars
+  Line 9:3:  'HashRouter' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:  'Contact' is defined but never used     no-unused-vars
+  Line 6:8:  'setCookies' is defined but never used  no-unused-vars
+  Line 9:3:  'HashRouter' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:  'Contact' is defined but never used     no-unused-vars
+  Line 6:8:  'setCookies' is defined but never used  no-unused-vars
+  Line 9:3:  'HashRouter' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:  'Contact' is defined but never used     no-unused-vars
+  Line 6:8:  'setCookies' is defined but never used  no-unused-vars
+  Line 9:3:  'HashRouter' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning
+Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/App.js
+  Line 1:8:  'Contact' is defined but never used     no-unused-vars
+  Line 6:8:  'setCookies' is defined but never used  no-unused-vars
+  Line 9:3:  'HashRouter' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/App.js
+  Line 1:8:  'Contact' is defined but never used     no-unused-vars
+  Line 6:8:  'setCookies' is defined but never used  no-unused-vars
+  Line 9:3:  'HashRouter' is defined but never used  no-unused-vars
+
+webpack compiled with 1 warning
