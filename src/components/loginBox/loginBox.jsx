@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import backend_API from "../../api/backendAPI";
 
 import CheckBox from "../../assets/icon/whiteCheckmark.svg";
+import Cookies from "js-cookie";
 
 const LoginBox = () => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -19,7 +20,6 @@ const LoginBox = () => {
   const navigate = useNavigate();
   const backendAPI = new backend_API();
   const { t } = useTranslation();
-
   const [checkBox, setCheckBox] = useState(false);
 
   useEffect(() => {
@@ -29,11 +29,23 @@ const LoginBox = () => {
       activateUser(paramValue);
     } else {
     }
+    
+    async function checkJwtAndNavigate() {
+      const jwtIsValid = await backendAPI.checkJwt();
+      if (jwtIsValid) {
+        navigate("/dashboard/affiliate");
+      }
+    }
+  
+    checkJwtAndNavigate();
   }, []);
 
-  async function loginUser(username1, password1) {
+  async function loginUser(username1, password1, checkbox) {
+    if(Cookies.get("acceptCookie") !== true){
+      checkbox = false;
+    }
     try {
-      const response = await backendAPI.login(username1, password1);
+      const response = await backendAPI.login(username1, password1, checkbox);
       if (response == null) {
         setErrorMessage("Invalid Login data");
         return;
@@ -58,7 +70,7 @@ const LoginBox = () => {
   };
 
   function handleClick() {
-    loginUser(Username, Password);
+    loginUser(Username, Password, checkBox);
   }
 
   return (

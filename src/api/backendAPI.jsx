@@ -1,10 +1,30 @@
-import Cookies from "universal-cookie";
+import Cookies from "js-cookie";
+import setCookie from "../components/setCookie/setCookie"
 export default class backendAPI {
 
     constructor() {
         this.baseURL = "https://nefentus.com:8443/api";
-        this.token = localStorage.getItem("token");
-        this.cookies = new Cookies();
+        this.token = Cookies.get("token");
+    }
+
+    async checkJwt(){
+        try{
+            const url = `${this.baseURL}/auth/checkJWTCookie`;
+            const options = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${this.token}`
+                },
+            };
+            const response = await fetch(url, options);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return true;
+        } catch (error) {
+            return false; // or return some default value
+        }
     }
 
     async register(formData) {
@@ -194,15 +214,18 @@ export default class backendAPI {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
+            Cookies.remove("token");
             localStorage.clear();
             return response;
         } catch (error) {
+            Cookies.remove("token");
+            localStorage.clear();
             console.error("There was an error signing out:", error);
             return null; // or return some default value
         }
     }
 
-    async login(username, password) {
+    async login(username, password, longToken) {
         try {
             const url = `${this.baseURL}/auth/login`;
             const options = {
@@ -210,14 +233,14 @@ export default class backendAPI {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email: username, password }),
+                body: JSON.stringify({ email: username, password, rememberMe: longToken }),
             };
             const response = await fetch(url, options);
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
             const data = await response.json();
-            localStorage.setItem("token", data.jwtToken);
+            setCookie("token", data.jwtToken);
             localStorage.setItem("email", data.email);
             localStorage.setItem("contactEmail", data.contactEmail);
             localStorage.setItem("affiliateLink", data.affiliateLink);

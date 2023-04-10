@@ -67,13 +67,8 @@ const Footer = () => {
 
       <div className={`${styles.copyright} container`}>
         <p>
-          {t("footer.copyright")} |{" "}
-          <Link to="https://www.minerian.com" target="_blank">
-            Minerian Agency
-          </Link>
-          .
+          {t("footer.copyright")} 
         </p>
-
         <div className={styles.icons}>
           <Link to="https://www.linkedin.com/company/nefentuspay/">
             <img src={Linkedin} alt="" />

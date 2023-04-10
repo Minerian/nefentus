@@ -3,7 +3,7 @@ import Footer from "./components/footer/footer";
 import Home from "./pages/Home";
 import "./style/general.css";
 import Navigation from "./components/navigation/navigation";
-
+import setCookies from "./components/setCookie/setCookie";
 import {
   Route,
   HashRouter,
@@ -35,6 +35,7 @@ import Wallet from "./dashboard/Wallet";
 import Admin from "./dashboard/Admin";
 import Kyc from "./dashboard/Kyc";
 import CookieBanner from "./components/cookieBanner/cookieBanner";
+import Cookies from "js-cookie";
 
 function App() {
   useEffect(() => {
@@ -53,11 +54,10 @@ function App() {
     });
   }, []);
 
-  const [cookie, setCookie] = useState(true);
 
   return (
     <div className="App">
-      <HashRouter>
+      <BrowserRouter>
         <ScrollToTop>
           <Routes>
             <Route
@@ -260,10 +260,10 @@ function App() {
             </Route>
           </Routes>
         </ScrollToTop>
-
+        
         {/* COOKIE BANNER */}
-        {cookie && <CookieBanner close={() => setCookie(false)} />}
-      </HashRouter>
+        {!Cookies.get("acceptCookie")  && <CookieBanner />}
+      </BrowserRouter>
     </div>
   );
 }

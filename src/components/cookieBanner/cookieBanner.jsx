@@ -3,8 +3,18 @@ import { Link } from "react-router-dom";
 import Cookie from "../../assets/icon/cookie.svg";
 
 import styles from "./cookie.module.css";
+import setCookie from "../setCookie/setCookie";
 
-const CookieBanner = ({ close }) => {
+const CookieBanner = () => {
+
+  const accept = ()=>{
+    setCookie("acceptCookie", true);
+  }
+
+  const decline = ()=>{
+    setCookie("acceptCookie", false)
+  }
+
   return (
     <div className={`${styles.banner} card`}>
       <div className={styles.left}>
@@ -18,10 +28,10 @@ const CookieBanner = ({ close }) => {
       </div>
 
       <div className={styles.buttons}>
-        <div className={`${styles.button} ${styles.button1}`} onClick={close}>
+        <div className={`${styles.button} ${styles.button1}`} onClick={decline}>
           Decline
         </div>
-        <div className={`${styles.button} ${styles.button2}`} onClick={close}>
+        <div className={`${styles.button} ${styles.button2}`} onClick={accept}>
           Accept
         </div>
       </div>
