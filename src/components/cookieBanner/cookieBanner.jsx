@@ -9,7 +9,7 @@ const CookieBanner = ( {close} ) => {
 
   const accept = ()=>{
     setCookie("acceptCookie", true);
-   close();
+    close();
   }
 
   const decline = ()=>{
