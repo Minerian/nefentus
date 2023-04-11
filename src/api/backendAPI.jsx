@@ -3,7 +3,7 @@ import setCookie from "../components/setCookie/setCookie"
 export default class backendAPI {
 
     constructor() {
-        this.baseURL = "https://nefentus.com:8443/api";
+        this.baseURL = "http://localhost:8080/api";
         this.token = Cookies.get("token");
     }
 
@@ -241,6 +241,7 @@ export default class backendAPI {
             }
             const data = await response.json();
             setCookie("token", data.jwtToken);
+            localStorage.setItem("token", data.jwtToken);
             localStorage.setItem("email", data.email);
             localStorage.setItem("contactEmail", data.contactEmail);
             localStorage.setItem("affiliateLink", data.affiliateLink);
@@ -250,6 +251,7 @@ export default class backendAPI {
             localStorage.setItem("phoneNumber", data.phoneNumber);
             localStorage.setItem("username", data.username);
             localStorage.setItem('profile_pic', data.imgData);
+            localStorage.setItem('roles', data.roles);
             return response;
         } catch (error) {
             return null; // or return some default value

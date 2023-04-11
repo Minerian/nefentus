@@ -9,24 +9,9 @@ import styles from "./admin.module.css";
 import { options } from "./../graph/graph";
 import { useEffect, useState } from "react";
 import ModalOverlay from "../modal/modalOverlay";
+import adminDashboardApi from "../../api/adminDashboardApi";
+import { useNavigate } from "react-router-dom";
 
-const cardsContent = [
-  {
-    title: "Total Incomes",
-    amount: 467867,
-    percentage: 13,
-  },
-  {
-    title: "Total Clicks",
-    amount: 325800,
-    percentage: 11.52,
-  },
-  {
-    title: "Total Registration",
-    amount: 1185600,
-    percentage: 105.55,
-  },
-];
 
 const barContent = [
   {
@@ -51,77 +36,144 @@ const barContent = [
   },
 ];
 
-const tableData = [
-  [
-    "John Smith",
-    "Vendor",
-    "ruth.sharp@gmail.com",
-    true,
-    "159200",
-    "Jan 6, 2023",
-  ],
-  [
-    "John Smith",
-    "Vendor",
-    "ruth.sharp@gmail.com",
-    true,
-    "159200",
-    "Jan 6, 2023",
-  ],
-  [
-    "John Smith",
-    "Vendor",
-    "ruth.sharp@gmail.com",
-    true,
-    "159200",
-    "Jan 6, 2023",
-  ],
-  [
-    "John Smith",
-    "Vendor",
-    "ruth.sharp@gmail.com",
-    true,
-    "159200",
-    "Jan 6, 2023",
-  ],
-  [
-    "John Smith",
-    "Vendor",
-    "ruth.sharp@gmail.com",
-    false,
-    "159200",
-    "Jan 6, 2023",
-  ],
-  [
-    "John Smith",
-    "Vendor",
-    "ruth.sharp@gmail.com",
-    false,
-    "159200",
-    "Jan 6, 2023",
-  ],
-  [
-    "John Smith",
-    "Vendor",
-    "ruth.sharp@gmail.com",
-    false,
-    "159200",
-    "Jan 6, 2023",
-  ],
-];
-
 const AdminBody = ({ type }) => {
+
+  const [totalRegistrations, setTotalRegistrations] = useState(0);
+  const [totalClicks, setTotalClicks] = useState(0);
+  const [totalIncomes, setTotalIncomes] = useState(0);
+  const [totalRegistrationsPercentage, setTotalRegistrationsPercentage] = useState(0);
+  const [totalClicksPercentage, setTotalClicksPercentage] = useState(0);
+  const [totalIncomesPercentage, setTotalIncomesPercentage] = useState(0);
+  const [tableData, setTableData] = useState([]);
   const [value, setValue] = useState("Filter");
-
+  const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
+  const adminApi = new adminDashboardApi();
 
+  useEffect(() => {
+    async function fetchData() {
+      const result = await adminApi.checkPermission();
+      if (result !== true) {
+        navigate("/login");
+      } else {
+        const dataReg = await adminApi.getTotalRegistrations();
+        setTotalRegistrations(dataReg.number);
+        setTotalRegistrationsPercentage(dataReg.percentage);
+        const dataClick = await adminApi.getTotalClicks();
+        setTotalClicks(dataClick.number);
+        setTotalClicksPercentage(dataClick.percentage);
+        const dataInc = await adminApi.getTotalIncome();
+        setTotalIncomes(dataInc.number);
+        setTotalIncomesPercentage(dataInc.percentage);
+        const dataUsers = await adminApi.getUsers();
+        setTableData(dataUsers.map(user => [
+          user.fullname,
+          user.roles.join(', '),
+          user.email,
+          user.status,
+          user.income,
+          user.joinedOn.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        ]));
+        console.log(dataInc);
+      }
+    }
+    fetchData();
+  }, []);
+
+
+  const cardsContent = [
+    {
+      title: "Total Incomes",
+      amount: totalIncomes,
+      percentage: totalIncomesPercentage,
+    },
+    {
+      title: "Total Clicks",
+      amount: totalClicks,
+      percentage: totalClicksPercentage,
+    },
+    {
+      title: "Total Registration",
+      amount: totalRegistrations,
+      percentage: totalRegistrationsPercentage,
+    },
+  ];
+
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
+  const addUser = async () => {
+    const resp = await adminApi.addUser(email, password, value);
+    if(resp === true){
+      setOpenModal(false);
+      window.location.reload();
+    }
+
+  };
+
+  //   [
+  //     "John Smith",
+  //     "Vendor",
+  //     "ruth.sharp@gmail.com",
+  //     true,
+  //     "159200",
+  //     "Jan 6, 2023",
+  //   ],
+  //   [
+  //     "John Smith",
+  //     "Vendor",
+  //     "ruth.sharp@gmail.com",
+  //     true,
+  //     "159200",
+  //     "Jan 6, 2023",
+  //   ],
+  //   [
+  //     "John Smith",
+  //     "Vendor",
+  //     "ruth.sharp@gmail.com",
+  //     true,
+  //     "159200",
+  //     "Jan 6, 2023",
+  //   ],
+  //   [
+  //     "John Smith",
+  //     "Vendor",
+  //     "ruth.sharp@gmail.com",
+  //     true,
+  //     "159200",
+  //     "Jan 6, 2023",
+  //   ],
+  //   [
+  //     "John Smith",
+  //     "Vendor",
+  //     "ruth.sharp@gmail.com",
+  //     false,
+  //     "159200",
+  //     "Jan 6, 2023",
+  //   ],
+  //   [
+  //     "John Smith",
+  //     "Vendor",
+  //     "ruth.sharp@gmail.com",
+  //     false,
+  //     "159200",
+  //     "Jan 6, 2023",
+  //   ],
+  //   [
+  //     "John Smith",
+  //     "Vendor",
+  //     "ruth.sharp@gmail.com",
+  //     false,
+  //     "159200",
+  //     "Jan 6, 2023",
+  //   ],
+  // ];
   return (
     <>
       <div className={styles.body}>
         <Header
-          title={`${
-            type === "admin" ? "Admin" : type === "diamond" ? "Diamond" : "Gold"
-          } Dashboard`}
+          title={`${type === "admin" ? "Admin" : type === "diamond" ? "Diamond" : "Gold"
+            } Dashboard`}
         />
         <TopInfo
           title="Overview information"
@@ -234,11 +286,13 @@ const AdminBody = ({ type }) => {
               <h4>Create User</h4>
 
               <div className={styles.modalInputs}>
-                <Input dashboard label="Email" placeholder={"Enter email"} />
+                <Input dashboard label="Email" placeholder={"Enter email"} value={email} setState={setEmail} />
                 <Input
                   dashboard
                   label="Password"
                   placeholder={"Enter password"}
+                  setState={setPassword}
+                  value={password}
                   secure
                 />
 
@@ -262,7 +316,7 @@ const AdminBody = ({ type }) => {
                 >
                   Cancel
                 </div>
-                <Button color="white">Add User</Button>
+                <Button onClick={addUser} color="white">Add User</Button>
               </div>
             </div>
           </ModalOverlay>
@@ -286,6 +340,8 @@ const header = [
 
 const Table = ({ data, type }) => {
   const [tableHeader, setTableHeader] = useState(header);
+  const [modifiedData, setModifiedData] = useState(data);
+  const adminApi = new adminDashboardApi();
 
   useEffect(() => {
     if (type === "admin") {
@@ -297,41 +353,52 @@ const Table = ({ data, type }) => {
         return [...arr];
       });
     }
-  }, []);
+    setModifiedData(data);
+  }, [data, type, modifiedData]);
+
+  const toggleUserStatus = async (index) => {
+    const newData = [...modifiedData];
+    const resp = await adminApi.patchStatus(newData[index][2]);
+    if (resp !== true) {
+      return;
+    }
+    newData[index][3] = !newData[index][3];
+    setModifiedData(newData);
+  };
 
   return (
     <div className={`${styles.tableCard} card`}>
       <div
-        className={`${styles.table} ${
-          type === "admin" ? styles.tableAdmin : styles.tableDiamond
-        } dashboard-table`}
+        className={`${styles.table} ${type === "admin" ? styles.tableAdmin : styles.tableDiamond
+          } dashboard-table`}
       >
         <div className={styles.tableHead}>
           <ul>{tableHeader}</ul>
         </div>
         <div className={styles.tableBody}>
-          {data.map((items, lineIndex) => (
+          {modifiedData.map((items, lineIndex) => (
             <ul key={lineIndex}>
               {items.map((item, itemIndex) => (
                 <>
                   {itemIndex === 3 ? (
                     <li
-                      style={{ opacity: data[lineIndex][3] ? 1 : 0.2 }}
-                      className={`${styles.box} ${
-                        item ? styles.approved : styles.pending
-                      }`}
+                      style={{ opacity: modifiedData[lineIndex][3] ? 1 : 0.2 }}
+                      className={`${styles.box} ${item ? styles.approved : styles.pending
+                        }`}
                     >
                       {item ? "Enabled" : "Disabled"}
                     </li>
                   ) : (
-                    <li style={{ opacity: data[lineIndex][3] ? 1 : 0.2 }}>
-                      {itemIndex === 4 ? `$${transformNumber(item)}` : item}
+                    <li style={{ opacity: modifiedData[lineIndex][3] ? 1 : 0.2 }}>
+                      {itemIndex === 4 ? `$${transformNumber(item, false)}` : item}
                     </li>
                   )}
                 </>
               ))}
               {type === "admin" && (
-                <li>{data[lineIndex][3] ? "Disable" : "Enable"}</li>
+                <li onClick={() => {
+                  toggleUserStatus(lineIndex);
+                }}>{modifiedData[lineIndex][3] ? "Disable" : "Enable"}</li>
               )}
             </ul>
           ))}

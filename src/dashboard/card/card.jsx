@@ -4,7 +4,7 @@ import { transformNumber } from "./../func/transformNumber";
 import styles from "./card.module.css";
 
 const Card = ({ title, amount, percentage }) => {
-  const positive = amount > 0 ? true : false;
+  const positive = percentage > 0 ? true : false;
 
   return (
     <div className={`card ${styles.card}`}>
