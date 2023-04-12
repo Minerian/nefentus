@@ -33,7 +33,14 @@ const LoginBox = () => {
     async function checkJwtAndNavigate() {
       const jwtIsValid = await backendAPI.checkJwt();
       if (jwtIsValid) {
-        navigate("/dashboard/affiliate");
+        const roles = localStorage.getItem("roles");
+        const roleArray = roles.split(","); // Konvertiert den String in ein Array von Strings
+        const isAdmin = roleArray.includes("ROLE_ADMIN"); // Überprüft, ob "ROLE_ADMIN" im Array enthalten ist
+        const isVendor = roleArray.includes("ROLE_VENDOR"); // Überprüft, ob "ROLE_VENDOR" im Array enthalten ist
+        const isAffiliate = roleArray.includes("ROLE_AFFILIATE"); // Überprüft, ob "ROLE_VENDOR" im Array enthalten ist
+        if (isAdmin) { navigate("/dashboard/admin"); }
+        else if (isAffiliate) { navigate("/dashboard/affiliate"); }
+        else if (isVendor) { navigate("/dashboard/vendor"); }
       }
     }
 
@@ -55,9 +62,9 @@ const LoginBox = () => {
       const isAdmin = roleArray.includes("ROLE_ADMIN"); // Überprüft, ob "ROLE_ADMIN" im Array enthalten ist
       const isVendor = roleArray.includes("ROLE_VENDOR"); // Überprüft, ob "ROLE_VENDOR" im Array enthalten ist
       const isAffiliate = roleArray.includes("ROLE_AFFILIATE"); // Überprüft, ob "ROLE_VENDOR" im Array enthalten ist
-      if(isAdmin){ navigate("/dashboard/admin");}
-      else if(isAffiliate){ navigate("/dashboard/affiliate");}
-      else if(isVendor){ navigate("/dashboard/vendor");}
+      if (isAdmin) { navigate("/dashboard/admin"); }
+      else if (isAffiliate) { navigate("/dashboard/affiliate"); }
+      else if (isVendor) { navigate("/dashboard/vendor"); }
 
 
     } catch (error) {

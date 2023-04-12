@@ -3,7 +3,7 @@ import setCookie from "../components/setCookie/setCookie"
 export default class backendAPI {
 
     constructor() {
-        this.baseURL = "http://localhost:8080/api";
+        this.baseURL = "https://nefentus.com:8443/api";
         this.token = Cookies.get("token");
     }
 

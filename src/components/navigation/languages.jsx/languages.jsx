@@ -17,22 +17,22 @@ let list = [
     code: "en",
   },
   {
-    label: "German",
+    label: "Deutsch",
     flag: DE,
     code: "de",
   },
   {
-    label: "Spanisch",
+    label: "Español",
     flag: ES,
     code: "es",
   },
   {
-    label: "France",
+    label: "Français",
     flag: FR,
     code: "fr",
   },
   {
-    label: "Arabic",
+    label: "العربية",
     flag: AR,
     code: "ar",
   },

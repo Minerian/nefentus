@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 export default class adminDashboardApi {
     constructor() {
-        this.baseURL = "http://localhost:8080/api/dashboard/admin";
+        this.baseURL = "https://nefentus.com:8443/api/dashboard/admin";
         this.token = Cookies.get("token");
     }
 
@@ -154,6 +154,27 @@ export default class adminDashboardApi {
                 throw new Error("Network response was not ok");
             }
             return true;
+        } catch (error) {
+            return null; // or return some default value
+        }
+    }
+
+    async getRoleReport(email, password, roles){
+        try{      
+            const url = `${this.baseURL}/userroles`;
+            const options = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${this.token}`
+                }
+            };
+            const response = await fetch(url, options);
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            const data = await response.json();
+            return data;
         } catch (error) {
             return null; // or return some default value
         }

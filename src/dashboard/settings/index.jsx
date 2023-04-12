@@ -10,7 +10,7 @@ import File from "../../assets/icon/file.svg";
 import Correct from "../../assets/icon/correct.svg";
 import Fail from "../../assets/icon/fail.svg";
 import Button from "../../components/button/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import backend_API from "../../api/backendAPI";
 import Cookies from "universal-cookie";
 import { loadLanguages, use } from "i18next";
@@ -46,17 +46,37 @@ const instruction = [
 ];
 
 const SettingsBody = ({ type }) => {
+
+  const backendapi = new backendAPI();
   const [active, setActive] = useState(0);
   const [profilePicUrl, setProfilePicUrl] = useState(
     localStorage.getItem("profile_pic")
   );
   const [counter, setCounter] = useState(0);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleStorageChange = () => {
       setProfilePicUrl(localStorage.getItem("profile_pic"));
       setCounter(counter + 1);
     };
+
+    async function checkJwtAndNavigate() {
+      const jwtIsValid = await backendapi.checkJwt();
+      if (jwtIsValid) {
+        const roles = localStorage.getItem("roles");
+        const roleArray = roles.split(","); // Konvertiert den String in ein Array von Strings
+        const isAdmin = roleArray.includes("ROLE_ADMIN"); // Überprüft, ob "ROLE_ADMIN" im Array enthalten ist
+        const isVendor = roleArray.includes("ROLE_VENDOR"); // Überprüft, ob "ROLE_VENDOR" im Array enthalten ist
+        const isAffiliate = roleArray.includes("ROLE_AFFILIATE"); // Überprüft, ob "ROLE_VENDOR" im Array enthalten ist
+        if (isAdmin) { setLink("/dashboard/admin"); }
+        else if (isAffiliate) { setLink("/dashboard/affiliate"); }
+        else if (isVendor) { setLink("/dashboard/vendor"); }
+      }else{
+        navigate("/login");
+      }
+    }
+
+    checkJwtAndNavigate();
 
     window.addEventListener("storage", handleStorageChange);
 
@@ -66,7 +86,7 @@ const SettingsBody = ({ type }) => {
   }, [counter]);
 
   const cookies = new Cookies();
-
+  const [link, setLink] = useState("");
   return (
     <div
       className={`${styles.body} ${
@@ -82,7 +102,7 @@ const SettingsBody = ({ type }) => {
             <img src={Logo} alt="" />
 
             <div className={styles.button}>
-              <Link to="/dashboard/affiliate" color="white">
+              <Link to={link} color="white">
                 Back to dashboard
               </Link>
             </div>

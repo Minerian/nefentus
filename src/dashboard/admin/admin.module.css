@@ -58,6 +58,11 @@
   background-color: #c21515;
 }
 
+.barItem:nth-child(5),
+.leftLine:nth-child(5) .lineBox {
+  background-color: #7715c2;
+}
+
 .percentageLabel {
   display: flex;
   color: var(--gray-color);

@@ -13,28 +13,28 @@ import adminDashboardApi from "../../api/adminDashboardApi";
 import { useNavigate } from "react-router-dom";
 
 
-const barContent = [
-  {
-    role: "Vendor",
-    percentage: 31,
-    amount: 311,
-  },
-  {
-    role: "Affiliate",
-    percentage: 20,
-    amount: 100,
-  },
-  {
-    role: "Diamond",
-    percentage: 13,
-    amount: 21,
-  },
-  {
-    role: "Gold",
-    percentage: 36,
-    amount: 550,
-  },
-];
+// const barContent = [
+//   {
+//     role: "Vendor",
+//     percentage: 31,
+//     amount: 311,
+//   },
+//   {
+//     role: "Affiliate",
+//     percentage: 20,
+//     amount: 100,
+//   },
+//   {
+//     role: "Diamond",
+//     percentage: 13,
+//     amount: 21,
+//   },
+//   {
+//     role: "Gold",
+//     percentage: 36,
+//     amount: 550,
+//   },
+// ];
 
 const AdminBody = ({ type }) => {
 
@@ -46,6 +46,7 @@ const AdminBody = ({ type }) => {
   const [totalIncomesPercentage, setTotalIncomesPercentage] = useState(0);
   const [tableData, setTableData] = useState([]);
   const [value, setValue] = useState("Filter");
+  const [barContent, setBarContent] = useState([]);
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const adminApi = new adminDashboardApi();
@@ -74,7 +75,12 @@ const AdminBody = ({ type }) => {
           user.income,
           user.joinedOn.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
         ]));
-        console.log(dataInc);
+
+        const reportResp = await adminApi.getRoleReport();
+        if (reportResp !== null) {
+          console.log(reportResp);
+          setBarContent(reportResp);
+        }
       }
     }
     fetchData();
@@ -104,7 +110,7 @@ const AdminBody = ({ type }) => {
 
   const addUser = async () => {
     const resp = await adminApi.addUser(email, password, value);
-    if(resp === true){
+    if (resp === true) {
       setOpenModal(false);
       window.location.reload();
     }
@@ -219,7 +225,8 @@ const AdminBody = ({ type }) => {
                 <p>Total</p>
                 <p className={styles.label}>
                   {barContent.reduce((total, item) => {
-                    return total + item.amount;
+                    const amount = Number(item.count);
+                    return total + (isNaN(amount) ? 0 : amount);
                   }, 0)}
                 </p>
               </div>
@@ -236,7 +243,7 @@ const AdminBody = ({ type }) => {
                 <div className={styles.right}>
                   <div className={styles.amount}>
                     {barContent.map((item) => (
-                      <p>{item.amount}</p>
+                      <p>{item.count}</p>
                     ))}
                   </div>
                   <div className={styles.percentage}>
