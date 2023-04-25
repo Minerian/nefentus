@@ -17,6 +17,7 @@ import { loadLanguages, use } from "i18next";
 import InputComponent from "../input/input";
 import backendAPI from "../../api/backendAPI";
 import Header from "../header/header";
+import BlobPicture from "../../components/blobPicture/blobPicture";
 
 const nav = [
   "Profile",
@@ -112,11 +113,7 @@ const SettingsBody = ({ type }) => {
 
       <div className={styles.profile}>
         <div className={styles.avatar}>
-          <img
-            key={Date.now()}
-            src={`${profilePicUrl}?${counter}`}
-            alt="Profile picture"
-          />
+          <BlobPicture/>
         </div>
 
         <div className={styles.info}>

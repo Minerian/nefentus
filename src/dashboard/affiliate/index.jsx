@@ -30,85 +30,60 @@ import ProfileBox from "../profileBox/profileBox";
 import PercentageInfo from "../percentageInfo/percentageInfo";
 import { transformNumber } from "./../func/transformNumber";
 import Card from "../card/card";
+import affiliateDashboardApi from "../../api/affiliateDashboardApi";
 
 const AffiliateBody = () => {
-  const backendAPI = new backend_API();
-
+  const affDashboardApi = new affiliateDashboardApi();
   const navigate = useNavigate();
-
-  const checkPermissions = async () => {
-    try {
-      const response = await backendAPI.checkPermissionAff();
-      if (!response) {
-        const responseNew = await backendAPI.checkPermissionAdmin();
-        if (!responseNew) {
-          // navigate("/login");
-        } else {
-          setDashboardAdmin();
-        }
-      } else {
-        setDashboard();
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const setDashboardAdmin = async () => {
-    try {
-      const data = await backendAPI.getAdminDashboardTotalStats();
-      fillCards(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const setDashboard = async () => {
-    try {
-      const data = await backendAPI.getAffiliateDashboardTotalStats();
-      fillCards(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const [signUps, setSignUps] = useState(0);
-  const [signUpsPercentage, setSignUpsPercentage] = useState(0.0);
-  const [allClicks, setAllClicks] = useState(0);
-  const [allClicksPercentage, setAllClicksPercentage] = useState(0);
-  const [income, setIncome] = useState(0);
-  const [incomePercentage, setIncomePercentage] = useState(0);
+  const [totalRegistrations, setTotalRegistrations] = useState(0);
+  const [totalClicks, setTotalClicks] = useState(0);
+  const [totalIncomes, setTotalIncomes] = useState(0);
+  const [totalRegistrationsPercentage, setTotalRegistrationsPercentage] = useState(0);
+  const [totalClicksPercentage, setTotalClicksPercentage] = useState(0);
+  const [totalIncomesPercentage, setTotalIncomesPercentage] = useState(0);
+  const [tableData, setTableData] = useState([]);
 
   const cardsContent = [
     {
       title: "Incomes",
-      amount: income,
-      percentage: incomePercentage,
+      amount: totalIncomes,
+      percentage: totalIncomesPercentage,
     },
     {
       title: "Total Clicks",
-      amount: allClicks,
-      percentage: allClicksPercentage,
+      amount: totalClicks,
+      percentage: totalClicksPercentage,
     },
     {
       title: "Total Sign ups",
-      amount: signUps,
-      percentage: signUpsPercentage,
+      amount: totalRegistrations,
+      percentage: totalRegistrationsPercentage,
     },
   ];
 
-  const fillCards = (data) => {
-    setAllClicks(data.allClicks);
-    setAllClicksPercentage(data.allClicksPercentage);
-    setIncome(data.income);
-    setIncomePercentage(data.incomePercentage);
-    setSignUps(data.signUps);
-    setSignUpsPercentage(data.signUpsPercentage);
-  };
-
   useEffect(() => {
-    checkPermissions();
+    async function fetchData() {
+      fetchAffData();
+    }
+    fetchData();
   }, []);
+
+  const fetchAffData = async () =>{
+    const result = await affDashboardApi.checkPermission();
+    if (result !== true) {
+      navigate("/login");
+    } else {
+      const dataReg = await affDashboardApi.getTotalRegistrations();
+      setTotalRegistrations(dataReg.number);
+      setTotalRegistrationsPercentage(dataReg.percentage);
+      const dataClick = await affDashboardApi.getTotalClicks();
+      setTotalClicks(dataClick.number);
+      setTotalClicksPercentage(dataClick.percentage);
+      const dataInc = await affDashboardApi.getTotalIncome();
+      setTotalIncomes(dataInc.number);
+      setTotalIncomesPercentage(dataInc.percentage);
+    }
+  }
 
   return (
     <div className="container">

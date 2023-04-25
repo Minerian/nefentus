@@ -11,7 +11,8 @@ import { useEffect, useState } from "react";
 import ModalOverlay from "../modal/modalOverlay";
 import adminDashboardApi from "../../api/adminDashboardApi";
 import { useNavigate } from "react-router-dom";
-
+import diamondDashboardApi from "../../api/diamondDashboardApi";
+import goldDashboardApi from "../../api/goldDashboardApi";
 
 // const barContent = [
 //   {
@@ -50,11 +51,25 @@ const AdminBody = ({ type }) => {
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const adminApi = new adminDashboardApi();
-
+  const diamondApi = new diamondDashboardApi();
+  const goldApi = new goldDashboardApi();
   useEffect(() => {
     async function fetchData() {
+      if(type === "admin"){
+        fetchAdminData();
+      }else if(type === "diamond"){
+        fetchDiamondData();
+      }else{
+        fetchGoldData();
+      }
+    }
+    fetchData();
+  }, []); 
+
+  const fetchAdminData = async () => {
       const result = await adminApi.checkPermission();
       if (result !== true) {
+        console.log("asdasdasdasds");
         navigate("/login");
       } else {
         const dataReg = await adminApi.getTotalRegistrations();
@@ -82,10 +97,61 @@ const AdminBody = ({ type }) => {
           setBarContent(reportResp);
         }
       }
-    }
-    fetchData();
-  }, []);
+  };
 
+  const fetchDiamondData = async () => {
+    const result = await diamondApi.checkPermission();
+    if (result !== true) {
+      navigate("/login");
+    } else {
+      const dataReg = await diamondApi.getTotalRegistrations();
+      setTotalRegistrations(dataReg.number);
+      setTotalRegistrationsPercentage(dataReg.percentage);
+      const dataClick = await diamondApi.getTotalClicks();
+      setTotalClicks(dataClick.number);
+      setTotalClicksPercentage(dataClick.percentage);
+      const dataInc = await diamondApi.getTotalIncome();
+      setTotalIncomes(dataInc.number);
+      setTotalIncomesPercentage(dataInc.percentage);
+      const dataUsers = await diamondApi.getUsers();
+      setTableData(dataUsers.map(user => [
+        user.fullname,
+        user.roles.join(', '),
+        user.email,
+        user.status,
+        user.income,
+        user.joinedOn.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      ]));
+
+      const reportResp = await diamondApi.getRoleReport();
+      if (reportResp !== null) {
+        console.log(reportResp);
+        setBarContent(reportResp);
+      }
+    }
+};
+
+const fetchGoldData = async () => {
+  const result = await goldApi.checkPermission();
+  if (result !== true) {
+    navigate("/login");
+  } else {
+    const dataReg = await goldApi.getTotalRegistrations();
+    setTotalRegistrations(dataReg.number);
+    setTotalRegistrationsPercentage(dataReg.percentage);
+    const dataClick = await goldApi.getTotalClicks();
+    setTotalClicks(dataClick.number);
+    setTotalClicksPercentage(dataClick.percentage);
+    const dataInc = await goldApi.getTotalIncome();
+    setTotalIncomes(dataInc.number);
+    setTotalIncomesPercentage(dataInc.percentage);
+    const reportResp = await goldApi.getRoleReport();
+    if (reportResp !== null) {
+      console.log(reportResp);
+      setBarContent(reportResp);
+    }
+  }
+};
 
   const cardsContent = [
     {
@@ -109,11 +175,27 @@ const AdminBody = ({ type }) => {
   const [email, setEmail] = useState("");
 
   const addUser = async () => {
-    const resp = await adminApi.addUser(email, password, value);
-    if (resp === true) {
-      setOpenModal(false);
-      window.location.reload();
+
+    if(type === "admin"){
+      const resp = await adminApi.addUser(email, password, value);
+      if (resp === true) {
+        setOpenModal(false);
+        window.location.reload();
+      }
+    }else if(type === "diamond"){
+      const resp = await diamondApi.addUser(email, password, value);
+      if (resp === true) {
+        setOpenModal(false);
+        window.location.reload();
+      }
+    }else{
+      const resp = await diamondApi.addUser(email, password, value);
+      if (resp === true) {
+        setOpenModal(false);
+        window.location.reload();
+      }
     }
+    
 
   };
 
@@ -349,14 +431,13 @@ const Table = ({ data, type }) => {
   const [tableHeader, setTableHeader] = useState(header);
   const [modifiedData, setModifiedData] = useState(data);
   const adminApi = new adminDashboardApi();
-
+  const diamondApi = new diamondDashboardApi();
   useEffect(() => {
     if (type === "admin") {
       setTableHeader(header);
     } else if (type === "diamond") {
       setTableHeader((prev) => {
         const arr = header.slice(0, header.length - 1);
-
         return [...arr];
       });
     }
@@ -365,9 +446,17 @@ const Table = ({ data, type }) => {
 
   const toggleUserStatus = async (index) => {
     const newData = [...modifiedData];
-    const resp = await adminApi.patchStatus(newData[index][2]);
-    if (resp !== true) {
-      return;
+
+    if(type === "admin"){
+      const resp = await adminApi.patchStatus(newData[index][2]);
+      if (resp !== true) {
+        return;
+      }
+    }else{
+      const resp = await diamondApi.patchStatus(newData[index][2]);
+      if (resp !== true) {
+        return;
+      }
     }
     newData[index][3] = !newData[index][3];
     setModifiedData(newData);

@@ -1,11 +1,10 @@
 import Cookies from "js-cookie";
-export default class adminDashboardApi {
+export default class affiliateDashboardApi {
     constructor() {
         //LAUNCH
         //this.baseURL = "https://nefentus.com:8443/api/dashboard/admin";
         //DEV
-        this.baseURL = "http://localhost:8080/api/dashboard/admin";
-
+        this.baseURL = "http://localhost:8080/api/dashboard/affiliate";
         this.token = Cookies.get("token");
     }
     async checkPermission(){

@@ -4,14 +4,14 @@ import Arrow from "../../assets/icon/dropdownWhite.svg";
 import { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 import backendAPI from "../../api/backendAPI";
+import BlobPicture from "../../components/blobPicture/blobPicture";
 const ProfileBox = () => {
 
   return (
     <div className={styles.profileBox}>
       <div className={styles.avatar}>
-        <img src={localStorage.getItem("profile_pic")} alt="profile picture" />
+        <BlobPicture />
       </div>
-
       <div className={styles.info}>
         <div className={styles.nameBox}>
           <p className={styles.name}>{localStorage.getItem("firstName") + " " + localStorage.getItem("lastName")}</p>

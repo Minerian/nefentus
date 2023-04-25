@@ -3,7 +3,11 @@ import setCookie from "../components/setCookie/setCookie"
 export default class backendAPI {
 
     constructor() {
-        this.baseURL = "https://nefentus.com:8443/api";
+        //LAUNCH
+        //this.baseURL = "https://nefentus.com:8443/api";
+        //DEV
+        this.baseURL = "http://localhost:8080/api";
+
         this.token = Cookies.get("token");
     }
 
@@ -165,7 +169,6 @@ export default class backendAPI {
             localStorage.setItem("business", data.business);
             localStorage.setItem("phoneNumber", data.phoneNumber);
             localStorage.setItem("username", data.username);
-            localStorage.setItem('profile_pic', data.imgData);
             return response;
         } catch (error) {
             return null; // or return some default value
@@ -189,9 +192,8 @@ export default class backendAPI {
                 throw new Error("Network response was not ok");
             }
 
-            const data = await response.json();
-            console.log(data);
-            localStorage.setItem("profile_pic", data.message);
+            const data = await response.text();
+            localStorage.setItem("profile_pic", data);
             return response;
         } catch (error) {
             console.error("There was an error uploading the file:", error);
@@ -223,6 +225,22 @@ export default class backendAPI {
             console.error("There was an error signing out:", error);
             return null; // or return some default value
         }
+    }
+
+    async getProfilePicture(token){
+        try {
+            const url = `${this.baseURL}/auth/profilePic`;
+            const options = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+            return null;
+          } catch (error) {
+            console.error(error);
+          }
     }
 
     async login(username, password, longToken) {
@@ -412,13 +430,12 @@ export default class backendAPI {
 
     async countAffiliate(affiliate) {
         try {
-            const url = `${this.baseURL}/dashboard/affiliate/count`;
+            const url = `${this.baseURL}/clicks/?affLink=${affiliate}`;
             const options = {
-                method: "POST",
+                method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                },
-                body: affiliate,
+                }
             };
             const response = await fetch(url, options);
 
