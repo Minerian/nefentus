@@ -9,7 +9,8 @@ import { Helmet } from "react-helmet";
 
 import Image1 from "../assets/image/paymentHome.webp";
 import Image1Light from "../assets/image/paymentHomeLight.webp";
-import Main from "../assets/image/main.svg";
+// import Main from "../assets/image/main.svg";
+import Main from "../assets/video/earth.mp4";
 
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
@@ -17,6 +18,7 @@ import PaymentCards from "../components/paymentCards/paymentCards";
 import Prices from "../components/prices/prices";
 import Reward from "../components/reward/reward";
 import { useTheme } from "../context/themeContext/themeContext";
+import HomeHero from "../components/homeHero/layout";
 
 const Home = () => {
   const { theme } = useTheme();
@@ -36,10 +38,42 @@ const Home = () => {
       <Helmet>
         <title>Nefentus | Accept Crypto Payments Risk Free</title>
       </Helmet>
-      <Layout
+      <HomeHero
         heading={
           <>
+            The Evolution <br />
+            in Digital
+            <div className="gradient">Transactions</div>
+          </>
+        }
+        description={
+          <>
+            Nefentus is trusted by countless users, big and small, for seamless
+            online and in-person payment acceptance, payout automation, and
+            revenue growth.
+          </>
+        }
+        button={
+          <>
+            <p>{t("home.heroButton")}</p>
+          </>
+        }
+        home
+        full
+        video={Main}
+      />
+
+      <Logos />
+
+      <Cards />
+
+      <Layout
+        subtitle={t("home.simplifySubtitle")}
+        title={
+          <>
             {t("home.heroTitle")}
+            <br />
+            {t("home.heroTitleP2")}
             <div className="gradient"> {t("home.heroTitleGradient")}</div>
           </>
         }
@@ -49,17 +83,10 @@ const Home = () => {
             <p>{t("home.heroButton")}</p>
           </>
         }
-        home
-        // button2={t("home.heroButton2")}
-        image={Main}
-        full
-        // video={HomeHeroVideo}
-        store
         children={<Prices />}
+        full
+        store
       />
-
-      <Logos />
-      <Cards />
 
       <Layout
         subtitle={t("home.simplifySubtitle")}
@@ -67,6 +94,7 @@ const Home = () => {
         description={t("home.simplifyDescription")}
         button={t("home.layoutButton")}
         image={theme === "dark" ? Image1 : Image1Light}
+        reverse={true}
       />
 
       <About />

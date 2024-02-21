@@ -154,9 +154,26 @@ const Navigation = () => {
     return () => window.removeEventListener("resize", changeHeight);
   });
 
+  const [scrollPosition, setScrollPosition] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const position = window.scrollY > 0;
+      setScrollPosition(position);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const navClass = scrollPosition ? styles.navBG : "";
+
   return (
     <nav className={`${styles.navigation} load `} style={{ height }}>
-      <div className={` ${styles.contentWrapper}`}>
+      <div className={` ${styles.contentWrapper} ${navClass}`}>
         <div className={`container ${styles.content}`}>
           <div className={styles.left}>
             <Link className={styles.logoWrapper} to="/">
