@@ -1,0 +1,1 @@
+const r="_sectionWrapper_1vnr1_1",t="_body_1vnr1_10",o="_card_1vnr1_18",_="_lightCard_1vnr1_28",n="_boldCard_1vnr1_31",s="_top_1vnr1_58",d="_list_1vnr1_74",c={sectionWrapper:r,body:t,card:o,lightCard:_,boldCard:n,top:s,list:d};export{c as s};
