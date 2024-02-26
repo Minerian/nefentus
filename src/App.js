@@ -128,7 +128,7 @@ function App() {
     <ThemeProvider>
       <div className={`App`}>
         <MessageContextProvider>
-          <BrowserRouter>
+          <HashRouter>
             <Suspense
               fallback={
                 <div className="loadingAnimationWrapper">
@@ -377,7 +377,7 @@ function App() {
 
             {/* COOKIE BANNER */}
             {!ck && <CookieBanner close={() => setCK(true)} />}
-          </BrowserRouter>
+          </HashRouter>
         </MessageContextProvider>
       </div>
     </ThemeProvider>
