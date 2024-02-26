@@ -1,10 +1,10 @@
 # Name of workflow as seen in Github actions tab
-name: dev-build-and-deploy
+name: prod-build-and-deploy
 # Run workflow only on push to dev branch. Currently, deactivated!
 on:
   push:
     branches:
-      - devX
+      - masterX
 jobs:
   # To build the project
   build-nefentus:
@@ -19,7 +19,7 @@ jobs:
       - name: Installing dependencies
         run: npm install
       - name: Building project
-        run: CI=false npm run build
+        run: CI=false REACT_APP_BASE_ENDPOINT_API=${{ secrets.PROD_ENDPOINT }} npm run build
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -28,4 +28,4 @@ jobs:
           aws-region: eu-central-1
 
       - name: Deploy to S3 bucket
-        run: aws s3 sync ./build/ s3://dev.nefentus.com
+        run: aws s3 sync ./build/ s3://www.nefentus.com
