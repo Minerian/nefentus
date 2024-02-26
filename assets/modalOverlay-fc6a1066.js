@@ -1,0 +1,1 @@
+import{j as s}from"./index-c9329193.js";import{s as a}from"./modalOverlay.module-dd54f8bc.js";const m=({children:o,style:r})=>s.jsx("div",{className:a.modalOverlay,children:s.jsx("div",{className:`${a.modalBox}`,style:r,children:o})});export{m as M};
