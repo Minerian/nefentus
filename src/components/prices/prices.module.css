@@ -5,8 +5,15 @@
   gap: 0.5rem;
 }
 
+.priceCardWrapper {
+  margin-left: auto;
+  width: 90%;
+}
+
 .priceCard {
   overflow: hidden;
+
+  position: relative;
 }
 
 .priceCard::before {

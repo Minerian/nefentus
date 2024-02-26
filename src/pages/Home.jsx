@@ -7,7 +7,7 @@ import backendAPI from "../api/backendAPI";
 
 import { Helmet } from "react-helmet";
 
-import Image1 from "../assets/image/paymentHome.webp";
+import Image1 from "../assets/image/homeNewGraph.png";
 import Image1Light from "../assets/image/paymentHomeLight.webp";
 // import Main from "../assets/image/main.svg";
 import Main from "../assets/video/earth.mp4";

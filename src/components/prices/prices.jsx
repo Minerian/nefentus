@@ -29,36 +29,40 @@ const Prices = () => {
 
   return (
     prices && (
-      <div className={`card ${styles.priceCard}`}>
-        <h2>{t("home.latestPrice")}</h2>
-        <div className={styles.container}>
-          {prices?.map((price, index) => {
-            return (
-              <div className={styles.price_box} key={index}>
-                <div className={styles.main_info}>
-                  <img
-                    src={price.icon}
-                    alt={price.name}
-                    className={styles.logo}
-                  />
-                  <p className={styles.currency}>
-                    <span className={styles.abbr}>{price.abbr}</span>{" "}
-                    <span className={styles.opacity}>{price.name}</span>
-                  </p>
+      <div className={` ${styles.priceCardWrapper}`}>
+        <div className={`card ${styles.priceCard}`}>
+          <h2>{t("home.latestPrice")}</h2>
+          <div className={styles.container}>
+            {prices?.map((price, index) => {
+              return (
+                <div className={styles.price_box} key={index}>
+                  <div className={styles.main_info}>
+                    <img
+                      src={price.icon}
+                      alt={price.name}
+                      className={styles.logo}
+                    />
+                    <p className={styles.currency}>
+                      <span className={styles.abbr}>{price.abbr}</span>{" "}
+                      <span className={styles.opacity}>{price.name}</span>
+                    </p>
+                  </div>
+                  <span className={styles.abbr}>${price.price.toFixed(2)}</span>
+                  <span
+                    className={`${styles.change} ${
+                      price.priceChange >= 0 ? styles.positive : styles.negative
+                    }`}
+                  >
+                    {price.priceChange.toFixed(2)}%
+                  </span>
                 </div>
-                <span className={styles.abbr}>${price.price.toFixed(2)}</span>
-                <span
-                  className={`${styles.change} ${
-                    price.priceChange >= 0 ? styles.positive : styles.negative
-                  }`}
-                >
-                  {price.priceChange.toFixed(2)}%
-                </span>
-              </div>
-            );
-          })}
-          <div className={styles.descriptionWrapper}>
-            <span className={styles.description}>{t("home.priceChange")}</span>
+              );
+            })}
+            <div className={styles.descriptionWrapper}>
+              <span className={styles.description}>
+                {t("home.priceChange")}
+              </span>
+            </div>
           </div>
         </div>
       </div>

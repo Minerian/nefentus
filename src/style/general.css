@@ -19,8 +19,7 @@
 
 /* Variable */
 :root .dark {
-  --background-color: rgb(17, 17, 17);
-  --background-color: rgb(24, 24, 24);
+  --background-color: rgb(16, 16, 16);
   --lightBlack-color: rgb(38, 38, 38);
   --text-color: #f6f9fc;
   --gray-color: rgba(255, 255, 255, 0.09);

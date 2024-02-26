@@ -87,9 +87,7 @@ const HomeHero = ({
           className={heading || load ? "" : "scroll"}
           style={{ order: reverse ? 2 : 1 }}
         >
-          {subtitle && (
-            <p className={`${styles.subtitle} subtitle`}>{subtitle}</p>
-          )}
+          {subtitle && <p className={`${styles.subtitle}`}>{subtitle}</p>}
           {heading && <h1>{heading}</h1>}
           {title && <h3>{title}</h3>}
 
@@ -103,7 +101,6 @@ const HomeHero = ({
               </p>
             </div>
           )}
-
           {home && (
             <>
               <div className={styles.inputHero}>
@@ -148,7 +145,6 @@ const HomeHero = ({
               </div>
             </>
           )}
-
           {list && (
             <div className={styles.list}>
               <div>
@@ -169,7 +165,6 @@ const HomeHero = ({
               </div>
             </div>
           )}
-
           {!home && button && (
             <div className={styles.buttonWrapper}>
               <Button link="/signup">{button}</Button>

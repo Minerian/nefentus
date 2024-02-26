@@ -23,6 +23,19 @@
   margin-bottom: -0.8rem;
 }
 
+.subtitle {
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  opacity: 0.4;
+
+  border: 2px solid hsla(0, 0%, 100%, 0.1);
+  border-radius: 1rem;
+  padding: 1rem 1rem 0.7rem 1rem;
+
+  line-height: 100% !important;
+  width: max-content;
+}
+
 .layout > div {
   width: 46rem;
   width: 50rem;

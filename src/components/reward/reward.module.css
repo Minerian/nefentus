@@ -6,14 +6,35 @@
 
 .sectionWrapper > div {
   padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-bottom: 6rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card svg {
+  margin-bottom: 2rem;
+  width: 5rem;
+
+  /* fill: none !important; */
 }
 
 .sectionWrapper p {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
+  opacity: 0.6;
 }
 
 .sectionWrapper h3 {
   margin-bottom: 2rem;
+  font-size: 3.5rem;
+  /* line-height: 130%; */
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
 }
